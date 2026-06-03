@@ -31,6 +31,7 @@ import { Roles } from '../../common/decorators/role.decorator';
 import { Role } from '@prisma/client';
 import { PaginationQueryDto } from '../../common/dtos/pagination.dto';
 import { PaginatedResponseDto } from '../../common/dtos/pagination-response.dto';
+import { ReferralResponseDto } from './dtos/referral-response.dto';
 
 @Controller('users')
 @ApiTags('Users')
@@ -58,6 +59,22 @@ export class UsersController {
   })
   async getProfile(@Req() req: RequestWithUser): Promise<UserResponseDto> {
     return await this.userService.findOne(req.user.id);
+  }
+
+  @Get('referral')
+  @ApiOperation({
+    summary: 'Get referral statistics for current user',
+    description: 'Retrieve the referral code, success count, and earned points of the logged-in user.',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Referral statistics retrieved successfully.',
+    type: ReferralResponseDto,
+  })
+  @ApiResponse({ status: 401, description: 'Unauthorized. Invalid or missing JWT token.' })
+  @ApiResponse({ status: 500, description: 'Internal Server Error.' })
+  async getReferralStats(@GetUser('id') userId: string): Promise<ReferralResponseDto> {
+    return await this.userService.getReferralStats(userId);
   }
 
   @Get()

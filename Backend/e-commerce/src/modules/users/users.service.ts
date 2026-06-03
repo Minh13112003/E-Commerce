@@ -138,4 +138,39 @@ export class UsersService {
 
     return { message: 'User deleted successfully' };
   }
+
+  async getReferralStats(userId: string): Promise<{ referralCode: string; successReferrals: number; earnedPoints: number }> {
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        referralCode: true,
+        successReferrals: true,
+        earnedPoints: true,
+        firstName: true,
+        lastName: true,
+      },
+    });
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    let referralCode = user.referralCode;
+    if (!referralCode) {
+      const namePart = ((user.firstName || '') + (user.lastName || '')).toUpperCase().replace(/[^A-Z]/g, '');
+      const randPart = Math.floor(1000 + Math.random() * 9000);
+      referralCode = `BTT${namePart}${randPart}`.substring(0, 30);
+      
+      await this.prisma.user.update({
+        where: { id: userId },
+        data: { referralCode },
+      });
+    }
+
+    return {
+      referralCode,
+      successReferrals: user.successReferrals,
+      earnedPoints: user.earnedPoints,
+    };
+  }
 }

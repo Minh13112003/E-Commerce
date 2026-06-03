@@ -19,9 +19,15 @@ model User {
   refreshToken String?
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
-  carts        Cart[]
-  orders       Order[]
-  payments     Payment[]
+  carts            Cart[]
+  orders           Order[]
+  payments         Payment[]
+  rewardPoints     Int       @default(1000000)
+  bookings         Booking[]
+  referralCode     String?   @unique
+  successReferrals Int       @default(0)
+  earnedPoints     Int       @default(0)
+  feedbacks        Feedback[]
 
   @@index([email])
   @@map("users")
@@ -186,3 +192,55 @@ enum PaymentStatus {
   FAILED
   REFUNDED
 }
+
+model Booking {
+  id            String   @id @default(uuid())
+  orderCode     String   @unique
+  tourName      String
+  imageUrl      String
+  imagePublicId String?
+  price       Decimal  @db.Decimal(15, 2)
+  currency    String   @default("VND")
+  status      String
+  hasVat      Boolean  @default(true)
+  bookingDate DateTime @default(now())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([userId])
+  @@index([orderCode])
+  @@map("bookings")
+}
+
+model Voucher {
+  id          String   @id @default(uuid())
+  code        String   @unique
+  title       String
+  subtitle    String
+  expiry      String
+  tag         String
+  description String
+  value       Int      @default(0)
+  max         Int?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("vouchers")
+}
+
+model Feedback {
+  id        String   @id @default(uuid())
+  subject   String
+  content   String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@map("feedbacks")
+}
+
+

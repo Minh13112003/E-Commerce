@@ -1,0 +1,124 @@
+========================================================================
+YÊU CẦU ĐẦU VÀO VÀ ĐẦU RA CỦA CÁC API TRONG ỨNG DỤNG (INPUT & RESPONSE)
+========================================================================
+
+Tài liệu này ghi lại chi tiết cấu trúc dữ liệu yêu cầu (Request Payload) và phản hồi (Response) của các API hiện tại đang sử dụng trong ứng dụng di động, kèm mục đích chi tiết của từng API.
+
+------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------
+6. API: DỮ LIỆU TỔNG QUAN (DASHBOARD OVERVIEW)
+------------------------------------------------------------------------
+- Mục đích: Thống kê số lượng tour đã đặt, điểm thưởng tích lũy và lấy danh sách các đơn hàng gần đây của khách hàng để hiển thị trên màn hình.
+- Endpoint: /api/v1/bookings/dashboard
+- Method: GET
+- Headers:
+  Authorization: Bearer <accessToken>
+- Response Body (Output):
+  {
+    "toursCount": 19,
+    "rewardPoints": 1000000,
+    "recentOrders": [
+      {
+        "id": "1",
+        "orderCode": "BTTDHCMKHOA20260327",
+        "tourName": "Du lịch Hàn Quốc (Mùa Hoa Anh Đào): Seoul - Nami - Everland - Công viên Yeouido",
+        "imageUrl": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=500",
+        "price": 15990000,
+        "currency": "VND",
+        "status": "Đã nhận hàng",
+        "hasVat": true,
+        "bookingDate": "2026-06-03"
+      }
+    ]
+  }
+
+------------------------------------------------------------------------
+7. API: LỊCH SỬ GIAO DỊCH (TRANSACTION HISTORY)
+------------------------------------------------------------------------
+- Mục đích: Liệt kê chi tiết danh sách tất cả các đơn đặt tour du lịch từ trước tới nay của người dùng phục vụ cho tab Lịch sử.
+- Endpoint: /api/v1/bookings/history
+- Method: GET
+- Headers:
+  Authorization: Bearer <accessToken>
+- Response Body (Output):
+  [
+    {
+      "id": "1",
+      "orderCode": "BTTDHCMKHOA20260327",
+      "tourName": "Du lịch Hàn Quốc (Mùa Hoa Anh Đào): Seoul - Nami - Everland - Công viên Yeouido",
+      "imageUrl": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=500",
+      "price": 15990000,
+      "currency": "VND",
+      "status": "Đã nhận hàng",
+      "hasVat": true,
+      "bookingDate": "2026-06-03"
+    },
+    {
+      "id": "2",
+      "orderCode": "BTTDHCMKHOA20260328",
+      "tourName": "Đà Nẵng - Hội An - Bà Nà Hills 4 Ngày 3 Đêm",
+      "imageUrl": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500",
+      "price": 5490000,
+      "currency": "VND",
+      "status": "Đã nhận hàng",
+      "hasVat": true,
+      "bookingDate": "2026-06-03"
+    }
+  ]
+
+------------------------------------------------------------------------
+8. API: LẤY DANH SÁCH MÃ GIẢM GIÁ (GET VOUCHERS)
+------------------------------------------------------------------------
+- Mục đích: Lấy danh sách toàn bộ các mã giảm giá, khuyến mãi và quà tặng đang có hiệu lực dành cho tài khoản người dùng.
+- Endpoint: /api/v1/vouchers
+- Method: GET
+- Headers:
+  Authorization: Bearer <accessToken>
+- Response Body (Output):
+  [
+    {
+      "id": "v1",
+      "code": "BTT300K",
+      "title": "Giảm 5% tối đa 300k",
+      "subtitle": "VOUCHER PHỤ KIỆN",
+      "expiry": "HSD: 05/06/2026",
+      "tag": "HAPPY NEW YEAR 2026",
+      "description": "Áp dụng cho khách hàng mua phụ kiện du lịch tại các chi nhánh BenThanh Tourist toàn quốc."
+    }
+  ]
+
+------------------------------------------------------------------------
+9. API: THỐNG KÊ GIỚI THIỆU BẠN BÈ (GET REFERRAL STATS)
+------------------------------------------------------------------------
+- Mục đích: Lấy mã giới thiệu duy nhất của người dùng cùng thống kê về số lượng giới thiệu thành công và số điểm tích lũy nhận được từ hoạt động giới thiệu.
+- Endpoint: /api/v1/users/referral
+- Method: GET
+- Headers:
+  Authorization: Bearer <accessToken>
+- Response Body (Output):
+  {
+    "referralCode": "BTTMINH2026",
+    "successReferrals": 5,
+    "earnedPoints": 1000000
+  }
+
+------------------------------------------------------------------------
+10. API: GỬI GÓP Ý PHẢN HỒI (POST FEEDBACK)
+------------------------------------------------------------------------
+- Mục đích: Cho phép người dùng gửi ý kiến đóng góp, phản hồi hoặc báo cáo sự cố về dịch vụ hoặc ứng dụng lên hệ thống máy chủ.
+- Endpoint: /api/v1/feedbacks
+- Method: POST
+- Headers:
+  Authorization: Bearer <accessToken>
+- Request Body (Input):
+  {
+    "subject": "Góp ý dịch vụ Tour",
+    "content": "Nội dung phản hồi chi tiết của khách hàng..."
+  }
+- Response Body (Output):
+  {
+    "success": true,
+    "message": "Cảm ơn bạn đã đóng góp ý kiến phản hồi."
+  }
