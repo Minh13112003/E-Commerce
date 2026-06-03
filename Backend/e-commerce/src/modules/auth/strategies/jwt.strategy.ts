@@ -31,7 +31,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
                 role: true,
                 createdAt: true,
                 updatedAt: true,
-                password: false, // Exclude password from the returned user object
+                 // Exclude password from the returned user object
             },
         });
         if (!user) {

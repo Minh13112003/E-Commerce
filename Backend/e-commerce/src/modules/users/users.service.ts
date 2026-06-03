@@ -19,11 +19,14 @@ export class UsersService {
         id: true,
         email: true,
         role: true,
+        age : true,
+        phonenumber : true,
         firstName: true,
         lastName: true,
         createdAt: true,
         updatedAt: true,
         password: false,
+
       },
     });
     if (!user) {
@@ -49,6 +52,8 @@ export class UsersService {
           lastName: true,
           createdAt: true,
           updatedAt: true,
+          age: true,
+          phonenumber : true,
           // password: false,   // không cần vì đã select explicit
         },
       }),
@@ -89,6 +94,8 @@ export class UsersService {
         createdAt: true,
         updatedAt: true,
         password: false,
+        age: true,
+        phonenumber : true
       },
     });
     return updatedUser;

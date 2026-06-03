@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, UnauthorizedException } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegisterDTOs } from './dtos/register.dtos';
 import { AuthResponseDTOs } from './dtos/auth_response.dtos';
@@ -45,13 +45,15 @@ export class AuthController {
     //Log out
     @Post('logout')
     @UseGuards(JwtAuthGuard)
-    @Public()
     @HttpCode(HttpStatus.OK)
     @ApiBearerAuth('JWT-Auth')
     @ApiOperation({ summary: 'Logout user', description: 'Invalidate the user\'s refresh token and log them out.' })
     @ApiResponse({ status: 200, description: 'Logout successful.' })
-    async logout(@GetUser('id') userId: string) : Promise<{message: string}>{
-        await this.authService.logout(userId);
+    async logout(@GetUser() user: any) : Promise<{message: string}>{
+        console.log(user)
+        if(!user || !user.id ) throw new UnauthorizedException("Không tìm thấy Id")
+        
+        await this.authService.logout(user.id);
         return {message : "Logout successful"};
     }
 

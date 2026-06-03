@@ -1,5 +1,5 @@
 import { ConflictException, Injectable, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '@/prisma/prisma.service';
 import { RegisterDTOs } from './dtos/register.dtos';
 import { AuthResponseDTOs } from './dtos/auth_response.dtos';
 import * as bcrypt from 'bcrypt';
@@ -44,7 +44,11 @@ export class AuthService {
                     firstName : true,
                     lastName : true,
                     password : false,
-                    role : true
+                    role : true,
+                    updatedAt : true,
+                    createdAt : true,
+                    phonenumber : true,
+                    age : true
 
                 }
             });
@@ -90,7 +94,11 @@ export class AuthService {
                 email : true,
                 firstName : true,
                 lastName : true,
-                role : true
+                role : true,
+                createdAt : true,
+                updatedAt : true,
+                phonenumber : true,
+                age : true,
             }
         });
         if(!user) {
@@ -111,11 +119,18 @@ export class AuthService {
             data : { refreshToken : null }
         });
     }
+    private isEmail(identifier: string): boolean {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(identifier);
+      }
 
     async login(loginDTOs : LoginDTOs) : Promise<AuthResponseDTOs>{
-        const { email, password } = loginDTOs;
-        const user = await this.prismaService.user.findUnique({
-            where : { email },
+        const { identifier, password } = loginDTOs;
+        const isEmailInput = this.isEmail(identifier)
+        const user = await this.prismaService.user.findFirst({
+            where : isEmailInput
+            ?{email : identifier}
+            : {phonenumber : identifier},
         });
         if(!user || !(await bcrypt.compare(password, user.password))){
             throw new UnauthorizedException('Invalid email or password');
@@ -124,11 +139,17 @@ export class AuthService {
         await this.updateRefreshToken(user.id, tokens.refreshToken);
         return {
             accessToken : tokens.accessToken,
+            refreshToken : tokens.refreshToken,
             user : {
                 email : user.email,
                 firstName : user.firstName,
                 lastName : user.lastName,
-                role : user.role
+                role : user.role,
+                createdAt : user.createdAt,
+                updatedAt : user.updatedAt,
+                phonenumber : user.phonenumber,
+                age : user.age
+
             }
         }
     }

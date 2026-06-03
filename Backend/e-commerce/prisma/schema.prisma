@@ -11,6 +11,8 @@ model User {
   id           String    @id @default(uuid())
   email        String    @unique
   password     String
+  phonenumber  String    @default("091234567")
+  age          Int?      @default(22)
   firstName    String
   lastName     String
   role         Role      @default(USER)

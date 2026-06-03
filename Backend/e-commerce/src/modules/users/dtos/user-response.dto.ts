@@ -16,4 +16,9 @@ export class UserResponseDto {
     createdAt!: Date;
     @ApiProperty({ description: 'Date and time when the user was last updated', example: '2023-01-01T00:00:00.000Z' })
     updatedAt!: Date;
+    @ApiProperty({description : "PhoneNumber of user"})
+    phonenumber!: string
+    @ApiProperty({description : "Age of user", nullable: true})
+    age!: number | null
+
 }

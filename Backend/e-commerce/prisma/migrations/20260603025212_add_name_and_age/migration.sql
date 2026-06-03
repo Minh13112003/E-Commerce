@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "users" ADD COLUMN     "age" INTEGER DEFAULT 22,
+ADD COLUMN     "phonenumber" TEXT NOT NULL DEFAULT '091234567';
