@@ -1,5 +1,5 @@
-import { Controller, Get, Post, Patch, Delete, Body, Param, UseGuards, UseInterceptors, UploadedFile } from '@nestjs/common';
-import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags, ApiUnauthorizedResponse, ApiInternalServerErrorResponse, ApiNotFoundResponse, ApiBadRequestResponse, ApiBody } from '@nestjs/swagger';
+import { Controller, Get, Post, Patch, Delete, Body, Param, UseGuards, Query } from '@nestjs/common';
+import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags, ApiUnauthorizedResponse, ApiInternalServerErrorResponse, ApiNotFoundResponse, ApiBadRequestResponse } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../../common/guard/jwt-auth.guard';
 import { RoleGuard } from '../../common/guard/role.guard';
 import { BookingsService } from './bookings.service';
@@ -8,8 +8,9 @@ import { GetUser } from '../../common/decorators/get-user.decorator';
 import { BookingResponseDto, DashboardOverviewResponseDto } from './dtos/booking-response.dto';
 import { CreateBookingDTO } from './dtos/create-booking.dto';
 import { UpdateBookingDTO } from './dtos/update-booking.dto';
-import { SwaggerImageUpload } from '../../common/decorators/swagger-file.decorator';
-import { ImageInterceptor } from '../../common/cloudinary/multer-image.interceptor';
+import { PaginationQueryDto } from '@/common/dtos/pagination.dto';
+import { PaginatedResponseDto } from '@/common/dtos/pagination-response.dto';
+import { ApiPaginatedResponse } from '../../common/decorators/api-paginated-response.decorator';
 
 @ApiTags('Bookings')
 @Controller('bookings')
@@ -31,6 +32,22 @@ export class BookingsController {
     return this.bookingsService.getDashboard(userId);
   }
 
+  @Get('me')
+  @RelaxedThrottler()
+  @ApiOperation({
+    summary: 'Get all bookings for the current user',
+    description: 'Retrieve a list of all booked tours from before to now.',
+  })
+  @ApiPaginatedResponse(BookingResponseDto)
+  @ApiUnauthorizedResponse({ description: 'Unauthorized. Invalid or missing JWT token.' })
+  @ApiInternalServerErrorResponse({ description: 'Internal Server Error.' })
+  async getMyBookings(
+    @GetUser('id') userId: string,
+    @Query() paginationDTO: PaginationQueryDto
+  ): Promise<PaginatedResponseDto<BookingResponseDto>> {
+    return this.bookingsService.getAllBookingsByUserId(userId, paginationDTO);
+  }
+
   @Get('history')
   @RelaxedThrottler()
   @ApiOperation({
@@ -46,11 +63,9 @@ export class BookingsController {
 
   @Post()
   @RelaxedThrottler()
-  @SwaggerImageUpload(CreateBookingDTO, 'image', true)
-  @UseInterceptors(ImageInterceptor('image'))
   @ApiOperation({
     summary: 'Create a new booking',
-    description: 'Create a new tour booking for the current user with an image upload.',
+    description: 'Create a new tour booking for the current user.',
   })
   @ApiResponse({ status: 201, description: 'Booking created successfully.', type: BookingResponseDto })
   @ApiBadRequestResponse({ description: 'Bad Request. Validation failed.' })
@@ -59,9 +74,8 @@ export class BookingsController {
   async createBooking(
     @Body() dto: CreateBookingDTO,
     @GetUser('id') userId: string,
-    @UploadedFile() image: Express.Multer.File,
   ): Promise<BookingResponseDto> {
-    return this.bookingsService.createBooking(dto, userId, image);
+    return this.bookingsService.createBooking(dto, userId);
   }
 
   @Get(':id')
@@ -83,11 +97,9 @@ export class BookingsController {
 
   @Patch(':id')
   @RelaxedThrottler()
-  @SwaggerImageUpload(UpdateBookingDTO, 'image', false)
-  @UseInterceptors(ImageInterceptor('image'))
   @ApiOperation({
     summary: 'Update an existing booking',
-    description: 'Update the details of a booking owned by the current user with optional image upload.',
+    description: 'Update the details of a booking owned by the current user.',
   })
   @ApiResponse({ status: 200, description: 'Booking updated successfully.', type: BookingResponseDto })
   @ApiNotFoundResponse({ description: 'Booking not found.' })
@@ -97,9 +109,8 @@ export class BookingsController {
     @Param('id') id: string,
     @Body() dto: UpdateBookingDTO,
     @GetUser('id') userId: string,
-    @UploadedFile() image?: Express.Multer.File,
   ): Promise<BookingResponseDto> {
-    return this.bookingsService.updateBooking(id, dto, userId, image);
+    return this.bookingsService.updateBooking(id, dto, userId);
   }
 
   @Delete(':id')

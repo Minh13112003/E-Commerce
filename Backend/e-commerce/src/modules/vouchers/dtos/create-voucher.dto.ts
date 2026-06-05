@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString, IsNumber, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsString, IsNumber, IsOptional, Max, Min, IsBoolean } from 'class-validator';
 import { Type } from 'class-transformer';
 
 
@@ -60,12 +60,14 @@ export class CreateVoucherDTO {
 
   @ApiProperty({
     type: Number,
-    description: 'Discount value (percentage or flat amount)',
-    example: 50000,
+    description: 'Discount value (percentage )',
+    example: 50,
   })
   @IsNumber()
   @IsNotEmpty()
   @Type(() => Number)
+  @Max(100)
+  @Min(1)
   value!: number;
 
   @ApiProperty({
@@ -78,4 +80,46 @@ export class CreateVoucherDTO {
   @IsOptional()
   @Type(() => Number)
   max?: number;
+
+  @ApiProperty({
+    type: String,
+    description: 'ID of the user who created the voucher',
+    example: 'u-admin-1',
+    required: false,
+    nullable: true,
+  })
+  @IsString()
+  @IsOptional()
+  usercreatedId?: string;
+
+  @ApiProperty({
+    type: Boolean,
+    description: 'Status of the voucher (can be used or not)',
+    example: true,
+    required: false,
+  })
+  @IsBoolean()
+  @IsOptional()
+  status?: boolean;
+
+  @ApiProperty({
+    type: String,
+    description: 'ID of the user assigned to this voucher',
+    example: 'u-user-2',
+    required: false,
+    nullable: true,
+  })
+  @IsString()
+  @IsOptional()
+  userId?: string;
+
+  @ApiProperty({
+    type: Boolean,
+    description: 'Whether the voucher can be reused multiple times',
+    example: false,
+    required: false,
+  })
+  @IsBoolean()
+  @IsOptional()
+  reuse?: boolean;
 }

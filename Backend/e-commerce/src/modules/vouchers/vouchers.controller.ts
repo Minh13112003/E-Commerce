@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Patch, Delete, Body, Param, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Patch, Delete, Body, Param, UseGuards, Query } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags, ApiUnauthorizedResponse, ApiInternalServerErrorResponse, ApiNotFoundResponse, ApiBadRequestResponse, ApiConflictResponse, ApiBody } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../../common/guard/jwt-auth.guard';
 import { RoleGuard } from '../../common/guard/role.guard';
@@ -7,6 +7,10 @@ import { RelaxedThrottler } from '../../common/decorators/custom-throttler.decor
 import { VoucherResponseDto } from './dtos/voucher-response.dto';
 import { CreateVoucherDTO } from './dtos/create-voucher.dto';
 import { UpdateVoucherDTO } from './dtos/update-voucher.dto';
+import { GetUser } from '../../common/decorators/get-user.decorator';
+import { PaginationQueryDto } from '../../common/dtos/pagination.dto';
+import { PaginatedResponseDto } from '../../common/dtos/pagination-response.dto';
+import { ApiPaginatedResponse } from '../../common/decorators/api-paginated-response.decorator';
 
 @ApiTags('Vouchers')
 @Controller('vouchers')
@@ -21,11 +25,15 @@ export class VouchersController {
     summary: 'Get all active vouchers',
     description: 'Retrieve a list of all active vouchers for the current user.',
   })
-  @ApiResponse({ status: 200, description: 'Vouchers list retrieved successfully.', type: [VoucherResponseDto] })
+  @ApiPaginatedResponse(VoucherResponseDto)
   @ApiUnauthorizedResponse({ description: 'Unauthorized. Invalid or missing JWT token.' })
   @ApiInternalServerErrorResponse({ description: 'Internal Server Error.' })
-  async getAllVouchers(): Promise<VoucherResponseDto[]> {
-    return this.vouchersService.getAllVouchers();
+  async getAllVouchers(
+    @GetUser('id') userId: string,
+    @GetUser('role') role: string,
+    @Query() paginationDTO: PaginationQueryDto,
+  ): Promise<PaginatedResponseDto<VoucherResponseDto>> {
+    return this.vouchersService.getAllVouchers(userId, role, paginationDTO);
   }
 
   @Get(':id')
@@ -54,8 +62,11 @@ export class VouchersController {
   @ApiConflictResponse({ description: 'Conflict. Voucher code already exists.' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized. Invalid or missing JWT token.' })
   @ApiInternalServerErrorResponse({ description: 'Internal Server Error.' })
-  async createVoucher(@Body() dto: CreateVoucherDTO): Promise<VoucherResponseDto> {
-    return this.vouchersService.createVoucher(dto);
+  async createVoucher(
+    @Body() dto: CreateVoucherDTO[],
+    @GetUser('id') userId: string,
+  ): Promise<VoucherResponseDto[]> {
+    return this.vouchersService.createVoucher(dto, userId);
   }
 
   @Patch(':id')
@@ -90,5 +101,23 @@ export class VouchersController {
   @ApiInternalServerErrorResponse({ description: 'Internal Server Error.' })
   async deleteVoucher(@Param('id') id: string): Promise<{ success: boolean; message: string }> {
     return this.vouchersService.deleteVoucher(id);
+  }
+
+  @Post(':id/use')
+  @RelaxedThrottler()
+  @ApiOperation({
+    summary: 'Use/redeem a voucher by ID or code',
+    description: 'Marks the voucher as status false if it is not reusable.',
+  })
+  @ApiResponse({ status: 200, description: 'Voucher used successfully.', type: VoucherResponseDto })
+  @ApiNotFoundResponse({ description: 'Voucher not found.' })
+  @ApiBadRequestResponse({ description: 'Bad Request. Validation failed.' })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized. Invalid or missing JWT token.' })
+  @ApiInternalServerErrorResponse({ description: 'Internal Server Error.' })
+  async useVoucher(
+    @Param('id') id: string,
+    @GetUser('id') userId: string,
+  ): Promise<VoucherResponseDto> {
+    return this.vouchersService.useVoucher(id, userId);
   }
 }

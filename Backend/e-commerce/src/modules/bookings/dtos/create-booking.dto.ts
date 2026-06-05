@@ -1,44 +1,47 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsBoolean, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
-import { Type } from 'class-transformer';
+import { Transform, Type } from 'class-transformer';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateBookingDTO {
   @ApiProperty({
     type: String,
-    description: 'Name of the tour',
-    example: 'Du lịch Hàn Quốc (Mùa Hoa Anh Đào): Seoul - Nami - Everland - Công viên Yeouido',
+    description: 'ID of the tour being booked',
+    example: 't1',
   })
   @IsString()
   @IsNotEmpty()
-  tourName!: string;
+  idTour!: string;
 
   @ApiProperty({
     type: Number,
-    description: 'Price of the tour booking',
-    example: 15990000,
+    description: 'Quantity of the tour being booked',
+    example: 1,
   })
   @IsNumber()
-  @IsNotEmpty()
+  @IsOptional()
   @Type(() => Number)
-  price!: number;
+  @Transform(({ value }) => value ?? 1)
+  quantity: number;
 
   @ApiProperty({
     type: String,
-    description: 'Currency used (e.g. VND, USD)',
-    example: 'VND',
+    description: 'Code of the voucher to apply for discount',
+    example: 'BTT300K',
     required: false,
+    nullable: true,
   })
   @IsString()
   @IsOptional()
-  currency?: string;
+  voucherCode?: string;
 
   @ApiProperty({
-    type: Boolean,
-    description: 'Whether the price includes VAT',
-    example: true,
+    type: String,
+    description: 'Additional notice/note for the booking',
+    example: 'Chúng tôi cần hỗ trợ xe lăn',
     required: false,
+    nullable: true,
   })
-  @IsBoolean()
+  @IsString()
   @IsOptional()
-  hasVat?: boolean;
+  notice?: string;
 }

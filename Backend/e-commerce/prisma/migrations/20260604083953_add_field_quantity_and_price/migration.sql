@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "bookings" ADD COLUMN     "price" DECIMAL(15,2) NOT NULL DEFAULT 0,
+ADD COLUMN     "quantity" INTEGER NOT NULL DEFAULT 1;

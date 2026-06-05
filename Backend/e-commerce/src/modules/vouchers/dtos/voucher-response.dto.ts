@@ -27,4 +27,16 @@ export class VoucherResponseDto {
 
   @ApiProperty({ type: Number, example: 300000, nullable: true })
   max!: number | null;
+
+  @ApiProperty({ type: String, example: 'u-admin-1', nullable: true })
+  usercreatedId!: string | null;
+
+  @ApiProperty({ type: Boolean, example: true })
+  status!: boolean;
+
+  @ApiProperty({ type: String, example: 'u-user-2', nullable: true })
+  userId!: string | null;
+
+  @ApiProperty({ type: Boolean, example: false })
+  reuse!: boolean;
 }

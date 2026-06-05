@@ -194,38 +194,60 @@ enum PaymentStatus {
 }
 
 model Booking {
-  id            String   @id @default(uuid())
-  orderCode     String   @unique
-  tourName      String
-  imageUrl      String
-  imagePublicId String?
-  price       Decimal  @db.Decimal(15, 2)
-  currency    String   @default("VND")
-  status      String
-  hasVat      Boolean  @default(true)
-  bookingDate DateTime @default(now())
-  userId      String
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id             String   @id @default(uuid())
+  idUser         String
+  idTour         String
+  voucherId      String?
+  notice         String?
+  user           User     @relation(fields: [idUser], references: [id], onDelete: Cascade)
+  tour           Tour     @relation(fields: [idTour], references: [id], onDelete: Cascade)
+  voucher        Voucher? @relation(fields: [voucherId], references: [id], onDelete: SetNull)
+  quantity       Int      @default(1)
+  originalPrice  Decimal  @db.Decimal(15, 2) @default(0)
+  price          Decimal  @db.Decimal(15, 2) @default(0)
+  status         String   @default("Chờ xử lý")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
-  @@index([userId])
-  @@index([orderCode])
+  @@index([idUser])
+  @@index([idTour])
+  @@index([voucherId])
   @@map("bookings")
 }
 
+model Tour {
+  id             String    @id @default(uuid())
+  name           String
+  imageUrl       String
+  imagePublicId  String
+  price          Decimal   @db.Decimal(15, 2)
+  duration       String
+  rating         Float     @default(0.0)
+  reviewsCount   Int       @default(0)
+  bookings       Booking[]
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  hasVat         Boolean   @default(true)
+  @@map("tours")
+}
+
 model Voucher {
-  id          String   @id @default(uuid())
-  code        String   @unique
-  title       String
-  subtitle    String
-  expiry      String
-  tag         String
-  description String
-  value       Int      @default(0)
-  max         Int?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id            String    @id @default(uuid())
+  code          String    @unique
+  title         String
+  subtitle      String
+  expiry        String
+  tag           String
+  description   String
+  value         Int       @default(0)
+  max           Int?
+  usercreatedId String?
+  status        Boolean   @default(true)
+  userId        String?
+  reuse         Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  bookings      Booking[]
 
   @@map("vouchers")
 }
