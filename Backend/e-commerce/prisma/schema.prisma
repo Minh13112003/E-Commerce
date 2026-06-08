@@ -8,26 +8,26 @@ datasource db {
 }
 
 model User {
-  id           String    @id @default(uuid())
-  email        String    @unique
-  password     String
-  phonenumber  String    @default("091234567")
-  age          Int?      @default(22)
-  firstName    String
-  lastName     String
-  role         Role      @default(USER)
-  refreshToken String?
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
+  id               String     @id @default(uuid())
+  email            String     @unique
+  password         String
+  firstName        String
+  lastName         String
+  role             Role       @default(USER)
+  refreshToken     String?
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+  age              Int?       @default(22)
+  phonenumber      String     @default("091234567")
+  rewardPoints     Int        @default(1000000)
+  earnedPoints     Int        @default(0)
+  referralCode     String?    @unique
+  successReferrals Int        @default(0)
+  bookings         Booking[]
   carts            Cart[]
+  feedbacks        Feedback[]
   orders           Order[]
   payments         Payment[]
-  rewardPoints     Int       @default(1000000)
-  bookings         Booking[]
-  referralCode     String?   @unique
-  successReferrals Int       @default(0)
-  earnedPoints     Int       @default(0)
-  feedbacks        Feedback[]
 
   @@index([email])
   @@map("users")
@@ -173,6 +173,112 @@ model Payment {
   @@map("payments")
 }
 
+model Booking {
+  id            String   @id @default(uuid())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  idTour        String
+  idUser        String
+  price         Decimal  @default(0) @db.Decimal(15, 2)
+  quantity      Int      @default(1)
+  status        String   @default("Chờ xử lý")
+  notice        String?
+  originalPrice Decimal  @default(0) @db.Decimal(15, 2)
+  voucherId     String?
+  tour          Tour     @relation(fields: [idTour], references: [id], onDelete: Cascade)
+  user          User     @relation(fields: [idUser], references: [id], onDelete: Cascade)
+  voucher       Voucher? @relation(fields: [voucherId], references: [id])
+
+  @@index([idUser])
+  @@index([idTour])
+  @@index([voucherId])
+  @@map("bookings")
+}
+
+model Tour {
+  id            String          @id @default(uuid())
+  name          String
+  imageUrl      String
+  imagePublicId String
+  price         Decimal         @db.Decimal(15, 2)
+  duration      String
+  rating        Float           @default(0.0)
+  reviewsCount  Int             @default(0)
+  bookings      Booking[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  hasVat        Boolean         @default(true)
+
+  // ===== CÁC TRƯỜNG THÊM MỚI ĐỂ PHÙ HỢP VỚI WEB =====
+    
+  departureFrom String          @default("TP. Hồ Chí Minh")  // Nơi khởi hành
+  transport     String          @default("Máy bay")          // Phương tiện di chuyển
+  included      String[]        @default([])                 // Dịch vụ bao gồm (Mạng lưới array text)
+  notIncluded   String[]        @default([])                 // Dịch vụ không bao gồm
+  notes         String?                                      // Lưu ý ý khác về tour
+
+  // Quan hệ 1-Nhiều với bảng lịch trình chi tiết theo ngày
+  schedules     TourSchedule[]
+
+  @@map("tours")
+}
+
+model TourSchedule {
+  id          String   @id @default(uuid())
+  tourId      String
+  dayNumber   Int      // Ngày 1, Ngày 2...
+  title       String   // Tiêu đề ngày: "TP.HCM - HÀ NỘI - NINH BÌNH - BÁI ĐÍNH"
+  
+  // Tách biệt hoạt động chi tiết theo các buổi (Có thể để trống - Optional)
+  morning     String?  // Nội dung hoạt động buổi Sáng
+  noon        String?  // Nội dung hoạt động buổi Trưa
+  afternoon   String?  // Nội dung hoạt động buổi Chiều
+  evening     String?  // Nội dung hoạt động buổi Tối
+  night       String?  // Hoạt động hoặc thông tin nghỉ đêm (Vd: "Nghi đêm tại Ninh Bình")
+
+  // Thông tin ăn uống để hiển thị nhãn (Vd: "Bữa ăn: Trưa - Tối")
+  meals       String[] @default([]) // Lưu mảng các chuỗi: ["Sáng", "Trưa", "Tối"]
+
+  tour        Tour     @relation(fields: [tourId], references: [id], onDelete: Cascade)
+
+  @@unique([tourId, dayNumber])
+  @@map("tour_schedules")
+}
+
+model Voucher {
+  id            String    @id @default(uuid())
+  code          String    @unique
+  title         String
+  subtitle      String
+  expiry        String
+  tag           String
+  description   String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  max           Int?
+  value         Int       @default(0)
+  reuse         Boolean   @default(false)
+  status        Boolean   @default(true)
+  userId        String?
+  usercreatedId String?
+  bookings      Booking[]
+
+  @@map("vouchers")
+}
+
+model Feedback {
+  id        String   @id @default(uuid())
+  subject   String
+  content   String
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("feedbacks")
+}
+
 enum Role {
   ADMIN
   USER
@@ -192,77 +298,3 @@ enum PaymentStatus {
   FAILED
   REFUNDED
 }
-
-model Booking {
-  id             String   @id @default(uuid())
-  idUser         String
-  idTour         String
-  voucherId      String?
-  notice         String?
-  user           User     @relation(fields: [idUser], references: [id], onDelete: Cascade)
-  tour           Tour     @relation(fields: [idTour], references: [id], onDelete: Cascade)
-  voucher        Voucher? @relation(fields: [voucherId], references: [id], onDelete: SetNull)
-  quantity       Int      @default(1)
-  originalPrice  Decimal  @db.Decimal(15, 2) @default(0)
-  price          Decimal  @db.Decimal(15, 2) @default(0)
-  status         String   @default("Chờ xử lý")
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-
-  @@index([idUser])
-  @@index([idTour])
-  @@index([voucherId])
-  @@map("bookings")
-}
-
-model Tour {
-  id             String    @id @default(uuid())
-  name           String
-  imageUrl       String
-  imagePublicId  String
-  price          Decimal   @db.Decimal(15, 2)
-  duration       String
-  rating         Float     @default(0.0)
-  reviewsCount   Int       @default(0)
-  bookings       Booking[]
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
-  hasVat         Boolean   @default(true)
-  @@map("tours")
-}
-
-model Voucher {
-  id            String    @id @default(uuid())
-  code          String    @unique
-  title         String
-  subtitle      String
-  expiry        String
-  tag           String
-  description   String
-  value         Int       @default(0)
-  max           Int?
-  usercreatedId String?
-  status        Boolean   @default(true)
-  userId        String?
-  reuse         Boolean   @default(false)
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  bookings      Booking[]
-
-  @@map("vouchers")
-}
-
-model Feedback {
-  id        String   @id @default(uuid())
-  subject   String
-  content   String
-  userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([userId])
-  @@map("feedbacks")
-}
-
-

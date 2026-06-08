@@ -1,33 +1,80 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsNumberString, IsString } from 'class-validator';
+import { IsArray, IsInt, IsNotEmpty, IsNumber, IsNumberString, IsOptional, IsString, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class CreateTourDTO {
-  @ApiProperty({
-    type: String,
-    description: 'Name of the tour',
-    example: 'Du lịch Hàn Quốc (Mùa Hoa Anh Đào): Seoul - Nami - Everland - Công viên Yeouido',
-  })
   @IsString()
-  @IsNotEmpty()
-  name!: string;
+  name: string;
 
-  @ApiProperty({
-    type: Number,
-    description: 'Price of the tour',
-    example: 15990000,
-  })
   @IsNumber()
-  @IsNotEmpty()
-  @Type(() => Number)
-  price!: number;
+  price: number;
 
-  @ApiProperty({
-    type: String,
-    description: 'Duration of the tour',
-    example: '5 Ngày 4 Đêm',
-  })
   @IsString()
-  @IsNotEmpty()
-  duration!: string;
+  duration: string;
+
+  @IsString()
+  @IsOptional()
+  tourCode?: string;
+
+  @IsString()
+  @IsOptional()
+  departureFrom?: string;
+
+  @IsString()
+  @IsOptional()
+  transport?: string;
+
+  @IsArray()
+  @IsString({ each: true })
+  @IsOptional()
+  included?: string[];
+
+  @IsArray()
+  @IsString({ each: true })
+  @IsOptional()
+  notIncluded?: string[];
+
+  @IsString()
+  @IsOptional()
+  notes?: string;
+
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => CreateTourScheduleDto)
+  @IsOptional()
+  schedules?: CreateTourScheduleDto[];
+}
+
+export class CreateTourScheduleDto {
+  @IsInt()
+  dayNumber: number;
+
+  @IsString()
+  title: string;
+
+
+  @IsString()
+  @IsOptional()
+  morning?: string;
+
+  @IsString()
+  @IsOptional()
+  noon?: string;
+
+  @IsString()
+  @IsOptional()
+  afternoon?: string;
+
+  @IsString()
+  @IsOptional()
+  evening?: string;
+
+  @IsString()
+  @IsOptional()
+  night?: string;
+
+  @IsArray()
+  @IsString({ each: true })
+  @IsOptional()
+  meals?: string[];
 }
