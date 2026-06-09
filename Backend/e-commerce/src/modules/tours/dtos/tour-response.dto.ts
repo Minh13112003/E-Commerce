@@ -19,6 +19,12 @@ export class TourResponseDto {
     id: string;
     dayNumber: number;
     title: string;
-    content: string;
+    morning: string;
+    noon: string;
+    afternoon: string;
+    evening: string;
+    night: string;
+    meals: string[];
   }[];
+  
 }

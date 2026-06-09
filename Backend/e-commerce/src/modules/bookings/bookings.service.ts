@@ -44,7 +44,14 @@ export class BookingsService {
     const bookings = await this.prisma.booking.findMany({
       where: { idUser: userId },
       orderBy: { createdAt: 'desc' },
-      include: { tour: true, voucher: true },
+      include: {
+        tour: {
+          include: {
+            schedules: true,
+          },
+        },
+        voucher: true,
+      },
     });
 
     return bookings.map(b => this.mapToDto(b));
@@ -133,7 +140,14 @@ export class BookingsService {
   async getBookingById(id: string, userId: string): Promise<BookingResponseDto> {
     const booking = await this.prisma.booking.findFirst({
       where: { id, idUser: userId },
-      include: { tour: true, voucher: true },
+      include: {
+        tour: {
+          include: {
+            schedules: true,
+          },
+        },
+        voucher: true,
+      },
     });
 
     if (!booking) {
@@ -150,7 +164,9 @@ export class BookingsService {
       this.prisma.booking.findMany({
         where : {idUser : userId},
         orderBy : {createdAt : 'desc'},
-        include : {tour : true, voucher: true},
+        include : {tour : {
+          include : {schedules : true}
+        }, voucher: true},
         skip: skip,
         take: limit
       }),

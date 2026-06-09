@@ -24,6 +24,10 @@ export class ToursService {
         orderBy: { createdAt: 'desc' },
         skip,
         take: limit,
+        include :{
+          schedules: true,
+        }
+
       }),
       this.prisma.tour.count(),
     ]);
@@ -37,6 +41,9 @@ export class ToursService {
   async getTourById(id: string): Promise<TourResponseDto> {
     const tour = await this.prisma.tour.findUnique({
       where: { id },
+      include: {
+        schedules : true,
+      }
     });
     if (!tour) {
       throw new NotFoundException(`Tour with ID ${id} not found`);
