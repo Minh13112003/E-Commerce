@@ -1,9 +1,11 @@
 import { Injectable, OnModuleInit, OnModuleDestroy } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';
+import { Logger } from '@nestjs/common';
 
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit, OnModuleDestroy {
+  private readonly logger = new Logger(PrismaService.name);
   constructor(){
     const connectionString = process.env.DATABASE_URL;
     if (!connectionString) {
@@ -14,13 +16,33 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
     })
     super({
         adapter,
-        log : process.env.NODE_ENV === 'development' ? ['query', 'info', 'warn'] : ['error'],
+        log: process.env.NODE_ENV === 'development'
+    ? [
+        { emit: 'event', level: 'query' },  // ← emit: 'event' mới trigger được $on
+        { emit: 'event', level: 'warn' },
+        { emit: 'stdout', level: 'info' },  // info in thẳng ra console
+      ]
+    : [{ emit: 'event', level: 'error' }],
     })
   }
 
-  async onModuleInit(){
-    await this.$connect();
-  }
+  async onModuleInit() {
+  // Prisma 5+ dùng cách này thay vì $on
+  const prisma = this as unknown as PrismaClient & {
+    $on(event: string, callback: (e: any) => void): void;
+  };
+
+  prisma.$on('query', (e: any) => {
+    this.logger.log(`⏱ Duration: ${e.duration}ms`);
+    this.logger.debug(`📝 Query: ${e.query}`);
+    this.logger.debug(`📦 Params: ${e.params}`);
+  });
+
+  prisma.$on('warn', (e: any) => this.logger.warn(e.message));
+  prisma.$on('error', (e: any) => this.logger.error(e.message));
+
+  await this.$connect();
+}
   async onModuleDestroy(){
     await this.$disconnect();
   }

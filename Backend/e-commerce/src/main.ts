@@ -5,11 +5,13 @@ import { error } from 'console';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as dotenv from 'dotenv';
+import { LoggingInterceptor } from './common/interceptor/logging.interceptor';
 dotenv.config();
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api/v1');
+  app.useGlobalInterceptors(new LoggingInterceptor());
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -21,7 +23,7 @@ async function bootstrap() {
   );
 
   app.enableCors({
-    origin: process.env.CORS_ORIGIN?.split(',') || 'http://localhost:3000' || '*', // Cho phép tất cả các nguồn hoặc chỉ những nguồn được chỉ định trong biến môi trường
+    origin: process.env.CORS_ORIGIN?.split(',') || 'http://localhost:3000', // Cho phép tất cả các nguồn hoặc chỉ những nguồn được chỉ định trong biến môi trường
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'], // Các phương thức HTTP được phép
     credentials: true, // Cho phép gửi cookie và thông tin xác thực
     allowedHeaders: ['Content-Type', 'Authorization', 'Accept'], // Các tiêu đề được phép

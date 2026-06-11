@@ -15,6 +15,8 @@ import { BookingsModule } from './modules/bookings/bookings.module';
 import { VouchersModule } from './modules/vouchers/vouchers.module';
 import { FeedbacksModule } from './modules/feedbacks/feedbacks.module';
 import { ToursModule } from './modules/tours/tours.module';
+import { DeparturesModule } from './modules/departures/departures.module';
+import { NotificationsModule } from './modules/notifications/notifications.module';
 
 @Module({
   imports: [
@@ -33,6 +35,8 @@ import { ToursModule } from './modules/tours/tours.module';
     VouchersModule,
     FeedbacksModule,
     ToursModule,
+    DeparturesModule,
+    NotificationsModule,
     ThrottlerModule.forRoot([
       { ttl: 60, // Thời gian (tính bằng giây) mà mỗi IP có thể thực hiện tối đa 100 yêu cầu
         limit: 10, // Số lượng yêu cầu tối đa mà mỗi IP có thể thực hiện trong khoảng thời gian ttl

@@ -5,7 +5,6 @@ export class TourResponseDto {
   name: string;
   imageUrl: string;
   imagePublicId: string;
-  price: number;
   duration: string;
   rating: number;
   reviewsCount: number;
@@ -26,5 +25,11 @@ export class TourResponseDto {
     night: string;
     meals: string[];
   }[];
-  
+  departures?: {
+    tourCode: string,
+    tourId: string,
+    departureDate: string,
+    availableSeats: number,
+    price: number,
+  }[];
 }

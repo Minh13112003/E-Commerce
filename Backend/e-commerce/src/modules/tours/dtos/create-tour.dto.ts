@@ -1,13 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsArray, IsInt, IsNotEmpty, IsNumber, IsNumberString, IsOptional, IsString, ValidateNested } from 'class-validator';
+import { IsArray, IsInt, IsNotEmpty, IsNumber, IsOptional, IsString, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class CreateTourDTO {
   @IsString()
   name: string;
-
-  @IsNumber()
-  price: number;
 
   @IsString()
   duration: string;
@@ -43,7 +40,39 @@ export class CreateTourDTO {
   @Type(() => CreateTourScheduleDto)
   @IsOptional()
   schedules?: CreateTourScheduleDto[];
-}
+
+  @ApiProperty({
+  type: [String],
+  example: ["2024-07-01", "2024-07-15"],
+  description: "Các ngày khởi hành tour",
+  required: false,
+  })
+  @IsArray()
+  @IsString({ each: true })
+  @IsOptional()
+  departureDays?: string[];
+
+
+  @ApiProperty({
+    type: Number,
+    example: 100,
+    description: "Số chỗ trống",
+    required: false,
+  })
+  @IsNumber()
+  @IsOptional()
+  availableSeats?: number;
+
+  @ApiProperty({
+    type: Number,
+    example: 5000000,
+    description: "Giá tour",
+    required: true,
+  })
+  @IsNumber()
+  price: number;
+
+  }
 
 export class CreateTourScheduleDto {
   @IsInt()

@@ -5,29 +5,31 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
-  id               String     @id @default(uuid())
-  email            String     @unique
+  id               String         @id @default(uuid())
+  email            String         @unique
   password         String
   firstName        String
   lastName         String
-  role             Role       @default(USER)
+  role             Role           @default(USER)
   refreshToken     String?
-  createdAt        DateTime   @default(now())
-  updatedAt        DateTime   @updatedAt
-  age              Int?       @default(22)
-  phonenumber      String     @default("091234567")
-  rewardPoints     Int        @default(1000000)
-  earnedPoints     Int        @default(0)
-  referralCode     String?    @unique
-  successReferrals Int        @default(0)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  age              Int?           @default(22)
+  phonenumber      String         @default("091234567")
+  rewardPoints     Int            @default(1000000)
+  earnedPoints     Int            @default(0)
+  referralCode     String?        @unique
+  successReferrals Int            @default(0)
   bookings         Booking[]
   carts            Cart[]
   feedbacks        Feedback[]
   orders           Order[]
   payments         Payment[]
+  notifications    Notification[]
 
   @@index([email])
   @@map("users")
@@ -174,24 +176,27 @@ model Payment {
 }
 
 model Booking {
-  id            String   @id @default(uuid())
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id            String        @id @default(uuid())
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
   idTour        String
   idUser        String
-  price         Decimal  @default(0) @db.Decimal(15, 2)
-  quantity      Int      @default(1)
-  status        String   @default("Chờ xử lý")
+  departureId   String?
+  price         Decimal       @default(0) @db.Decimal(15, 2)
+  quantity      Int           @default(1)
+  status        BookingStatus @default(PENDING)
+  paymentMethod PaymentMethod @default(AT_OFFICE)
   notice        String?
-  originalPrice Decimal  @default(0) @db.Decimal(15, 2)
   voucherId     String?
-  tour          Tour     @relation(fields: [idTour], references: [id], onDelete: Cascade)
-  user          User     @relation(fields: [idUser], references: [id], onDelete: Cascade)
-  voucher       Voucher? @relation(fields: [voucherId], references: [id])
+  tour          Tour          @relation(fields: [idTour], references: [id], onDelete: Cascade)
+  user          User          @relation(fields: [idUser], references: [id], onDelete: Cascade)
+  voucher       Voucher?      @relation(fields: [voucherId], references: [id])
+  departure     Departure?    @relation(fields: [departureId], references: [id])
 
   @@index([idUser])
   @@index([idTour])
   @@index([voucherId])
+  @@index([departureId])
   @@map("bookings")
 }
 
@@ -200,7 +205,6 @@ model Tour {
   name          String
   imageUrl      String
   imagePublicId String
-  price         Decimal         @db.Decimal(15, 2)
   duration      String
   rating        Float           @default(0.0)
   reviewsCount  Int             @default(0)
@@ -210,7 +214,7 @@ model Tour {
   hasVat        Boolean         @default(true)
 
   // ===== CÁC TRƯỜNG THÊM MỚI ĐỂ PHÙ HỢP VỚI WEB =====
-    
+
   departureFrom String          @default("TP. Hồ Chí Minh")  // Nơi khởi hành
   transport     String          @default("Máy bay")          // Phương tiện di chuyển
   included      String[]        @default([])                 // Dịch vụ bao gồm (Mạng lưới array text)
@@ -219,6 +223,7 @@ model Tour {
 
   // Quan hệ 1-Nhiều với bảng lịch trình chi tiết theo ngày
   schedules     TourSchedule[]
+  departures    Departure[]
 
   @@map("tours")
 }
@@ -279,6 +284,40 @@ model Feedback {
   @@map("feedbacks")
 }
 
+model Departure {
+  id             String    @id @default(uuid())
+  tourCode       String    @unique
+  tourId         String
+  departureDate  DateTime
+  availableSeats Int
+  price          Decimal   @db.Decimal(15, 2)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  tour           Tour      @relation(fields: [tourId], references: [id], onDelete: Cascade)
+  bookings       Booking[]
+
+  @@index([tourId])
+  @@index([departureDate])
+  @@map("departures")
+}
+
+model Notification {
+  id        String           @id @default(uuid())
+  userId    String
+  type      NotificationType
+  title     String
+  message   String
+  isRead    Boolean          @default(false)
+  createdAt DateTime         @default(now())
+
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([isRead])
+  @@map("notifications")
+}
+
 enum Role {
   ADMIN
   USER
@@ -297,4 +336,25 @@ enum PaymentStatus {
   COMPLETED
   FAILED
   REFUNDED
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  PAID
+  ONGOING
+  COMPLETED
+  CANCELLED
+  REFUNDED
+}
+
+enum PaymentMethod {
+  AT_OFFICE
+  BANK_TRANSFER
+}
+
+enum NotificationType {
+  PASSWORD_CHANGED
+  BOOKING_CREATED
+  BOOKING_STATUS_UPDATED
 }

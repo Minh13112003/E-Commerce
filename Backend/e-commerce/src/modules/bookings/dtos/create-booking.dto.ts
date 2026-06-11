@@ -1,6 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Transform, Type } from 'class-transformer';
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+
+export enum PaymentMethodDto {
+  AT_OFFICE = 'AT_OFFICE',
+  BANK_TRANSFER = 'BANK_TRANSFER',
+}
 
 export class CreateBookingDTO {
   @ApiProperty({
@@ -13,6 +18,17 @@ export class CreateBookingDTO {
   idTour!: string;
 
   @ApiProperty({
+    type: String,
+    description: 'ID of the departure (optional)',
+    example: 'uuid',
+    required: false,
+    nullable: true,
+  })
+  @IsString()
+  @IsOptional()
+  departureId?: string;
+
+  @ApiProperty({
     type: Number,
     description: 'Quantity of the tour being booked',
     example: 1,
@@ -22,6 +38,16 @@ export class CreateBookingDTO {
   @Type(() => Number)
   @Transform(({ value }) => value ?? 1)
   quantity: number;
+
+  @ApiProperty({
+    enum: PaymentMethodDto,
+    description: 'Payment method',
+    example: PaymentMethodDto.AT_OFFICE,
+    required: false,
+  })
+  @IsEnum(PaymentMethodDto)
+  @IsOptional()
+  paymentMethod?: PaymentMethodDto;
 
   @ApiProperty({
     type: String,

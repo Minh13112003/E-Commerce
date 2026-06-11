@@ -26,6 +26,7 @@ export class ToursService {
         take: limit,
         include :{
           schedules: true,
+          departures : true,
         }
 
       }),
@@ -43,6 +44,7 @@ export class ToursService {
       where: { id },
       include: {
         schedules : true,
+        departures : true,
       }
     });
     if (!tour) {
@@ -52,66 +54,129 @@ export class ToursService {
   }
 
   async createBulkTours(toursDataString: string, images: Express.Multer.File[]): Promise<TourResponseDto[]> {
-    let tours: CreateTourDTO[];
+  let tours: CreateTourDTO[];
 
-    try {
-      tours = typeof toursDataString === 'string' ? JSON.parse(toursDataString) : toursDataString;
-    } catch {
-      throw new BadRequestException('Dữ liệu tours không phải JSON hợp lệ');
-    }
-
-    if (!Array.isArray(tours) || tours.length === 0) {
-      throw new BadRequestException('Danh sách tours không được để trống');
-    }
-
-    if (!images?.length || tours.length !== images.length) {
-      throw new BadRequestException(`Số lượng tours (${tours.length}) phải khớp số lượng ảnh (${images?.length ?? 0})`);
-    }
-
-    const createdTours: TourResponseDto[] = [];
-
-    for (let i = 0; i < tours.length; i++) {
-      const dto = tours[i];
-      const image = images[i];
-
-      const uploaded = await this.cloudinaryService.uploadImage(image, 'tours');
-
-      // Tạo Tour kết hợp Lịch trình (schedules) lồng nhau bằng prisma `create`
-      const createdTour = await this.prisma.tour.create({
-        data: {
-          name: dto.name,
-          price: dto.price,
-          duration: dto.duration,
-          imageUrl: uploaded.imageURL,
-          imagePublicId: uploaded.imagePublicId,
-          departureFrom: dto.departureFrom,
-          transport: dto.transport,
-          included: dto.included ?? [],
-          notIncluded: dto.notIncluded ?? [],
-          notes: dto.notes,
-          schedules: dto.schedules ? {
-            createMany: {
-              data: dto.schedules.map(s => ({
-                dayNumber: s.dayNumber,
-                title: s.title,
-                morning: s.morning,
-                noon: s.noon,
-                afternoon: s.afternoon,
-                evening: s.evening,
-                night: s.night,
-                meals: s.meals,
-              })),
-            },
-          } : undefined,
-        },
-        include: { schedules: { orderBy: { dayNumber: 'asc' } } },
-      });
-
-      createdTours.push(this.mapToDto(createdTour));
-    }
-
-    return createdTours;
+  try {
+    tours = typeof toursDataString === 'string' ? JSON.parse(toursDataString) : toursDataString;
+  } catch {
+    throw new BadRequestException('Dữ liệu tours không phải JSON hợp lệ');
   }
+
+  if (!Array.isArray(tours) || tours.length === 0) {
+    throw new BadRequestException('Danh sách tours không được để trống');
+  }
+
+  if (!images?.length || tours.length !== images.length) {
+    throw new BadRequestException(
+      `Số lượng tours (${tours.length}) phải khớp số lượng ảnh (${images?.length ?? 0})`
+    );
+  }
+
+  const uploadedPublicIds: string[] = [];
+
+  // Bước 1: Upload tất cả ảnh song song
+  let uploadResults: { imageURL: string; imagePublicId: string }[];
+  try {
+    uploadResults = await Promise.all(
+      images.map(image => this.cloudinaryService.uploadImage(image, 'tours'))
+    );
+    uploadResults.forEach(r => uploadedPublicIds.push(r.imagePublicId));
+  } catch (error) {
+    if (uploadedPublicIds.length > 0) {
+      await Promise.allSettled(
+        uploadedPublicIds.map(id => this.cloudinaryService.deleteImage(id))
+      );
+    }
+    throw new BadRequestException(`Lỗi khi upload ảnh: ${error?.message}`);
+  }
+
+  // Bước 2: Tạo tất cả tours trong DB song song
+  let createdTours: TourResponseDto[];
+  try {
+    createdTours = await Promise.all(
+      tours.map(async (dto, i) => {
+        const uploaded = uploadResults[i];
+
+        const createdTour = await this.prisma.tour.create({
+          data: {
+            name: dto.name,
+            duration: dto.duration,
+            imageUrl: uploaded.imageURL,
+            imagePublicId: uploaded.imagePublicId,
+            departureFrom: dto.departureFrom,
+            transport: dto.transport,
+            included: dto.included ?? [],
+            notIncluded: dto.notIncluded ?? [],
+            notes: dto.notes,
+            schedules: dto.schedules?.length
+              ? {
+                  createMany: {
+                    data: dto.schedules.map(s => ({
+                      dayNumber: s.dayNumber,
+                      title: s.title,
+                      morning: s.morning,
+                      noon: s.noon,
+                      afternoon: s.afternoon,
+                      evening: s.evening,
+                      night: s.night,
+                      meals: s.meals,
+                    })),
+                  },
+                }
+              : undefined,
+            departures: dto.departureDays?.length
+              ? {
+                  createMany: {
+                    data: [
+                      ...new Set(
+                        dto.departureDays.map(day =>
+                          new Date(day).toISOString().slice(0, 10)
+                        )
+                      ),
+                    ].map(day => {
+                      const departureDate = new Date(day);
+                      const tourCode = this.generateTourCode(dto.name, departureDate);
+                      return {
+                        tourCode,
+                        departureDate,
+                        availableSeats: dto.availableSeats ?? 0,
+                        price: dto.price,
+                      };
+                    }),
+                  },
+                }
+              : undefined,
+          },
+          include: {
+            schedules: { orderBy: { dayNumber: 'asc' } },
+            departures: { orderBy: { departureDate: 'asc' } },
+          },
+        });
+
+        return this.mapToDto(createdTour);
+      })
+    );
+  } catch (error) {
+    await Promise.allSettled(
+      uploadedPublicIds.map(id => this.cloudinaryService.deleteImage(id))
+    );
+    throw new BadRequestException(`Lỗi khi tạo tour: ${error?.message}`);
+  }
+
+  return createdTours;
+}
+
+private generateTourCode(tourName: string, departureDate: Date): string {
+  const abbreviation = tourName
+    .split(' ')
+    .map(word => word[0])
+    .join('')
+    .toUpperCase()
+    .substring(0, 5);
+
+  const dateStr = departureDate.toISOString().slice(0, 10).replace(/-/g, '');
+  return `BTT${abbreviation}${dateStr}`;
+}
 
   async updateTour(id: string, dto: UpdateTourDTO, image?: Express.Multer.File): Promise<TourResponseDto> {
     const existing = await this.prisma.tour.findUnique({
@@ -143,7 +208,6 @@ export class ToursService {
         name: dto.name ?? existing.name,
         imageUrl: imageUrl,
         imagePublicId: imagePublicId,
-        price: dto.price ?? existing.price,
         duration: dto.duration ?? existing.duration,
       },
     });
@@ -208,7 +272,6 @@ export class ToursService {
       name: tour.name,
       imageUrl: tour.imageUrl,
       imagePublicId: tour.imagePublicId,
-      price: Number(tour.price),
       duration: tour.duration,
       rating: Number(tour.rating),
       reviewsCount: tour.reviewsCount,
@@ -219,6 +282,8 @@ export class ToursService {
       notIncluded: tour.notIncluded,
       notes: tour.notes,
       schedules: tour.schedules,
+      departures: tour.departures,
+
     };
   }
 }

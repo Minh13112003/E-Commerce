@@ -1,4 +1,5 @@
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+import { NotificationType } from '@prisma/client';
 import { PrismaService } from '../../prisma/prisma.service';
 import { UserResponseDto } from './dtos/user-response.dto';
 import { UserUpdateDto } from './dtos/user-update.dto';
@@ -6,11 +7,15 @@ import { ChangePasswordDto } from './dtos/change-password.dto';
 import * as bcrypt from 'bcrypt';
 import { PaginatedResponseDto } from '../../common/dtos/pagination-response.dto';
 import { PaginationQueryDto } from '../../common/dtos/pagination.dto';
+import { NotificationsService } from '../notifications/notifications.service';
 
 @Injectable()
 export class UsersService {
   private readonly SALT_ROUNDS = 10;
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly notificationsService: NotificationsService,
+  ) {}
 
   async findOne(userId: string): Promise<UserResponseDto> {
     const user = await this.prisma.user.findUnique({
@@ -119,6 +124,13 @@ export class UsersService {
       where: { id: userId },
       data: { password: hashedPassword },
     });
+
+    await this.notificationsService.createNotification(
+      userId,
+      NotificationType.PASSWORD_CHANGED,
+      'Password Updated',
+      'Your password has been successfully updated.',
+    );
 
     return { message: 'Password changed successfully' };
   }

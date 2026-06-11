@@ -1,0 +1,1613 @@
+[
+  {
+    "name": "Du Lịch New Zealand: Khám Phá Auckland - Rotorua - Christchurch - Queenstown",
+    "duration": "8 Ngày 7 Đêm",
+    "departureFrom": "TP. Hồ Chí Minh",
+    "transport": "Máy bay",
+    "hasVat": true,
+    "included": [
+      "Vé máy bay khứ hồi TP.HCM - Christchurch // Auckland - TP.HCM theo đoàn (hành lý 7kg xách tay + 20kg ký gửi)",
+      "Vé máy bay nội địa Queenstown - Auckland",
+      "Khách sạn tiêu chuẩn 4-5 sao (02 khách/phòng)",
+      "Trưởng đoàn và HDV địa phương phục vụ suốt tuyến theo chương trình",
+      "Các bữa ăn theo chương trình",
+      "Xe vận chuyển và vé tham quan theo chương trình",
+      "Vé trải nghiệm cáp treo Skyline Gondola Queenstown",
+      "Vé trượt Luge tại Queenstown",
+      "Nước uống: 01 chai/khách/ngày",
+      "Quà tặng du lịch BenThanh Tourist",
+      "Bảo hiểm du lịch theo quy định"
+    ],
+    "notIncluded": [
+      "Visa New Zealand (tự túc nộp hồ sơ trước chuyến đi)",
+      "Phụ thu phòng đơn (nếu có)",
+      "Tiền tip cho HDV và tài xế địa phương",
+      "Chi phí cá nhân, hành lý quá cước, điện thoại, giặt ủi",
+      "Hoạt động phiêu lưu tự túc: Bungy Jump, Jet Boating (chi phí tự túc)",
+      "Các chi phí không được liệt kê trong mục bao gồm",
+      "Hóa đơn thuế GTGT"
+    ],
+    "notes": "Hộ chiếu còn hạn trước 6 tháng (ngày đi/ngày về). Chương trình tour là 'Tour of the Year 2026' của BenThanh Tourist. Thứ tự các điểm tham quan có thể thay đổi tùy tình hình thực tế nhưng vẫn đảm bảo tham quan đầy đủ. Quý khách từ 70 tuổi trở lên cần có thân nhân đi kèm.",
+    "departureDays": ["2026-07-26"],
+    "availableSeats": 20,
+    "price": 130990000,
+    "schedules": [
+      {
+        "dayNumber": 1,
+        "title": "TP.HCM - CHRISTCHURCH",
+        "morning": "Quý khách tập trung tại sân bay Tân Sơn Nhất, làm thủ tục xuất cảnh. Đoàn khởi hành bay đến Christchurch - thành phố lớn nhất Đảo Nam New Zealand, nối chuyến qua Trung Quốc.",
+        "noon": "Quý khách dùng bữa trên máy bay, nghỉ ngơi trong suốt hành trình bay dài.",
+        "afternoon": "Tiếp tục hành trình bay đến New Zealand.",
+        "evening": "Quý khách nghỉ đêm trên máy bay.",
+        "night": "Nghỉ đêm trên máy bay.",
+        "meals": ["Trên máy bay"]
+      },
+      {
+        "dayNumber": 2,
+        "title": "CHRISTCHURCH - THAM QUAN THÀNH PHỐ",
+        "morning": "09:30 Đáp sân bay quốc tế Christchurch, làm thủ tục nhập cảnh New Zealand. Xe đưa đoàn dùng bữa trưa tại nhà hàng địa phương. Tham quan Công viên Hagley Park - trái tim xanh của thành phố. Dạo bộ dọc dòng sông Avon thơ mộng bằng thuyền đáy bằng (Punting on the Avon).",
+        "noon": "Dùng bữa trưa tại nhà hàng địa phương.",
+        "afternoon": "Tham quan Quảng trường Cathedral Square - biểu tượng của Christchurch. Khám phá Trung tâm Nghệ thuật và Văn hóa của thành phố.",
+        "evening": "Dùng bữa tối tại nhà hàng. Nhận phòng khách sạn nghỉ ngơi.",
+        "night": "Nghỉ đêm tại Christchurch.",
+        "meals": ["Trưa", "Tối"]
+      },
+      {
+        "dayNumber": 3,
+        "title": "CHRISTCHURCH - HỒ TEKAPO - QUEENSTOWN",
+        "morning": "Dùng bữa sáng tại khách sạn, trả phòng. Khởi hành đi Queenstown qua cung đường nổi tiếng tuyệt đẹp băng qua đồng cỏ trù phú và vùng đất chăn nuôi bò sữa, cừu.",
+        "noon": "Dừng chân tham quan Hồ Tekapo - điểm đến yêu thích của các nhiếp ảnh gia với màu nước hồ xanh như ngọc và những ngọn núi phủ tuyết. Chụp ảnh tại Nhà thờ Church of the Good Shepherd - một trong 12 nhà thờ đẹp nhất thế giới. Dùng bữa trưa tại khu vực Tekapo.",
+        "afternoon": "Tiếp tục hành trình đến Queenstown - thành phố phiêu lưu nổi tiếng nhất thế giới bên bờ hồ Wakatipu. Nhận phòng khách sạn nghỉ ngơi.",
+        "evening": "Dùng bữa tối tại nhà hàng địa phương. Tự do khám phá Queenstown về đêm.",
+        "night": "Nghỉ đêm tại Queenstown.",
+        "meals": ["Sáng", "Trưa", "Tối"]
+      },
+      {
+        "dayNumber": 4,
+        "title": "QUEENSTOWN - CÁP TREO SKYLINE - TRƯỢT LUGE - ARROWTOWN",
+        "morning": "Dùng bữa sáng tại khách sạn. Trải nghiệm cáp treo Skyline Gondola lên đỉnh Bob's Peak, ngắm toàn cảnh Queenstown và Hồ Wakatipu từ trên cao. Tham gia trò chơi trượt dốc Luge đầy thú vị (đã bao gồm vé). Quý khách có thể trải nghiệm Bungy Jump tại Cầu treo Kawarau - nơi đầu tiên diễn ra hoạt động nhảy Bungy thương mại trên thế giới (chi phí tự túc).",
+        "noon": "Dùng bữa trưa tại nhà hàng địa phương.",
+        "afternoon": "Tham quan Arrowtown - thị trấn khai thác vàng từ thế kỷ 19, dạo bộ trên những con phố nhỏ rợp bóng cây và ngắm nhìn các ngôi nhà gỗ cổ kính.",
+        "evening": "Dùng bữa tối tại nhà hàng địa phương.",
+        "night": "Nghỉ đêm tại Queenstown.",
+        "meals": ["Sáng", "Trưa", "Tối"]
+      },
+      {
+        "dayNumber": 5,
+        "title": "QUEENSTOWN - BAY ĐI ROTORUA",
+        "morning": "Dùng bữa sáng tại khách sạn, trả phòng. Xe đưa đoàn ra sân bay Queenstown đáp chuyến bay nội địa đi Rotorua. Đến Rotorua, xe đưa đoàn đi tham quan.",
+        "noon": "Tham quan Trung tâm Địa nhiệt Te Puia - khu vực nổi tiếng với suối phun nước nóng Pohutu và hồ bùn sôi kỳ thú. Dùng bữa trưa tại nhà hàng.",
+        "afternoon": "Tham quan làng văn hóa Maori, tìm hiểu về phong tục tập quán và nghệ thuật truyền thống của người bản địa. Tham quan rừng Redwood hùng vĩ với những cây gỗ đỏ khổng lồ.",
+        "evening": "Dùng bữa tối kết hợp thưởng thức chương trình biểu diễn văn hóa Hangi truyền thống của người Maori.",
+        "night": "Nghỉ đêm tại Rotorua.",
+        "meals": ["Sáng", "Trưa", "Tối"]
+      },
+      {
+        "dayNumber": 6,
+        "title": "ROTORUA - HANG ĐỘNG WAITOMO - LÀNG HOBBITON - AUCKLAND",
+        "morning": "Dùng bữa sáng tại khách sạn, trả phòng. Khởi hành đi Waitomo. Tham quan Hang Động Đom Đóm Waitomo huyền ảo - nơi hàng triệu con đom đóm tạo ra bầu trời sao lung linh trong lòng hang động.",
+        "noon": "Dùng bữa trưa tại khu vực Waitomo/Matamata. Tham quan Làng Hobbiton (Hobbiton Movie Set) tại Matamata - ngôi làng tí hon nổi tiếng toàn cầu trong bộ phim 'Chúa Tể Những Chiếc Nhẫn' và 'The Hobbit', dạo bước trên thảm cỏ xanh ngắm các ngôi nhà Hobbit xinh xắn.",
+        "afternoon": "Tiếp tục hành trình về Auckland - thành phố lớn nhất và hiện đại nhất New Zealand.",
+        "evening": "Nhận phòng khách sạn tại Auckland. Dùng bữa tối tại nhà hàng địa phương.",
+        "night": "Nghỉ đêm tại Auckland.",
+        "meals": ["Sáng", "Trưa", "Tối"]
+      },
+      {
+        "dayNumber": 7,
+        "title": "AUCKLAND - THAM QUAN THÀNH PHỐ",
+        "morning": "Dùng bữa sáng tại khách sạn. Tham quan Tamaki Waterfront Drive - con đường thơ mộng dài 10km uốn quanh cảng Waitemata. Lên tháp Sky Tower - biểu tượng của Auckland, ngắm toàn cảnh thành phố từ độ cao 328m.",
+        "noon": "Dùng bữa trưa tại nhà hàng với hải sản tươi sống đặc trưng của New Zealand.",
+        "afternoon": "Tự do mua sắm tại trung tâm thành phố Auckland. Tham quan Cầu cảng Auckland Harbour Bridge. Khám phá khu phố Viaduct Harbour sầm uất bên bờ biển.",
+        "evening": "Dùng bữa tối tại nhà hàng. Xe đưa đoàn ra sân bay Auckland làm thủ tục xuất cảnh về TP.HCM.",
+        "night": "Nghỉ đêm trên máy bay.",
+        "meals": ["Sáng", "Trưa", "Tối"]
+      },
+      {
+        "dayNumber": 8,
+        "title": "AUCKLAND - TP.HCM",
+        "morning": "Đoàn về đến sân bay Tân Sơn Nhất, kết thúc chương trình tham quan. HDV chia tay đoàn, hẹn gặp lại.",
+        "noon": "",
+        "afternoon": "",
+        "evening": "",
+        "night": "",
+        "meals": ["Trên máy bay"]
+      }
+    ]
+  },
+  {
+    "name": "Du Lịch Đông Phi: Kenya - Tanzania - Mùa Đại Di Trú - Khoảnh Khắc Lịch Sử (Bay Hàng Không 5 Sao Qatar Airways)",
+    "duration": "9 Ngày 8 Đêm",
+    "departureFrom": "TP. Hồ Chí Minh",
+    "transport": "Máy bay Qatar Airways 5 sao",
+    "hasVat": true,
+    "included": [
+      "Vé máy bay khứ hồi TP.HCM - Nairobi // Dar Es Salaam - TP.HCM theo đoàn hàng không 5 sao Qatar Airways (hành lý 7kg xách tay + 30kg ký gửi)",
+      "Khách sạn và Safari Lodge tiêu chuẩn cao cấp (02 khách/phòng)",
+      "Trưởng đoàn và HDV địa phương phục vụ suốt tuyến",
+      "Các bữa ăn theo chương trình (full board tại lodge)",
+      "Xe 4x4 safari chuyên dụng đưa đón và Game Drive theo chương trình",
+      "Vé vào cửa các Vườn Quốc Gia và Khu Bảo Tồn theo chương trình",
+      "Phí bảo tồn quốc gia (conservation fee)",
+      "Nước uống theo chương trình",
+      "Quà tặng du lịch BenThanh Tourist",
+      "Bảo hiểm du lịch theo quy định"
+    ],
+    "notIncluded": [
+      "Visa Kenya và Tanzania (tự túc hoặc e-Visa online)",
+      "Trải nghiệm bay khinh khí cầu ngắm Maasai Mara (chi phí tự túc)",
+      "Phụ thu phòng đơn (nếu có)",
+      "Tiền tip cho HDV, tài xế và nhân viên lodge: 10 USD/ngày/khách",
+      "Chi phí cá nhân, hành lý quá cước, điện thoại, giặt ủi",
+      "Các hoạt động ngoài chương trình",
+      "Hóa đơn thuế GTGT"
+    ],
+    "notes": "Hộ chiếu còn hạn trước 6 tháng. Tour được thiết kế đặc biệt để trải nghiệm Mùa Đại Di Trú của đàn thú hoang dã từ Tanzania sang Kenya (tháng 7-9 hàng năm) - một trong những kỳ quan thiên nhiên vĩ đại nhất thế giới. Sức khỏe tốt, đặc biệt lưu ý tiêm phòng vàng da và sốt rét theo khuyến nghị của Bộ Y tế trước khi khởi hành.",
+    "departureDays": [
+      "2026-07-19",
+      "2026-08-16",
+      "2026-09-20"
+    ],
+    "availableSeats": 6,
+    "price": 169000000,
+    "schedules": [
+      {
+        "dayNumber": 1,
+        "title": "TP.HCM - DOHA - NAIROBI (KENYA)",
+        "morning": "Quý khách tập trung tại sân bay Tân Sơn Nhất, làm thủ tục xuất cảnh. Đoàn khởi hành bay đến Nairobi nối chuyến qua Doha trên hàng không 5 sao Qatar Airways.",
+        "noon": "Quý khách dùng bữa trên máy bay, nghỉ ngơi trong suốt hành trình bay.",
+        "afternoon": "Tiếp tục hành trình bay đến Kenya.",
+        "evening": "Đáp sân bay quốc tế Jomo Kenyatta, Nairobi. Làm thủ tục nhập cảnh. Xe đưa đoàn về khách sạn nhận phòng nghỉ ngơi.",
+        "night": "Nghỉ đêm tại Nairobi, Kenya.",
+        "meals": ["Trên máy bay"]
+      },
+      {
+        "dayNumber": 2,
+        "title": "NAIROBI - VƯỜN QUỐC GIA AMBOSELI",
+        "morning": "Dùng bữa sáng tại khách sạn. Khởi hành đi Vườn Quốc Gia Amboseli - nổi tiếng với hình ảnh đàn voi lớn dưới bóng núi Kilimanjaro hùng vĩ (đỉnh núi cao nhất Châu Phi). Tham gia Game Drive buổi sáng khám phá động vật hoang dã.",
+        "noon": "Dùng bữa trưa tại lodge.",
+        "afternoon": "Tiếp tục Game Drive buổi chiều, săn tìm Big Five (sư tử, voi Châu Phi, trâu, báo hoa, tê giác đen) và ngắm đàn voi khổng lồ di chuyển trên thảo nguyên với nền núi Kilimanjaro phủ tuyết phía sau.",
+        "evening": "Dùng bữa tối tại lodge. Tự do khám phá trong khu vực.",
+        "night": "Nghỉ đêm tại Amboseli Safari Lodge, Kenya.",
+        "meals": ["Sáng", "Trưa", "Tối"]
+      },
+      {
+        "dayNumber": 3,
+        "title": "AMBOSELI - MAASAI MARA (KENYA)",
+        "morning": "Dùng bữa sáng tại lodge, trả phòng. Khởi hành đi Khu Bảo Tồn Maasai Mara - trái tim của Mùa Đại Di Trú. Trên đường đi, tham quan và chụp ảnh phong cảnh thảo nguyên Đông Phi.",
+        "noon": "Dùng bữa trưa tại lodge. Nhận phòng nghỉ ngơi.",
+        "afternoon": "16:00 Tham gia Game Drive đầu tiên tại Khu Bảo Tồn Maasai Mara, hòa mình vào thiên nhiên hoang sơ với những đồng cỏ rộng lớn kéo dài đến tận chân trời xanh.",
+        "evening": "Dùng bữa tối tại lodge.",
+        "night": "Nghỉ đêm tại Sarova Mara Camp, Kenya.",
+        "meals": ["Sáng", "Trưa", "Tối"]
+      },
+      {
+        "dayNumber": 4,
+        "title": "MAASAI MARA - TRẢI NGHIỆM ĐẠI DI TRÚ",
+        "morning": "Thức dậy sớm ngắm bình minh trên thảo nguyên Maasai Mara. Quý khách có thể trải nghiệm bay Khinh Khí Cầu ngắm toàn cảnh không gian bao la của vùng đất safari (chi phí tự túc). Dùng bữa sáng tại lodge. 08:00 Tham gia hành trình Game Drive cả ngày tìm kiếm và chứng kiến cảnh tượng lịch sử: Hàng trăm nghìn con Wildebeest và Ngựa Vằn vượt sông Mara đầy cá sấu trong Mùa Đại Di Trú.",
+        "noon": "Dùng bữa trưa picnic giữa thảo nguyên.",
+        "afternoon": "Tiếp tục Game Drive buổi chiều. Đến thăm Làng Maasai - trải nghiệm văn hóa độc đáo, điệu nhảy truyền thống và tìm hiểu về lối sống của người Maasai (chi phí tự túc).",
+        "evening": "Dùng bữa tối tại lodge. Tự do thư giãn trong khu vực camp.",
+        "night": "Nghỉ đêm tại Sarova Mara Camp, Kenya.",
+        "meals": ["Sáng", "Trưa", "Tối"]
+      },
+      {
+        "dayNumber": 5,
+        "title": "MAASAI MARA - NAIROBI - BAY ĐI TANZANIA",
+        "morning": "Dùng bữa sáng tại lodge, trả phòng. Game Drive sáng lần cuối tại Maasai Mara. Khởi hành về Nairobi.",
+        "noon": "Dùng bữa trưa tại nhà hàng Nairobi. Tham quan các khu mua sắm tại trung tâm thủ đô Nairobi.",
+        "afternoon": "Làm thủ tục bay đi Tanzania.",
+        "evening": "Đáp sân bay Kilimanjaro International Airport, Tanzania. Xe đưa đoàn về lodge nhận phòng nghỉ ngơi.",
+        "night": "Nghỉ đêm tại khu vực Arusha, Tanzania.",
+        "meals": ["Sáng", "Trưa", "Tối"]
+      },
+      {
+        "dayNumber": 6,
+        "title": "ARUSHA - VƯỜN QUỐC GIA SERENGETI (TANZANIA)",
+        "morning": "Dùng bữa sáng tại lodge. Khởi hành đi Vườn Quốc Gia Serengeti - Di sản Thiên nhiên Thế giới UNESCO, một trong những khu bảo tồn động vật hoang dã lớn nhất và đẹp nhất thế giới.",
+        "noon": "Nhập cảnh vào Serengeti. Dùng bữa trưa tại lodge. Tham gia Game Drive buổi chiều trong lòng Serengeti bao la.",
+        "afternoon": "Game Drive khám phá Serengeti - nơi sinh sống của hàng triệu động vật hoang dã bao gồm đầy đủ Big Five.",
+        "evening": "Dùng bữa tối tại lodge giữa lòng Serengeti.",
+        "night": "Nghỉ đêm tại Serengeti Safari Lodge, Tanzania.",
+        "meals": ["Sáng", "Trưa", "Tối"]
+      },
+      {
+        "dayNumber": 7,
+        "title": "SERENGETI - VÙNG NGORONGORO",
+        "morning": "Dùng bữa sáng tại lodge. Game Drive toàn ngày trong Serengeti, tiếp tục hành trình tìm kiếm và quan sát Big Five và các đàn thú hoang dã di cư.",
+        "noon": "Dùng bữa trưa picnic tại Serengeti.",
+        "afternoon": "Khởi hành đến khu vực Ngorongoro - miệng núi lửa lớn nhất thế giới còn nguyên vẹn, nơi sinh sống của hơn 25.000 động vật hoang dã.",
+        "evening": "Dùng bữa tối tại lodge. Ngắm hoàng hôn trên miệng núi lửa Ngorongoro.",
+        "night": "Nghỉ đêm tại Ngorongoro Lodge, Tanzania.",
+        "meals": ["Sáng", "Trưa", "Tối"]
+      },
+      {
+        "dayNumber": 8,
+        "title": "NGORONGORO - DAR ES SALAAM",
+        "morning": "Dùng bữa sáng tại lodge. Tham gia Game Drive xuống lòng miệng núi lửa Ngorongoro Crater - hệ sinh thái khép kín độc đáo nhất thế giới với mật độ động vật hoang dã dày đặc nhất Châu Phi.",
+        "noon": "Dùng bữa trưa tại lodge. Trả phòng, khởi hành về Dar Es Salaam.",
+        "afternoon": "Di chuyển về thành phố cảng Dar Es Salaam - thành phố lớn nhất Tanzania.",
+        "evening": "Nhận phòng khách sạn. Dùng bữa tối tại nhà hàng địa phương. Xe đưa đoàn ra sân bay làm thủ tục xuất cảnh về TP.HCM.",
+        "night": "Nghỉ đêm trên máy bay.",
+        "meals": ["Sáng", "Trưa", "Tối"]
+      },
+      {
+        "dayNumber": 9,
+        "title": "DOHA - TP.HCM",
+        "morning": "Đoàn nối chuyến tại sân bay quốc tế Hamad, Doha. Khởi hành bay về TP.HCM trên Qatar Airways.",
+        "noon": "Đáp sân bay quốc tế Tân Sơn Nhất. Kết thúc chương trình tham quan. HDV chia tay đoàn, hẹn gặp lại.",
+        "afternoon": "",
+        "evening": "",
+        "night": "",
+        "meals": ["Trên máy bay"]
+      }
+    ]
+  },
+  {
+    "name": "Du Lịch Nhật Bản: Tokyo - Phú Sĩ - Yokohama - Thủy Cung Sea Paradise - Disneyland",
+    "duration": "6 Ngày 5 Đêm",
+    "departureFrom": "TP. Hồ Chí Minh",
+    "transport": "Máy bay Japan Airlines",
+    "hasVat": true,
+    "included": [
+      "Vé máy bay khứ hồi TP.HCM - Tokyo (Haneda) theo đoàn Japan Airlines JL070 (hành lý 7kg xách tay + 23kg ký gửi)",
+      "Khách sạn tiêu chuẩn 4 sao (02 khách/phòng)",
+      "Trưởng đoàn và HDV địa phương phục vụ suốt tuyến theo chương trình",
+      "Các bữa ăn theo chương trình",
+      "Xe vận chuyển đưa đón theo chương trình",
+      "Vé vào cổng Tokyo Disneyland (bao gồm tất cả trò chơi trong công viên)",
+      "Vé vào Thủy Cung Sea Paradise Yokohama",
+      "Vé tham quan các điểm trong chương trình",
+      "Trải nghiệm Onsen (tắm suối nước nóng) tại khu vực núi Phú Sĩ",
+      "Nước uống: 01 chai/khách/ngày",
+      "Quà tặng du lịch BenThanh Tourist",
+      "Bảo hiểm du lịch theo quy định"
+    ],
+    "notIncluded": [
+      "Visa Nhật Bản (tự túc nộp hồ sơ trước chuyến đi)",
+      "Tiền TIP cho HDV và tài xế địa phương: 900.000 VNĐ/khách/tour",
+      "Phụ thu phòng đơn: 4.000.000 VNĐ/khách/tour",
+      "Chi phí cá nhân, hành lý quá cước, điện thoại, giặt ủi, mua sắm",
+      "Bữa ăn tại Tokyo Disneyland (coupon bữa trưa tự chọn trong công viên)",
+      "Các chi phí không được liệt kê trong mục bao gồm",
+      "Hóa đơn thuế GTGT"
+    ],
+    "notes": "Hộ chiếu còn hạn trước 6 tháng (ngày đi/ngày về). Do tính chất đoàn ghép khách lẻ, công ty có trách nhiệm thu nhận đủ 10 khách người lớn trở lên thì đoàn sẽ khởi hành đúng lịch trình. Nếu dưới 10 khách, công ty thông báo trước 5 ngày và thỏa thuận lại. Chương trình tour có tham quan kết hợp mua sắm, khách không tự ý tách đoàn.",
+    "departureDays": ["2026-07-09"],
+    "availableSeats": 20,
+    "price": 36990000,
+    "schedules": [
+      {
+        "dayNumber": 1,
+        "title": "TP.HCM - TOKYO (HANEDA) - PHÚ SĨ",
+        "morning": "20:20 Quý khách tập trung tại cột số 12 nhà ga đi quốc tế sân bay Tân Sơn Nhất. HDV BenThanh Tourist đón và làm thủ tục xuất cảnh. Đón chuyến bay JL070 Japan Airlines khởi hành lúc 23:20.",
+        "noon": "Quý khách nghỉ đêm trên máy bay.",
+        "afternoon": "",
+        "evening": "",
+        "night": "Nghỉ đêm trên máy bay.",
+        "meals": ["Trên máy bay"]
+      },
+      {
+        "dayNumber": 2,
+        "title": "TOKYO (HANEDA) - PHÚ SĨ - OSHINO HAKKAI",
+        "morning": "06:50 Đáp sân bay quốc tế Haneda, Tokyo. Làm thủ tục nhập cảnh Nhật Bản. Xe đưa đoàn di chuyển đến khu vực Phú Sĩ. Tham quan Làng cổ Oshino Hakkai - tám hồ nước trong vắt dưới chân núi Phú Sĩ, hình thành từ nước băng tuyết tan chảy từ đỉnh núi, vẫn giữ nguyên kiến trúc nhà truyền thống Nhật Bản.",
+        "noon": "Dùng bữa trưa tại nhà hàng địa phương với đặc sản vùng Phú Sĩ.",
+        "afternoon": "Lên Trạm số 5 Núi Phú Sĩ ở độ cao 2.300m để ngắm núi Phú Sĩ hùng vĩ (nếu thời tiết cho phép). Tham quan Hồ Kawaguchiko - một trong 5 hồ Phú Sĩ đẹp nhất, ngắm toàn cảnh núi Phú Sĩ phản chiếu trên mặt hồ.",
+        "evening": "Nhận phòng khách sạn khu vực núi Phú Sĩ. Trải nghiệm Onsen - tắm ngâm suối nước nóng thiên nhiên từ trong núi. Dùng bữa tối tại nhà hàng theo kiểu Kaiseki truyền thống Nhật Bản.",
+        "night": "Nghỉ đêm tại Ryokan/khách sạn khu vực núi Phú Sĩ.",
+        "meals": ["Trưa", "Tối"]
+      },
+      {
+        "dayNumber": 3,
+        "title": "PHÚ SĨ - YOKOHAMA - THỦY CUNG SEA PARADISE",
+        "morning": "Dùng bữa sáng tại khách sạn, trả phòng. Khởi hành đi Yokohama - thành phố cảng lớn thứ hai Nhật Bản. Tham quan Khu phố Tàu Yokohama (Chinatown) - khu phố Tàu lớn nhất Nhật Bản với hàng trăm nhà hàng và cửa hàng đặc sắc.",
+        "noon": "Dùng bữa trưa tại Yokohama.",
+        "afternoon": "Tham quan Thủy Cung Hakkeijima Sea Paradise - một trong những thủy cung lớn và hiện đại nhất Nhật Bản với hàng nghìn loài sinh vật biển, màn trình diễn cá heo và hải cẩu ấn tượng (vé đã bao gồm). Tham quan Công viên Sankeien với vườn truyền thống Nhật Bản.",
+        "evening": "Dùng bữa tối tại nhà hàng. Di chuyển về Tokyo nhận phòng khách sạn.",
+        "night": "Nghỉ đêm tại Tokyo.",
+        "meals": ["Sáng", "Trưa", "Tối"]
+      },
+      {
+        "dayNumber": 4,
+        "title": "TOKYO - DISNEYLAND",
+        "morning": "Dùng bữa sáng tại khách sạn. Cả ngày tự do vui chơi tại Tokyo Disneyland - công viên giải trí Disney đầu tiên ngoài nước Mỹ, lớn thứ 3 thế giới (vé đã bao gồm). Khám phá các khu vực: Fantasyland, Adventureland, Tomorrowland, Toontown. Gặp gỡ và chụp ảnh cùng các nhân vật Disney yêu thích.",
+        "noon": "Dùng bữa trưa tại khu vui chơi (coupon tự chọn trong công viên).",
+        "afternoon": "Tiếp tục trải nghiệm các trò chơi và xem biểu diễn trong Disneyland. Mua sắm đồ lưu niệm Disney.",
+        "evening": "Dùng bữa tối tại nhà hàng sau khi ra khỏi công viên. Tự do khám phá Tokyo về đêm.",
+        "night": "Nghỉ đêm tại Tokyo.",
+        "meals": ["Sáng", "Tối"]
+      },
+      {
+        "dayNumber": 5,
+        "title": "TOKYO - AKIHABARA - SHIBUYA - SHINJUKU",
+        "morning": "Dùng bữa sáng tại khách sạn. Tham quan Đền Meiji Jingu - ngôi đền Thần Đạo nổi tiếng nhất Tokyo, tọa lạc trong khu rừng nguyên sinh giữa lòng thành phố. Tham quan Harajuku - khu phố thời trang độc đáo và phố Takeshita sầm uất.",
+        "noon": "Dùng bữa trưa tại Shibuya. Tham quan Giao lộ Shibuya Crossing - giao lộ đông đúc nhất thế giới.",
+        "afternoon": "Tham quan Akihabara - thiên đường điện tử và anime nổi tiếng thế giới. Mua sắm tại Shinjuku - khu mua sắm sầm uất bậc nhất Tokyo với đèn neon rực rỡ về đêm.",
+        "evening": "Dùng bữa tối đặc sản Nhật Bản. Tự do mua sắm tại Shinjuku lần cuối.",
+        "night": "Nghỉ đêm tại Tokyo.",
+        "meals": ["Sáng", "Trưa", "Tối"]
+      },
+      {
+        "dayNumber": 6,
+        "title": "TOKYO - TP.HCM",
+        "morning": "Dùng bữa sáng tại khách sạn, trả phòng. Xe đưa đoàn đến sân bay quốc tế Narita làm thủ tục xuất cảnh về TP.HCM.",
+        "noon": "Đoàn khởi hành bay về TP.HCM.",
+        "afternoon": "Đáp sân bay quốc tế Tân Sơn Nhất. Xe đưa Quý khách về điểm đón ban đầu. Kết thúc chương trình tham quan. HDV chia tay đoàn, hẹn gặp lại.",
+        "evening": "",
+        "night": "",
+        "meals": ["Sáng", "Trên máy bay"]
+      }
+    ]
+  }
+]
+
+////////////////////////////////////////////////////////////////////////////////
+{
+  "items": [
+    {
+      "id": "13d136f0-f713-452c-9229-5144d42ba452",
+      "name": "Du Lịch New Zealand: Khám Phá Auckland - Rotorua - Christchurch - Queenstown",
+      "imageUrl": "https://res.cloudinary.com/dwt4uhpas/image/upload/v1781152033/tours/vxgi6xdequj5inndipji.png",
+      "imagePublicId": "tours/vxgi6xdequj5inndipji",
+      "duration": "8 Ngày 7 Đêm",
+      "rating": 0,
+      "reviewsCount": 0,
+      "hasVat": true,
+      "departureFrom": "TP. Hồ Chí Minh",
+      "transport": "Máy bay",
+      "included": [
+        "Vé máy bay khứ hồi TP.HCM - Christchurch // Auckland - TP.HCM theo đoàn (hành lý 7kg xách tay + 20kg ký gửi)",
+        "Vé máy bay nội địa Queenstown - Auckland",
+        "Khách sạn tiêu chuẩn 4-5 sao (02 khách/phòng)",
+        "Trưởng đoàn và HDV địa phương phục vụ suốt tuyến theo chương trình",
+        "Các bữa ăn theo chương trình",
+        "Xe vận chuyển và vé tham quan theo chương trình",
+        "Vé trải nghiệm cáp treo Skyline Gondola Queenstown",
+        "Vé trượt Luge tại Queenstown",
+        "Nước uống: 01 chai/khách/ngày",
+        "Quà tặng du lịch BenThanh Tourist",
+        "Bảo hiểm du lịch theo quy định"
+      ],
+      "notIncluded": [
+        "Visa New Zealand (tự túc nộp hồ sơ trước chuyến đi)",
+        "Phụ thu phòng đơn (nếu có)",
+        "Tiền tip cho HDV và tài xế địa phương",
+        "Chi phí cá nhân, hành lý quá cước, điện thoại, giặt ủi",
+        "Hoạt động phiêu lưu tự túc: Bungy Jump, Jet Boating (chi phí tự túc)",
+        "Các chi phí không được liệt kê trong mục bao gồm",
+        "Hóa đơn thuế GTGT"
+      ],
+      "notes": "Hộ chiếu còn hạn trước 6 tháng (ngày đi/ngày về). Chương trình tour là 'Tour of the Year 2026' của BenThanh Tourist. Thứ tự các điểm tham quan có thể thay đổi tùy tình hình thực tế nhưng vẫn đảm bảo tham quan đầy đủ. Quý khách từ 70 tuổi trở lên cần có thân nhân đi kèm.",
+      "schedules": [
+        {
+          "id": "a3c9a502-a0eb-4028-b9a3-e6ee3548af94",
+          "tourId": "13d136f0-f713-452c-9229-5144d42ba452",
+          "dayNumber": 1,
+          "title": "TP.HCM - CHRISTCHURCH",
+          "morning": "Quý khách tập trung tại sân bay Tân Sơn Nhất, làm thủ tục xuất cảnh. Đoàn khởi hành bay đến Christchurch - thành phố lớn nhất Đảo Nam New Zealand, nối chuyến qua Trung Quốc.",
+          "noon": "Quý khách dùng bữa trên máy bay, nghỉ ngơi trong suốt hành trình bay dài.",
+          "afternoon": "Tiếp tục hành trình bay đến New Zealand.",
+          "evening": "Quý khách nghỉ đêm trên máy bay.",
+          "night": "Nghỉ đêm trên máy bay.",
+          "meals": [
+            "Trên máy bay"
+          ]
+        },
+        {
+          "id": "e5e7c85f-6ff3-4e98-b471-e5f9a343e8b5",
+          "tourId": "13d136f0-f713-452c-9229-5144d42ba452",
+          "dayNumber": 2,
+          "title": "CHRISTCHURCH - THAM QUAN THÀNH PHỐ",
+          "morning": "09:30 Đáp sân bay quốc tế Christchurch, làm thủ tục nhập cảnh New Zealand. Xe đưa đoàn dùng bữa trưa tại nhà hàng địa phương. Tham quan Công viên Hagley Park - trái tim xanh của thành phố. Dạo bộ dọc dòng sông Avon thơ mộng bằng thuyền đáy bằng (Punting on the Avon).",
+          "noon": "Dùng bữa trưa tại nhà hàng địa phương.",
+          "afternoon": "Tham quan Quảng trường Cathedral Square - biểu tượng của Christchurch. Khám phá Trung tâm Nghệ thuật và Văn hóa của thành phố.",
+          "evening": "Dùng bữa tối tại nhà hàng. Nhận phòng khách sạn nghỉ ngơi.",
+          "night": "Nghỉ đêm tại Christchurch.",
+          "meals": [
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "39412b93-f3dd-4776-9ffc-3d884e4c64cd",
+          "tourId": "13d136f0-f713-452c-9229-5144d42ba452",
+          "dayNumber": 3,
+          "title": "CHRISTCHURCH - HỒ TEKAPO - QUEENSTOWN",
+          "morning": "Dùng bữa sáng tại khách sạn, trả phòng. Khởi hành đi Queenstown qua cung đường nổi tiếng tuyệt đẹp băng qua đồng cỏ trù phú và vùng đất chăn nuôi bò sữa, cừu.",
+          "noon": "Dừng chân tham quan Hồ Tekapo - điểm đến yêu thích của các nhiếp ảnh gia với màu nước hồ xanh như ngọc và những ngọn núi phủ tuyết. Chụp ảnh tại Nhà thờ Church of the Good Shepherd - một trong 12 nhà thờ đẹp nhất thế giới. Dùng bữa trưa tại khu vực Tekapo.",
+          "afternoon": "Tiếp tục hành trình đến Queenstown - thành phố phiêu lưu nổi tiếng nhất thế giới bên bờ hồ Wakatipu. Nhận phòng khách sạn nghỉ ngơi.",
+          "evening": "Dùng bữa tối tại nhà hàng địa phương. Tự do khám phá Queenstown về đêm.",
+          "night": "Nghỉ đêm tại Queenstown.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "3bf8f49f-47fd-46ad-89e6-1e7d13c98609",
+          "tourId": "13d136f0-f713-452c-9229-5144d42ba452",
+          "dayNumber": 4,
+          "title": "QUEENSTOWN - CÁP TREO SKYLINE - TRƯỢT LUGE - ARROWTOWN",
+          "morning": "Dùng bữa sáng tại khách sạn. Trải nghiệm cáp treo Skyline Gondola lên đỉnh Bob's Peak, ngắm toàn cảnh Queenstown và Hồ Wakatipu từ trên cao. Tham gia trò chơi trượt dốc Luge đầy thú vị (đã bao gồm vé). Quý khách có thể trải nghiệm Bungy Jump tại Cầu treo Kawarau - nơi đầu tiên diễn ra hoạt động nhảy Bungy thương mại trên thế giới (chi phí tự túc).",
+          "noon": "Dùng bữa trưa tại nhà hàng địa phương.",
+          "afternoon": "Tham quan Arrowtown - thị trấn khai thác vàng từ thế kỷ 19, dạo bộ trên những con phố nhỏ rợp bóng cây và ngắm nhìn các ngôi nhà gỗ cổ kính.",
+          "evening": "Dùng bữa tối tại nhà hàng địa phương.",
+          "night": "Nghỉ đêm tại Queenstown.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "b7be226e-144a-483f-b293-84a799b85fd6",
+          "tourId": "13d136f0-f713-452c-9229-5144d42ba452",
+          "dayNumber": 5,
+          "title": "QUEENSTOWN - BAY ĐI ROTORUA",
+          "morning": "Dùng bữa sáng tại khách sạn, trả phòng. Xe đưa đoàn ra sân bay Queenstown đáp chuyến bay nội địa đi Rotorua. Đến Rotorua, xe đưa đoàn đi tham quan.",
+          "noon": "Tham quan Trung tâm Địa nhiệt Te Puia - khu vực nổi tiếng với suối phun nước nóng Pohutu và hồ bùn sôi kỳ thú. Dùng bữa trưa tại nhà hàng.",
+          "afternoon": "Tham quan làng văn hóa Maori, tìm hiểu về phong tục tập quán và nghệ thuật truyền thống của người bản địa. Tham quan rừng Redwood hùng vĩ với những cây gỗ đỏ khổng lồ.",
+          "evening": "Dùng bữa tối kết hợp thưởng thức chương trình biểu diễn văn hóa Hangi truyền thống của người Maori.",
+          "night": "Nghỉ đêm tại Rotorua.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "56e5deb1-e3de-43cc-8f27-500e64346bf1",
+          "tourId": "13d136f0-f713-452c-9229-5144d42ba452",
+          "dayNumber": 6,
+          "title": "ROTORUA - HANG ĐỘNG WAITOMO - LÀNG HOBBITON - AUCKLAND",
+          "morning": "Dùng bữa sáng tại khách sạn, trả phòng. Khởi hành đi Waitomo. Tham quan Hang Động Đom Đóm Waitomo huyền ảo - nơi hàng triệu con đom đóm tạo ra bầu trời sao lung linh trong lòng hang động.",
+          "noon": "Dùng bữa trưa tại khu vực Waitomo/Matamata. Tham quan Làng Hobbiton (Hobbiton Movie Set) tại Matamata - ngôi làng tí hon nổi tiếng toàn cầu trong bộ phim 'Chúa Tể Những Chiếc Nhẫn' và 'The Hobbit', dạo bước trên thảm cỏ xanh ngắm các ngôi nhà Hobbit xinh xắn.",
+          "afternoon": "Tiếp tục hành trình về Auckland - thành phố lớn nhất và hiện đại nhất New Zealand.",
+          "evening": "Nhận phòng khách sạn tại Auckland. Dùng bữa tối tại nhà hàng địa phương.",
+          "night": "Nghỉ đêm tại Auckland.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "1c219ecc-9a18-466b-9fe9-e976db463a32",
+          "tourId": "13d136f0-f713-452c-9229-5144d42ba452",
+          "dayNumber": 7,
+          "title": "AUCKLAND - THAM QUAN THÀNH PHỐ",
+          "morning": "Dùng bữa sáng tại khách sạn. Tham quan Tamaki Waterfront Drive - con đường thơ mộng dài 10km uốn quanh cảng Waitemata. Lên tháp Sky Tower - biểu tượng của Auckland, ngắm toàn cảnh thành phố từ độ cao 328m.",
+          "noon": "Dùng bữa trưa tại nhà hàng với hải sản tươi sống đặc trưng của New Zealand.",
+          "afternoon": "Tự do mua sắm tại trung tâm thành phố Auckland. Tham quan Cầu cảng Auckland Harbour Bridge. Khám phá khu phố Viaduct Harbour sầm uất bên bờ biển.",
+          "evening": "Dùng bữa tối tại nhà hàng. Xe đưa đoàn ra sân bay Auckland làm thủ tục xuất cảnh về TP.HCM.",
+          "night": "Nghỉ đêm trên máy bay.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "6155b2e4-05c4-4821-ad18-835b706cf6ff",
+          "tourId": "13d136f0-f713-452c-9229-5144d42ba452",
+          "dayNumber": 8,
+          "title": "AUCKLAND - TP.HCM",
+          "morning": "Đoàn về đến sân bay Tân Sơn Nhất, kết thúc chương trình tham quan. HDV chia tay đoàn, hẹn gặp lại.",
+          "noon": "",
+          "afternoon": "",
+          "evening": "",
+          "night": "",
+          "meals": [
+            "Trên máy bay"
+          ]
+        }
+      ],
+      "departures": [
+        {
+          "id": "f00f57fc-5522-4980-ade7-6f26f3fff966",
+          "tourCode": "BTTDLNZK20260726",
+          "tourId": "13d136f0-f713-452c-9229-5144d42ba452",
+          "departureDate": "2026-07-26T00:00:00.000Z",
+          "availableSeats": 20,
+          "price": "130990000",
+          "createdAt": "2026-06-11T04:24:47.235Z",
+          "updatedAt": "2026-06-11T04:24:47.235Z"
+        }
+      ]
+    },
+    {
+      "id": "9966dd8d-fe90-4df0-b77f-ffe90717c0c4",
+      "name": "Du Lịch Nhật Bản: Tokyo - Phú Sĩ - Yokohama - Thủy Cung Sea Paradise - Disneyland",
+      "imageUrl": "https://res.cloudinary.com/dwt4uhpas/image/upload/v1781152033/tours/wygrlxqusvrdrxkewktz.png",
+      "imagePublicId": "tours/wygrlxqusvrdrxkewktz",
+      "duration": "6 Ngày 5 Đêm",
+      "rating": 0,
+      "reviewsCount": 0,
+      "hasVat": true,
+      "departureFrom": "TP. Hồ Chí Minh",
+      "transport": "Máy bay Japan Airlines",
+      "included": [
+        "Vé máy bay khứ hồi TP.HCM - Tokyo (Haneda) theo đoàn Japan Airlines JL070 (hành lý 7kg xách tay + 23kg ký gửi)",
+        "Khách sạn tiêu chuẩn 4 sao (02 khách/phòng)",
+        "Trưởng đoàn và HDV địa phương phục vụ suốt tuyến theo chương trình",
+        "Các bữa ăn theo chương trình",
+        "Xe vận chuyển đưa đón theo chương trình",
+        "Vé vào cổng Tokyo Disneyland (bao gồm tất cả trò chơi trong công viên)",
+        "Vé vào Thủy Cung Sea Paradise Yokohama",
+        "Vé tham quan các điểm trong chương trình",
+        "Trải nghiệm Onsen (tắm suối nước nóng) tại khu vực núi Phú Sĩ",
+        "Nước uống: 01 chai/khách/ngày",
+        "Quà tặng du lịch BenThanh Tourist",
+        "Bảo hiểm du lịch theo quy định"
+      ],
+      "notIncluded": [
+        "Visa Nhật Bản (tự túc nộp hồ sơ trước chuyến đi)",
+        "Tiền TIP cho HDV và tài xế địa phương: 900.000 VNĐ/khách/tour",
+        "Phụ thu phòng đơn: 4.000.000 VNĐ/khách/tour",
+        "Chi phí cá nhân, hành lý quá cước, điện thoại, giặt ủi, mua sắm",
+        "Bữa ăn tại Tokyo Disneyland (coupon bữa trưa tự chọn trong công viên)",
+        "Các chi phí không được liệt kê trong mục bao gồm",
+        "Hóa đơn thuế GTGT"
+      ],
+      "notes": "Hộ chiếu còn hạn trước 6 tháng (ngày đi/ngày về). Do tính chất đoàn ghép khách lẻ, công ty có trách nhiệm thu nhận đủ 10 khách người lớn trở lên thì đoàn sẽ khởi hành đúng lịch trình. Nếu dưới 10 khách, công ty thông báo trước 5 ngày và thỏa thuận lại. Chương trình tour có tham quan kết hợp mua sắm, khách không tự ý tách đoàn.",
+      "schedules": [
+        {
+          "id": "990fb958-0f76-4d58-b1af-86fef3a4d6df",
+          "tourId": "9966dd8d-fe90-4df0-b77f-ffe90717c0c4",
+          "dayNumber": 1,
+          "title": "TP.HCM - TOKYO (HANEDA) - PHÚ SĨ",
+          "morning": "20:20 Quý khách tập trung tại cột số 12 nhà ga đi quốc tế sân bay Tân Sơn Nhất. HDV BenThanh Tourist đón và làm thủ tục xuất cảnh. Đón chuyến bay JL070 Japan Airlines khởi hành lúc 23:20.",
+          "noon": "Quý khách nghỉ đêm trên máy bay.",
+          "afternoon": "",
+          "evening": "",
+          "night": "Nghỉ đêm trên máy bay.",
+          "meals": [
+            "Trên máy bay"
+          ]
+        },
+        {
+          "id": "29a4bfdd-cc33-4491-a973-b3ea04dd003f",
+          "tourId": "9966dd8d-fe90-4df0-b77f-ffe90717c0c4",
+          "dayNumber": 2,
+          "title": "TOKYO (HANEDA) - PHÚ SĨ - OSHINO HAKKAI",
+          "morning": "06:50 Đáp sân bay quốc tế Haneda, Tokyo. Làm thủ tục nhập cảnh Nhật Bản. Xe đưa đoàn di chuyển đến khu vực Phú Sĩ. Tham quan Làng cổ Oshino Hakkai - tám hồ nước trong vắt dưới chân núi Phú Sĩ, hình thành từ nước băng tuyết tan chảy từ đỉnh núi, vẫn giữ nguyên kiến trúc nhà truyền thống Nhật Bản.",
+          "noon": "Dùng bữa trưa tại nhà hàng địa phương với đặc sản vùng Phú Sĩ.",
+          "afternoon": "Lên Trạm số 5 Núi Phú Sĩ ở độ cao 2.300m để ngắm núi Phú Sĩ hùng vĩ (nếu thời tiết cho phép). Tham quan Hồ Kawaguchiko - một trong 5 hồ Phú Sĩ đẹp nhất, ngắm toàn cảnh núi Phú Sĩ phản chiếu trên mặt hồ.",
+          "evening": "Nhận phòng khách sạn khu vực núi Phú Sĩ. Trải nghiệm Onsen - tắm ngâm suối nước nóng thiên nhiên từ trong núi. Dùng bữa tối tại nhà hàng theo kiểu Kaiseki truyền thống Nhật Bản.",
+          "night": "Nghỉ đêm tại Ryokan/khách sạn khu vực núi Phú Sĩ.",
+          "meals": [
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "897a0b0d-999a-413d-8f02-ed21e4622f24",
+          "tourId": "9966dd8d-fe90-4df0-b77f-ffe90717c0c4",
+          "dayNumber": 3,
+          "title": "PHÚ SĨ - YOKOHAMA - THỦY CUNG SEA PARADISE",
+          "morning": "Dùng bữa sáng tại khách sạn, trả phòng. Khởi hành đi Yokohama - thành phố cảng lớn thứ hai Nhật Bản. Tham quan Khu phố Tàu Yokohama (Chinatown) - khu phố Tàu lớn nhất Nhật Bản với hàng trăm nhà hàng và cửa hàng đặc sắc.",
+          "noon": "Dùng bữa trưa tại Yokohama.",
+          "afternoon": "Tham quan Thủy Cung Hakkeijima Sea Paradise - một trong những thủy cung lớn và hiện đại nhất Nhật Bản với hàng nghìn loài sinh vật biển, màn trình diễn cá heo và hải cẩu ấn tượng (vé đã bao gồm). Tham quan Công viên Sankeien với vườn truyền thống Nhật Bản.",
+          "evening": "Dùng bữa tối tại nhà hàng. Di chuyển về Tokyo nhận phòng khách sạn.",
+          "night": "Nghỉ đêm tại Tokyo.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "2d2ac1b0-4b58-48aa-a2aa-beba29af4a98",
+          "tourId": "9966dd8d-fe90-4df0-b77f-ffe90717c0c4",
+          "dayNumber": 4,
+          "title": "TOKYO - DISNEYLAND",
+          "morning": "Dùng bữa sáng tại khách sạn. Cả ngày tự do vui chơi tại Tokyo Disneyland - công viên giải trí Disney đầu tiên ngoài nước Mỹ, lớn thứ 3 thế giới (vé đã bao gồm). Khám phá các khu vực: Fantasyland, Adventureland, Tomorrowland, Toontown. Gặp gỡ và chụp ảnh cùng các nhân vật Disney yêu thích.",
+          "noon": "Dùng bữa trưa tại khu vui chơi (coupon tự chọn trong công viên).",
+          "afternoon": "Tiếp tục trải nghiệm các trò chơi và xem biểu diễn trong Disneyland. Mua sắm đồ lưu niệm Disney.",
+          "evening": "Dùng bữa tối tại nhà hàng sau khi ra khỏi công viên. Tự do khám phá Tokyo về đêm.",
+          "night": "Nghỉ đêm tại Tokyo.",
+          "meals": [
+            "Sáng",
+            "Tối"
+          ]
+        },
+        {
+          "id": "47f44b32-c22f-420c-b9cd-8fe9dc9f933a",
+          "tourId": "9966dd8d-fe90-4df0-b77f-ffe90717c0c4",
+          "dayNumber": 5,
+          "title": "TOKYO - AKIHABARA - SHIBUYA - SHINJUKU",
+          "morning": "Dùng bữa sáng tại khách sạn. Tham quan Đền Meiji Jingu - ngôi đền Thần Đạo nổi tiếng nhất Tokyo, tọa lạc trong khu rừng nguyên sinh giữa lòng thành phố. Tham quan Harajuku - khu phố thời trang độc đáo và phố Takeshita sầm uất.",
+          "noon": "Dùng bữa trưa tại Shibuya. Tham quan Giao lộ Shibuya Crossing - giao lộ đông đúc nhất thế giới.",
+          "afternoon": "Tham quan Akihabara - thiên đường điện tử và anime nổi tiếng thế giới. Mua sắm tại Shinjuku - khu mua sắm sầm uất bậc nhất Tokyo với đèn neon rực rỡ về đêm.",
+          "evening": "Dùng bữa tối đặc sản Nhật Bản. Tự do mua sắm tại Shinjuku lần cuối.",
+          "night": "Nghỉ đêm tại Tokyo.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "1d0f7865-4eca-44fa-a10a-b8a5d9618b7d",
+          "tourId": "9966dd8d-fe90-4df0-b77f-ffe90717c0c4",
+          "dayNumber": 6,
+          "title": "TOKYO - TP.HCM",
+          "morning": "Dùng bữa sáng tại khách sạn, trả phòng. Xe đưa đoàn đến sân bay quốc tế Narita làm thủ tục xuất cảnh về TP.HCM.",
+          "noon": "Đoàn khởi hành bay về TP.HCM.",
+          "afternoon": "Đáp sân bay quốc tế Tân Sơn Nhất. Xe đưa Quý khách về điểm đón ban đầu. Kết thúc chương trình tham quan. HDV chia tay đoàn, hẹn gặp lại.",
+          "evening": "",
+          "night": "",
+          "meals": [
+            "Sáng",
+            "Trên máy bay"
+          ]
+        }
+      ],
+      "departures": [
+        {
+          "id": "609db5d5-ae88-43df-8fa0-342d2b862d9c",
+          "tourCode": "BTTDLNBT20260709",
+          "tourId": "9966dd8d-fe90-4df0-b77f-ffe90717c0c4",
+          "departureDate": "2026-07-09T00:00:00.000Z",
+          "availableSeats": 20,
+          "price": "36990000",
+          "createdAt": "2026-06-11T04:24:47.234Z",
+          "updatedAt": "2026-06-11T04:24:47.234Z"
+        }
+      ]
+    },
+    {
+      "id": "9bf466d0-7b37-4d23-9691-b72962d567b7",
+      "name": "Du Lịch Đông Phi: Kenya - Tanzania - Mùa Đại Di Trú - Khoảnh Khắc Lịch Sử (Bay Hàng Không 5 Sao Qatar Airways)",
+      "imageUrl": "https://res.cloudinary.com/dwt4uhpas/image/upload/v1781152033/tours/ftpdymnu2if5h5ipppwe.png",
+      "imagePublicId": "tours/ftpdymnu2if5h5ipppwe",
+      "duration": "9 Ngày 8 Đêm",
+      "rating": 0,
+      "reviewsCount": 0,
+      "hasVat": true,
+      "departureFrom": "TP. Hồ Chí Minh",
+      "transport": "Máy bay Qatar Airways 5 sao",
+      "included": [
+        "Vé máy bay khứ hồi TP.HCM - Nairobi // Dar Es Salaam - TP.HCM theo đoàn hàng không 5 sao Qatar Airways (hành lý 7kg xách tay + 30kg ký gửi)",
+        "Khách sạn và Safari Lodge tiêu chuẩn cao cấp (02 khách/phòng)",
+        "Trưởng đoàn và HDV địa phương phục vụ suốt tuyến",
+        "Các bữa ăn theo chương trình (full board tại lodge)",
+        "Xe 4x4 safari chuyên dụng đưa đón và Game Drive theo chương trình",
+        "Vé vào cửa các Vườn Quốc Gia và Khu Bảo Tồn theo chương trình",
+        "Phí bảo tồn quốc gia (conservation fee)",
+        "Nước uống theo chương trình",
+        "Quà tặng du lịch BenThanh Tourist",
+        "Bảo hiểm du lịch theo quy định"
+      ],
+      "notIncluded": [
+        "Visa Kenya và Tanzania (tự túc hoặc e-Visa online)",
+        "Trải nghiệm bay khinh khí cầu ngắm Maasai Mara (chi phí tự túc)",
+        "Phụ thu phòng đơn (nếu có)",
+        "Tiền tip cho HDV, tài xế và nhân viên lodge: 10 USD/ngày/khách",
+        "Chi phí cá nhân, hành lý quá cước, điện thoại, giặt ủi",
+        "Các hoạt động ngoài chương trình",
+        "Hóa đơn thuế GTGT"
+      ],
+      "notes": "Hộ chiếu còn hạn trước 6 tháng. Tour được thiết kế đặc biệt để trải nghiệm Mùa Đại Di Trú của đàn thú hoang dã từ Tanzania sang Kenya (tháng 7-9 hàng năm) - một trong những kỳ quan thiên nhiên vĩ đại nhất thế giới. Sức khỏe tốt, đặc biệt lưu ý tiêm phòng vàng da và sốt rét theo khuyến nghị của Bộ Y tế trước khi khởi hành.",
+      "schedules": [
+        {
+          "id": "ffe7568f-4095-4409-bd2d-4dd8f295cb9e",
+          "tourId": "9bf466d0-7b37-4d23-9691-b72962d567b7",
+          "dayNumber": 1,
+          "title": "TP.HCM - DOHA - NAIROBI (KENYA)",
+          "morning": "Quý khách tập trung tại sân bay Tân Sơn Nhất, làm thủ tục xuất cảnh. Đoàn khởi hành bay đến Nairobi nối chuyến qua Doha trên hàng không 5 sao Qatar Airways.",
+          "noon": "Quý khách dùng bữa trên máy bay, nghỉ ngơi trong suốt hành trình bay.",
+          "afternoon": "Tiếp tục hành trình bay đến Kenya.",
+          "evening": "Đáp sân bay quốc tế Jomo Kenyatta, Nairobi. Làm thủ tục nhập cảnh. Xe đưa đoàn về khách sạn nhận phòng nghỉ ngơi.",
+          "night": "Nghỉ đêm tại Nairobi, Kenya.",
+          "meals": [
+            "Trên máy bay"
+          ]
+        },
+        {
+          "id": "1253c867-4c53-4f1e-9037-c8dc52e248a0",
+          "tourId": "9bf466d0-7b37-4d23-9691-b72962d567b7",
+          "dayNumber": 2,
+          "title": "NAIROBI - VƯỜN QUỐC GIA AMBOSELI",
+          "morning": "Dùng bữa sáng tại khách sạn. Khởi hành đi Vườn Quốc Gia Amboseli - nổi tiếng với hình ảnh đàn voi lớn dưới bóng núi Kilimanjaro hùng vĩ (đỉnh núi cao nhất Châu Phi). Tham gia Game Drive buổi sáng khám phá động vật hoang dã.",
+          "noon": "Dùng bữa trưa tại lodge.",
+          "afternoon": "Tiếp tục Game Drive buổi chiều, săn tìm Big Five (sư tử, voi Châu Phi, trâu, báo hoa, tê giác đen) và ngắm đàn voi khổng lồ di chuyển trên thảo nguyên với nền núi Kilimanjaro phủ tuyết phía sau.",
+          "evening": "Dùng bữa tối tại lodge. Tự do khám phá trong khu vực.",
+          "night": "Nghỉ đêm tại Amboseli Safari Lodge, Kenya.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "b0ac71d6-83b8-4efd-971c-339f3e4f3e93",
+          "tourId": "9bf466d0-7b37-4d23-9691-b72962d567b7",
+          "dayNumber": 3,
+          "title": "AMBOSELI - MAASAI MARA (KENYA)",
+          "morning": "Dùng bữa sáng tại lodge, trả phòng. Khởi hành đi Khu Bảo Tồn Maasai Mara - trái tim của Mùa Đại Di Trú. Trên đường đi, tham quan và chụp ảnh phong cảnh thảo nguyên Đông Phi.",
+          "noon": "Dùng bữa trưa tại lodge. Nhận phòng nghỉ ngơi.",
+          "afternoon": "16:00 Tham gia Game Drive đầu tiên tại Khu Bảo Tồn Maasai Mara, hòa mình vào thiên nhiên hoang sơ với những đồng cỏ rộng lớn kéo dài đến tận chân trời xanh.",
+          "evening": "Dùng bữa tối tại lodge.",
+          "night": "Nghỉ đêm tại Sarova Mara Camp, Kenya.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "a32ba169-cdcb-4379-b5c8-74976097a2c8",
+          "tourId": "9bf466d0-7b37-4d23-9691-b72962d567b7",
+          "dayNumber": 4,
+          "title": "MAASAI MARA - TRẢI NGHIỆM ĐẠI DI TRÚ",
+          "morning": "Thức dậy sớm ngắm bình minh trên thảo nguyên Maasai Mara. Quý khách có thể trải nghiệm bay Khinh Khí Cầu ngắm toàn cảnh không gian bao la của vùng đất safari (chi phí tự túc). Dùng bữa sáng tại lodge. 08:00 Tham gia hành trình Game Drive cả ngày tìm kiếm và chứng kiến cảnh tượng lịch sử: Hàng trăm nghìn con Wildebeest và Ngựa Vằn vượt sông Mara đầy cá sấu trong Mùa Đại Di Trú.",
+          "noon": "Dùng bữa trưa picnic giữa thảo nguyên.",
+          "afternoon": "Tiếp tục Game Drive buổi chiều. Đến thăm Làng Maasai - trải nghiệm văn hóa độc đáo, điệu nhảy truyền thống và tìm hiểu về lối sống của người Maasai (chi phí tự túc).",
+          "evening": "Dùng bữa tối tại lodge. Tự do thư giãn trong khu vực camp.",
+          "night": "Nghỉ đêm tại Sarova Mara Camp, Kenya.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "3583ae05-671a-4d19-935b-a7a040eb0d4b",
+          "tourId": "9bf466d0-7b37-4d23-9691-b72962d567b7",
+          "dayNumber": 5,
+          "title": "MAASAI MARA - NAIROBI - BAY ĐI TANZANIA",
+          "morning": "Dùng bữa sáng tại lodge, trả phòng. Game Drive sáng lần cuối tại Maasai Mara. Khởi hành về Nairobi.",
+          "noon": "Dùng bữa trưa tại nhà hàng Nairobi. Tham quan các khu mua sắm tại trung tâm thủ đô Nairobi.",
+          "afternoon": "Làm thủ tục bay đi Tanzania.",
+          "evening": "Đáp sân bay Kilimanjaro International Airport, Tanzania. Xe đưa đoàn về lodge nhận phòng nghỉ ngơi.",
+          "night": "Nghỉ đêm tại khu vực Arusha, Tanzania.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "76240966-6626-45f7-a03d-964cc3b6ebc6",
+          "tourId": "9bf466d0-7b37-4d23-9691-b72962d567b7",
+          "dayNumber": 6,
+          "title": "ARUSHA - VƯỜN QUỐC GIA SERENGETI (TANZANIA)",
+          "morning": "Dùng bữa sáng tại lodge. Khởi hành đi Vườn Quốc Gia Serengeti - Di sản Thiên nhiên Thế giới UNESCO, một trong những khu bảo tồn động vật hoang dã lớn nhất và đẹp nhất thế giới.",
+          "noon": "Nhập cảnh vào Serengeti. Dùng bữa trưa tại lodge. Tham gia Game Drive buổi chiều trong lòng Serengeti bao la.",
+          "afternoon": "Game Drive khám phá Serengeti - nơi sinh sống của hàng triệu động vật hoang dã bao gồm đầy đủ Big Five.",
+          "evening": "Dùng bữa tối tại lodge giữa lòng Serengeti.",
+          "night": "Nghỉ đêm tại Serengeti Safari Lodge, Tanzania.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "9e415776-9796-4b8f-826e-c49108cb5012",
+          "tourId": "9bf466d0-7b37-4d23-9691-b72962d567b7",
+          "dayNumber": 7,
+          "title": "SERENGETI - VÙNG NGORONGORO",
+          "morning": "Dùng bữa sáng tại lodge. Game Drive toàn ngày trong Serengeti, tiếp tục hành trình tìm kiếm và quan sát Big Five và các đàn thú hoang dã di cư.",
+          "noon": "Dùng bữa trưa picnic tại Serengeti.",
+          "afternoon": "Khởi hành đến khu vực Ngorongoro - miệng núi lửa lớn nhất thế giới còn nguyên vẹn, nơi sinh sống của hơn 25.000 động vật hoang dã.",
+          "evening": "Dùng bữa tối tại lodge. Ngắm hoàng hôn trên miệng núi lửa Ngorongoro.",
+          "night": "Nghỉ đêm tại Ngorongoro Lodge, Tanzania.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "ea782d4b-a7f7-43ae-aa3f-f7642e019cc9",
+          "tourId": "9bf466d0-7b37-4d23-9691-b72962d567b7",
+          "dayNumber": 8,
+          "title": "NGORONGORO - DAR ES SALAAM",
+          "morning": "Dùng bữa sáng tại lodge. Tham gia Game Drive xuống lòng miệng núi lửa Ngorongoro Crater - hệ sinh thái khép kín độc đáo nhất thế giới với mật độ động vật hoang dã dày đặc nhất Châu Phi.",
+          "noon": "Dùng bữa trưa tại lodge. Trả phòng, khởi hành về Dar Es Salaam.",
+          "afternoon": "Di chuyển về thành phố cảng Dar Es Salaam - thành phố lớn nhất Tanzania.",
+          "evening": "Nhận phòng khách sạn. Dùng bữa tối tại nhà hàng địa phương. Xe đưa đoàn ra sân bay làm thủ tục xuất cảnh về TP.HCM.",
+          "night": "Nghỉ đêm trên máy bay.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "7984e23d-b55e-416c-b0f5-aaa54624e75b",
+          "tourId": "9bf466d0-7b37-4d23-9691-b72962d567b7",
+          "dayNumber": 9,
+          "title": "DOHA - TP.HCM",
+          "morning": "Đoàn nối chuyến tại sân bay quốc tế Hamad, Doha. Khởi hành bay về TP.HCM trên Qatar Airways.",
+          "noon": "Đáp sân bay quốc tế Tân Sơn Nhất. Kết thúc chương trình tham quan. HDV chia tay đoàn, hẹn gặp lại.",
+          "afternoon": "",
+          "evening": "",
+          "night": "",
+          "meals": [
+            "Trên máy bay"
+          ]
+        }
+      ],
+      "departures": [
+        {
+          "id": "eb118388-245c-4b1c-9e54-6ce5a41d16e7",
+          "tourCode": "BTTDLĐPK20260719",
+          "tourId": "9bf466d0-7b37-4d23-9691-b72962d567b7",
+          "departureDate": "2026-07-19T00:00:00.000Z",
+          "availableSeats": 6,
+          "price": "169000000",
+          "createdAt": "2026-06-11T04:24:47.234Z",
+          "updatedAt": "2026-06-11T04:24:47.234Z"
+        },
+        {
+          "id": "c51a79ab-2763-4ac1-bf95-6700c281cd6f",
+          "tourCode": "BTTDLĐPK20260816",
+          "tourId": "9bf466d0-7b37-4d23-9691-b72962d567b7",
+          "departureDate": "2026-08-16T00:00:00.000Z",
+          "availableSeats": 6,
+          "price": "169000000",
+          "createdAt": "2026-06-11T04:24:47.234Z",
+          "updatedAt": "2026-06-11T04:24:47.234Z"
+        },
+        {
+          "id": "579883f7-b3fc-4910-82dd-af46f12eef4f",
+          "tourCode": "BTTDLĐPK20260920",
+          "tourId": "9bf466d0-7b37-4d23-9691-b72962d567b7",
+          "departureDate": "2026-09-20T00:00:00.000Z",
+          "availableSeats": 6,
+          "price": "169000000",
+          "createdAt": "2026-06-11T04:24:47.234Z",
+          "updatedAt": "2026-06-11T04:24:47.234Z"
+        }
+      ]
+    },
+    {
+      "id": "59103511-4841-42a2-8026-6a32ccf3c1e5",
+      "name": "Du Lịch Trung Quốc: Ô Trấn - Hàng Châu - Thượng Hải (1 Ngày Tự Do)",
+      "imageUrl": "https://res.cloudinary.com/dwt4uhpas/image/upload/v1781149921/tours/eqraqqusdorx8e9262zj.png",
+      "imagePublicId": "tours/eqraqqusdorx8e9262zj",
+      "duration": "5 Ngày 4 Đêm",
+      "rating": 0,
+      "reviewsCount": 0,
+      "hasVat": true,
+      "departureFrom": "TP. Hồ Chí Minh",
+      "transport": "Máy bay",
+      "included": [
+        "Vé máy bay khứ hồi TP.HCM - Thượng Hải theo đoàn (hành lý 7kg xách tay + 20kg ký gửi)",
+        "Visa đoàn nhập cảnh Trung Quốc",
+        "Khách sạn tiêu chuẩn 4 sao (02 khách/phòng)",
+        "Trưởng đoàn và HDV địa phương phục vụ suốt tuyến theo chương trình",
+        "Các bữa ăn theo chương trình",
+        "Xe vận chuyển, vé tham quan theo chương trình",
+        "Du thuyền thưởng ngoạn Ô Trấn (08 khách/thuyền)",
+        "Nước uống: 01 chai/khách/ngày",
+        "Quà tặng: nón, gối cổ, balo du lịch BenThanh Tourist",
+        "Bảo hiểm du lịch theo quy định"
+      ],
+      "notIncluded": [
+        "Chi phí xin visa Trung Quốc lẻ tại TP.HCM hoặc Hà Nội: 120 USD/khách",
+        "Phụ thu phòng đơn: 5.800.000 VNĐ/phòng/tour",
+        "Visa tái nhập Việt Nam cho khách quốc tịch nước ngoài: 65 USD/khách",
+        "Tiền TIP cho HDV và tài xế địa phương: 5 USD/ngày/khách",
+        "Chi phí cá nhân, hành lý quá cước, điện thoại, giặt ủi",
+        "Tham quan ngoài chương trình và các chi phí không có trong mục bao gồm",
+        "Hóa đơn thuế GTGT"
+      ],
+      "notes": "Hộ chiếu còn hạn trước 6 tháng (ngày đi/ngày về). Giá tour chỉ áp dụng cho khách mang quốc tịch Việt Nam và khách nghe nói thông thạo tiếng Việt. Khách quốc tịch nước ngoài phụ thu 50 USD/khách. Do tính chất là đoàn ghép khách lẻ, công ty có trách nhiệm thu nhận đủ 15 khách người lớn trở lên thì đoàn sẽ khởi hành đúng lịch trình. Chương trình tour kết hợp tham quan và mua sắm, khách không tự ý tách đoàn.",
+      "schedules": [
+        {
+          "id": "921c9891-1d6f-4974-9621-188b5df2d5d1",
+          "tourId": "59103511-4841-42a2-8026-6a32ccf3c1e5",
+          "dayNumber": 1,
+          "title": "TP.HCM - THƯỢNG HẢI",
+          "morning": "Quý khách tập trung tại sân bay Tân Sơn Nhất, làm thủ tục xuất cảnh. Đoàn khởi hành bay đến Thượng Hải.",
+          "noon": "Đến sân bay Thượng Hải, HDV địa phương đón đoàn. Dùng bữa trưa tại nhà hàng địa phương.",
+          "afternoon": "Tham quan Ngoại Than (The Bund) - khu phố Tây lịch sử dọc bờ sông Hoàng Phố, ngắm các công trình kiến trúc Gothic, Roman, Baroque độc đáo. Tham quan Phố Đi Bộ Nam Kinh - con phố mua sắm sầm uất bậc nhất Thượng Hải.",
+          "evening": "Dùng bữa tối tại nhà hàng. Quý khách có thể tham gia du thuyền trên sông Hoàng Phố ngắm cảnh hai bờ Tây - Đông Thượng Hải về đêm (chi phí tự túc).",
+          "night": "Nghỉ đêm tại Thượng Hải.",
+          "meals": [
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "011817ed-a94b-4aea-90eb-f93111010c10",
+          "tourId": "59103511-4841-42a2-8026-6a32ccf3c1e5",
+          "dayNumber": 2,
+          "title": "THƯỢNG HẢI - Ô TRẤN",
+          "morning": "Dùng bữa sáng tại khách sạn, trả phòng. Tham quan Chùa Ngọc Phật - ngôi chùa nổi tiếng nhất Thượng Hải với kiến trúc tinh xảo theo lối cung điện đời Tống và 2 bức tượng Phật bằng ngọc nguyên khối.",
+          "noon": "Xe đưa đoàn đến Ô Trấn. Dùng bữa trưa tại nhà hàng địa phương.",
+          "afternoon": "Tham quan Ô Trấn 'Tây Sách' - trấn cổ sông nước lớn nhất Trung Quốc với hơn 1300 năm lịch sử, những cây cầu đá cổ, con đường lát đá và công trình gỗ chạm khắc tinh tế. Du thuyền thưởng ngoạn Ô Trấn (đã bao gồm chi phí, 08 khách/thuyền).",
+          "evening": "Dùng bữa tối tại nhà hàng địa phương. Xe đưa đoàn về Hàng Châu, nhận phòng khách sạn.",
+          "night": "Nghỉ đêm tại Hàng Châu.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "dd64ca0f-98ba-493f-b0a5-7230545ce426",
+          "tourId": "59103511-4841-42a2-8026-6a32ccf3c1e5",
+          "dayNumber": 3,
+          "title": "HÀNG CHÂU - TÂY HỒ - LINH ẨN TỰ",
+          "morning": "Dùng bữa sáng tại khách sạn. Tham quan Tây Hồ (Tây Hồ thập cảnh) - một trong những danh thắng đẹp nhất Trung Quốc, được UNESCO công nhận Di sản Thế giới. Du thuyền thưởng ngoạn Tây Hồ (đã bao gồm chi phí).",
+          "noon": "Dùng bữa trưa tại nhà hàng với đặc sản Hàng Châu. Tham quan làng nghề trà Longjing (Long Tỉnh) - loại trà xanh nổi tiếng nhất Trung Quốc.",
+          "afternoon": "Tham quan Linh Ẩn Tự - ngôi chùa Phật giáo cổ kính nổi tiếng bậc nhất Hàng Châu. Tham quan Phi Lai Phong - khu thắng cảnh với hàng trăm tượng Phật được khắc trực tiếp vào vách đá.",
+          "evening": "Dùng bữa tối tại nhà hàng. Quý khách có thể tự mua vé tham quan Show diễn Tống Thành Thiên Cổ Tình (chi phí tự túc).",
+          "night": "Nghỉ đêm tại Hàng Châu.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "ca876261-71d1-4074-994c-0792f60b7ff5",
+          "tourId": "59103511-4841-42a2-8026-6a32ccf3c1e5",
+          "dayNumber": 4,
+          "title": "HÀNG CHÂU - THƯỢNG HẢI (1 NGÀY TỰ DO)",
+          "morning": "Dùng bữa sáng tại khách sạn, trả phòng. Xe đưa đoàn về Thượng Hải. Nhận phòng khách sạn.",
+          "noon": "Dùng bữa trưa tại nhà hàng. Quý khách tự do khám phá Thượng Hải theo sở thích.",
+          "afternoon": "Tự do mua sắm tại các trung tâm thương mại lớn: IAPM Mall, K11, Plaza 66. Hoặc tham quan thêm các điểm nổi bật: Tháp Truyền Hình Minh Châu Phương Đông, Trung tâm Tài chính Thế giới Thượng Hải (tự túc).",
+          "evening": "Dùng bữa tối tại nhà hàng. Tự do khám phá Thượng Hải về đêm.",
+          "night": "Nghỉ đêm tại Thượng Hải.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "6c242ec2-7d6d-40aa-b9b6-c233c7bb9d84",
+          "tourId": "59103511-4841-42a2-8026-6a32ccf3c1e5",
+          "dayNumber": 5,
+          "title": "THƯỢNG HẢI - TP.HCM",
+          "morning": "Dùng bữa sáng tại khách sạn, trả phòng. Xe đưa đoàn đến sân bay Thượng Hải làm thủ tục xuất cảnh.",
+          "noon": "Đoàn khởi hành bay về TP.Hồ Chí Minh.",
+          "afternoon": "Về đến sân bay Tân Sơn Nhất. Xe đưa Quý khách về điểm đón ban đầu. Kết thúc chương trình tham quan.",
+          "evening": "",
+          "night": "",
+          "meals": [
+            "Sáng"
+          ]
+        }
+      ],
+      "departures": [
+        {
+          "id": "590d033f-b0fe-4af0-88dd-0b96a7c529a5",
+          "tourCode": "BTTDLTQÔ20260701",
+          "tourId": "59103511-4841-42a2-8026-6a32ccf3c1e5",
+          "departureDate": "2026-07-01T00:00:00.000Z",
+          "availableSeats": 19,
+          "price": "20990000",
+          "createdAt": "2026-06-11T03:49:35.671Z",
+          "updatedAt": "2026-06-11T03:49:35.671Z"
+        },
+        {
+          "id": "0e5fa097-f781-47a9-a7e5-70f1c5c5bdbc",
+          "tourCode": "BTTDLTQÔ20260804",
+          "tourId": "59103511-4841-42a2-8026-6a32ccf3c1e5",
+          "departureDate": "2026-08-04T00:00:00.000Z",
+          "availableSeats": 19,
+          "price": "20990000",
+          "createdAt": "2026-06-11T03:49:35.671Z",
+          "updatedAt": "2026-06-11T03:49:35.671Z"
+        }
+      ]
+    },
+    {
+      "id": "56446214-3c7b-4461-9734-05d134fb4c2c",
+      "name": "Du Lịch Hà Giang - Đồng Văn - Cao Bằng - Bắc Kạn",
+      "imageUrl": "https://res.cloudinary.com/dwt4uhpas/image/upload/v1781149920/tours/r7jqnnpc3egnhap2fu3h.png",
+      "imagePublicId": "tours/r7jqnnpc3egnhap2fu3h",
+      "duration": "6 Ngày 5 Đêm",
+      "rating": 0,
+      "reviewsCount": 0,
+      "hasVat": true,
+      "departureFrom": "TP. Hồ Chí Minh",
+      "transport": "Máy bay + Xe du lịch máy lạnh",
+      "included": [
+        "Vé máy bay khứ hồi TP.HCM - Hà Nội // Hà Nội - TP.HCM (hành lý 7kg xách tay + 20kg ký gửi)",
+        "Xe vận chuyển có máy lạnh đưa đón theo chương trình",
+        "Hướng dẫn viên chuyên nghiệp phục vụ suốt tuyến",
+        "Khách sạn tiêu chuẩn 02 khách/phòng theo chương trình",
+        "Các bữa ăn theo chương trình",
+        "Vé tham quan các điểm có trong chương trình",
+        "Nước uống phục vụ trên xe: 01 chai 500ml/ngày",
+        "Quà tặng: nón BenThanh Tourist",
+        "Bảo hiểm du lịch trọn tour: mức bồi thường tối đa 20.000.000 VNĐ/người/vụ"
+      ],
+      "notIncluded": [
+        "Chi phí ăn uống ngoài chương trình, vui chơi giải trí cá nhân",
+        "Tiền tip cho lái xe và hướng dẫn viên (không bắt buộc, thông thường 150.000đ/khách)",
+        "Phụ thu phòng đơn (nếu có)",
+        "Hóa đơn thuế GTGT",
+        "Phụ thu 250.000đ/khách mang quốc tịch nước ngoài",
+        "Các chi phí không được liệt kê trong mục bao gồm"
+      ],
+      "notes": "Chương trình tour chủ yếu di chuyển bằng xe và thời gian dài, nhiều vùng đồi đèo dốc - phù hợp với khách hàng yêu thích khám phá thiên nhiên, trải nghiệm văn hóa, đủ sức khỏe và không bị say xe. Quý khách từ 70 tuổi trở lên hoặc khuyết tật cần có thân nhân đi kèm. Thứ tự các điểm tham quan có thể thay đổi tùy tình hình thực tế nhưng vẫn đảm bảo tham quan đầy đủ.",
+      "schedules": [
+        {
+          "id": "c9fe3dbb-5ae5-4525-8473-8287e44d699b",
+          "tourId": "56446214-3c7b-4461-9734-05d134fb4c2c",
+          "dayNumber": 1,
+          "title": "TP.HCM - HÀ NỘI - HÀ GIANG",
+          "morning": "Quý khách tập trung tại sân bay Tân Sơn Nhất, làm thủ tục bay ra Hà Nội. Đến Hà Nội, xe và HDV đón đoàn tại sân bay Nội Bài.",
+          "noon": "Dùng bữa trưa tại nhà hàng Hà Nội. Xe khởi hành đi Hà Giang (khoảng 300km, 5-6 tiếng).",
+          "afternoon": "Trên đường đi đoàn chinh phục và ngắm cảnh thiên nhiên vùng Đông Bắc.",
+          "evening": "Đến Hà Giang, nhận phòng khách sạn, dùng bữa tối tại nhà hàng địa phương.",
+          "night": "Nghỉ đêm tại Hà Giang.",
+          "meals": [
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "e4fc9b3d-2038-47d2-9b20-9cf8d7054d95",
+          "tourId": "56446214-3c7b-4461-9734-05d134fb4c2c",
+          "dayNumber": 2,
+          "title": "HÀ GIANG - CỔNG TRỜI QUẢN BẠ - YÊN MINH - ĐỒNG VĂN",
+          "morning": "Dùng bữa sáng tại khách sạn. Khởi hành đi Đồng Văn theo Quốc lộ 4C - Con đường Hạnh Phúc. Tham quan Cổng Trời Quản Bạ - Núi Đôi Cô Tiên, chinh phục dốc Bắc Xum dài 7km, ngắm toàn cảnh thung lũng từ đỉnh núi.",
+          "noon": "Dùng bữa trưa tại Yên Minh.",
+          "afternoon": "Tiếp tục hành trình đến Đồng Văn, tham quan Dinh Vua Mèo (Vương Chính Đức) - nằm trong thung lũng xã Sà Phìn, dòng họ giàu có và quyền uy nhất Châu Đồng Văn đầu thế kỷ 20. Thăm bản Sủng Là và ngôi nhà cổ người H'Mông - bối cảnh phim 'Chuyện của Pao'.",
+          "evening": "Dùng bữa tối tại Đồng Văn.",
+          "night": "Nghỉ đêm tại Đồng Văn.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "8cab9234-0d2e-4429-954a-1450d727b3a8",
+          "tourId": "56446214-3c7b-4461-9734-05d134fb4c2c",
+          "dayNumber": 3,
+          "title": "ĐỒNG VĂN - LŨNG CÚ - MÃ PÌ LÈNG - MÈO VẠC - CAO BẰNG",
+          "morning": "Dùng bữa sáng tại khách sạn. Tham quan Cột Cờ Lũng Cú - Cực Bắc địa đầu Tổ Quốc. Chinh phục Đèo Mã Pì Lèng - đoạn đẹp nhất trên con đường Hạnh Phúc, ngắm Sông Nho Quế uốn lượn dưới vực sâu.",
+          "noon": "Dùng bữa trưa tại Mèo Vạc. Xe khởi hành đi Cao Bằng.",
+          "afternoon": "Di chuyển về Cao Bằng, trên đường ngắm cảnh núi rừng Đông Bắc hùng vĩ.",
+          "evening": "Đến Cao Bằng, nhận phòng khách sạn, dùng bữa tối tại nhà hàng địa phương.",
+          "night": "Nghỉ đêm tại Cao Bằng.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "f108c009-b817-415b-a05e-f5b57f25bd7d",
+          "tourId": "56446214-3c7b-4461-9734-05d134fb4c2c",
+          "dayNumber": 4,
+          "title": "CAO BẰNG - THÁC BẢN GIỐC - ĐỘNG NGƯỜM NGAO - BẮC KẠN",
+          "morning": "Dùng bữa sáng tại khách sạn. Tham quan Thác Bản Giốc - thác nước đẹp nhất Việt Nam nằm trên biên giới Việt - Trung với cột mốc chủ quyền thiêng liêng của Tổ Quốc.",
+          "noon": "Dùng bữa trưa tại nhà hàng Phương Cưu. Sau bữa trưa xe đưa đoàn tham quan Động Ngườm Ngao - một trong những hang động đẹp nhất Cao Bằng. Tiếp tục khởi hành về Bắc Kạn - Hồ Ba Bể.",
+          "afternoon": "Di chuyển về Vườn Quốc Gia Ba Bể, nơi có phong cảnh non nước hữu tình.",
+          "evening": "Nhận phòng khách sạn tại Ba Bể, dùng bữa tối.",
+          "night": "Nghỉ đêm tại Ba Bể, Bắc Kạn.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "03079b73-8602-4931-aa73-ad26f7994b20",
+          "tourId": "56446214-3c7b-4461-9734-05d134fb4c2c",
+          "dayNumber": 5,
+          "title": "HỒ BA BỂ - HÀ NỘI",
+          "morning": "Dùng bữa sáng tại khách sạn. Lên thuyền thưởng ngoạn cảnh đẹp Hồ Ba Bể: tham quan 3 hồ, Đảo Bà Góa, Phong Lan, Ao Tiên & Động Puông.",
+          "noon": "Trả phòng khách sạn. Dùng bữa trưa tại nhà hàng địa phương. Khởi hành về Hà Nội.",
+          "afternoon": "Trên đường về ngắm cảnh vùng Đông Bắc.",
+          "evening": "Về đến Hà Nội, nhận phòng khách sạn. Dùng bữa tối tại nhà hàng Hà Nội. Tự do khám phá Hà Nội về đêm.",
+          "night": "Nghỉ đêm tại Hà Nội.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "c3924311-a6f2-45e7-9a4d-24f2f617d68f",
+          "tourId": "56446214-3c7b-4461-9734-05d134fb4c2c",
+          "dayNumber": 6,
+          "title": "HÀ NỘI - TP.HCM",
+          "morning": "Dùng bữa sáng tại khách sạn, trả phòng. Xe đưa đoàn đến sân bay Nội Bài làm thủ tục bay về TP.HCM.",
+          "noon": "Đáp chuyến bay về TP.Hồ Chí Minh.",
+          "afternoon": "Về đến TP.HCM. Xe đưa Quý khách về điểm đón ban đầu. Kết thúc chương trình tham quan.",
+          "evening": "",
+          "night": "",
+          "meals": [
+            "Sáng"
+          ]
+        }
+      ],
+      "departures": [
+        {
+          "id": "1e503d5f-36d5-448e-8bc9-a04c04c3e446",
+          "tourCode": "BTTDLHG-20260628",
+          "tourId": "56446214-3c7b-4461-9734-05d134fb4c2c",
+          "departureDate": "2026-06-28T00:00:00.000Z",
+          "availableSeats": 10,
+          "price": "12690000",
+          "createdAt": "2026-06-11T03:49:34.236Z",
+          "updatedAt": "2026-06-11T03:49:34.236Z"
+        },
+        {
+          "id": "e1f4d619-97e4-411f-a72b-2f01870cdca4",
+          "tourCode": "BTTDLHG-20260823",
+          "tourId": "56446214-3c7b-4461-9734-05d134fb4c2c",
+          "departureDate": "2026-08-23T00:00:00.000Z",
+          "availableSeats": 10,
+          "price": "12690000",
+          "createdAt": "2026-06-11T03:49:34.236Z",
+          "updatedAt": "2026-06-11T03:49:34.236Z"
+        },
+        {
+          "id": "5060b7e2-eba7-4ce1-971d-bfd67c4a82a9",
+          "tourCode": "BTTDLHG-20260927",
+          "tourId": "56446214-3c7b-4461-9734-05d134fb4c2c",
+          "departureDate": "2026-09-27T00:00:00.000Z",
+          "availableSeats": 10,
+          "price": "12690000",
+          "createdAt": "2026-06-11T03:49:34.236Z",
+          "updatedAt": "2026-06-11T03:49:34.236Z"
+        }
+      ]
+    },
+    {
+      "id": "28d0e18d-9b08-4649-b71c-ff4e736111b8",
+      "name": "Du Lịch Tây Nguyên: Đắk Nông - Hồ Tà Đùng",
+      "imageUrl": "https://res.cloudinary.com/dwt4uhpas/image/upload/v1781149918/tours/n8twlvlraycmlmtjc76a.png",
+      "imagePublicId": "tours/n8twlvlraycmlmtjc76a",
+      "duration": "2 Ngày 1 Đêm",
+      "rating": 0,
+      "reviewsCount": 0,
+      "hasVat": true,
+      "departureFrom": "TP. Hồ Chí Minh",
+      "transport": "Xe du lịch máy lạnh",
+      "included": [
+        "Xe vận chuyển có máy lạnh (16, 29, 45 chỗ tùy theo số lượng đăng ký), đưa đón theo chương trình tour",
+        "Hướng dẫn viên chuyên nghiệp, nhiệt tình, chu đáo phục vụ đoàn",
+        "Các bữa ăn theo chương trình, được đổi món thường xuyên theo ẩm thực địa phương",
+        "Khách sạn tiêu chuẩn 02 khách/phòng",
+        "Vé tham quan theo chương trình",
+        "Quà tặng: nón BenThanh Tourist",
+        "Khăn lạnh, nước uống trên đường (01 khăn, 01 chai/ngày)",
+        "Bảo hiểm du lịch trọn tour: mức bồi thường tối đa 100.000.000 VNĐ/người/vụ"
+      ],
+      "notIncluded": [
+        "Chi phí ăn uống ngoài chương trình, vui chơi giải trí cá nhân",
+        "Tiền bồi dưỡng cho HDV và tài xế",
+        "Chi phí cá nhân khác không có trong mục bao gồm",
+        "Hóa đơn thuế GTGT"
+      ],
+      "notes": "Thứ tự các điểm tham quan trong chương trình có thể thay đổi tùy tình hình thực tế nhưng vẫn đảm bảo tham quan đầy đủ như trong chương trình. Do tính chất là đoàn ghép khách lẻ, công ty có trách nhiệm thu nhận đủ 10 khách người lớn trở lên thì đoàn sẽ khởi hành đúng lịch trình.",
+      "schedules": [
+        {
+          "id": "af8f87dc-aeb7-4c36-92ac-4829498fd0a8",
+          "tourId": "28d0e18d-9b08-4649-b71c-ff4e736111b8",
+          "dayNumber": 1,
+          "title": "TP.HCM - ĐẮK NÔNG - HỒ TÀ ĐÙNG",
+          "morning": "05:00 Quý khách tập trung tại điểm hẹn 82-84 Calmette, P.Nguyễn Thái Bình, Q.1. Xe và hướng dẫn viên BenThanh Tourist đón và đưa đoàn khởi hành đi Đắk Nông. Dừng chân dùng điểm tâm sáng tại nhà hàng. Tiếp tục hành trình theo QL14 qua các địa danh Đồng Xoài, Sóc Bom Bo, Bù Đăng, đường Hồ Chí Minh.",
+          "noon": "Đến Thị Xã Gia Nghĩa, Đắk Nông. Dùng cơm trưa tại nhà hàng địa phương. Nhận phòng khách sạn nghỉ ngơi.",
+          "afternoon": "Khởi hành đi Khu Bảo Tồn Thiên Nhiên Tà Đùng. Với cảnh đẹp hút hồn của con đường đèo dài, có nhiều khúc ôm cua, khung cảnh núi rừng hoang vu, những đồi café, tiêu bạc ngàn phủ xanh núi đồi Tây Nguyên. Đến Hồ Tà Đùng - được ví von là Vịnh Hạ Long của Tây Nguyên, với hơn 36 hòn đảo lớn nhỏ nhấp nhô trên mặt hồ. Quán cà phê Top View Tà Đùng: thưởng thức cà phê/kem và ngắm nhìn toàn cảnh hồ từ trên cao.",
+          "evening": "Dùng bữa tối tại nhà hàng. Tự do khám phá trung tâm Gia Nghĩa về đêm.",
+          "night": "Nghỉ đêm tại Gia Nghĩa, Đắk Nông.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "654c8fe3-4889-43f8-a7cc-5e1b9fd9e821",
+          "tourId": "28d0e18d-9b08-4649-b71c-ff4e736111b8",
+          "dayNumber": 2,
+          "title": "ĐẮK NÔNG - THÁC LƯU LY - THIỀN VIỆN TRÚC LÂM - TP.HCM",
+          "morning": "Dùng điểm tâm sáng tại khách sạn, trả phòng. Xe đưa Quý khách theo quốc lộ 14. Tham quan Thiền Viện Trúc Lâm Đạo Nguyên - nằm ẩn mình trong rừng thông bát ngát, dựa lưng vào dãy Nâm Nung cao 1500m, khí hậu quanh năm mát mẻ, yên tĩnh. Tham quan Thác Lưu Ly - con thác nổi tiếng Tây Nguyên nằm dưới chân núi Nâm Nung hùng vĩ, vẫn giữ được sự hoang sơ.",
+          "noon": "Dùng bữa trưa tại nhà hàng địa phương. Khởi hành về TP.Hồ Chí Minh.",
+          "afternoon": "Đoàn về đến TP.Hồ Chí Minh. Xe đưa Quý khách về điểm đón ban đầu. Kết thúc chương trình.",
+          "evening": "",
+          "night": "",
+          "meals": [
+            "Sáng",
+            "Trưa"
+          ]
+        }
+      ],
+      "departures": [
+        {
+          "id": "bc70fd46-667c-4a0c-afea-030189cc69f6",
+          "tourCode": "BTTDLTNĐ20260623",
+          "tourId": "28d0e18d-9b08-4649-b71c-ff4e736111b8",
+          "departureDate": "2026-06-23T00:00:00.000Z",
+          "availableSeats": 20,
+          "price": "2690000",
+          "createdAt": "2026-06-11T03:49:32.159Z",
+          "updatedAt": "2026-06-11T03:49:32.159Z"
+        },
+        {
+          "id": "9be98139-f849-45c5-9b66-59305ce34480",
+          "tourCode": "BTTDLTNĐ20260707",
+          "tourId": "28d0e18d-9b08-4649-b71c-ff4e736111b8",
+          "departureDate": "2026-07-07T00:00:00.000Z",
+          "availableSeats": 20,
+          "price": "2690000",
+          "createdAt": "2026-06-11T03:49:32.159Z",
+          "updatedAt": "2026-06-11T03:49:32.159Z"
+        },
+        {
+          "id": "d1615040-3c49-4764-b056-c4b15cb4ad86",
+          "tourCode": "BTTDLTNĐ20260721",
+          "tourId": "28d0e18d-9b08-4649-b71c-ff4e736111b8",
+          "departureDate": "2026-07-21T00:00:00.000Z",
+          "availableSeats": 20,
+          "price": "2690000",
+          "createdAt": "2026-06-11T03:49:32.159Z",
+          "updatedAt": "2026-06-11T03:49:32.159Z"
+        },
+        {
+          "id": "eaf1b7b6-5f25-4eb9-ae62-f0e5314b8116",
+          "tourCode": "BTTDLTNĐ20260811",
+          "tourId": "28d0e18d-9b08-4649-b71c-ff4e736111b8",
+          "departureDate": "2026-08-11T00:00:00.000Z",
+          "availableSeats": 20,
+          "price": "2690000",
+          "createdAt": "2026-06-11T03:49:32.159Z",
+          "updatedAt": "2026-06-11T03:49:32.159Z"
+        }
+      ]
+    },
+    {
+      "id": "d9d5accb-484b-4f97-a388-be632d19a9db",
+      "name": "Du Lịch Miền Tây: Đồng Tháp - An Giang - Cần Thơ",
+      "imageUrl": "https://res.cloudinary.com/dwt4uhpas/image/upload/v1780998605/tours/yyrmhxxtmsqqpx0nehcb.png",
+      "imagePublicId": "tours/yyrmhxxtmsqqpx0nehcb",
+      "duration": "4 Ngày 3 Đêm",
+      "rating": 0,
+      "reviewsCount": 0,
+      "hasVat": true,
+      "departureFrom": "TP. Hồ Chí Minh",
+      "transport": "Xe du lịch máy lạnh",
+      "included": [
+        "Xe vận chuyển có máy lạnh, đưa đón theo chương trình tour",
+        "Hướng dẫn viên chuyên nghiệp, nhiệt tình, chu đáo phục vụ đoàn",
+        "Bữa ăn theo chương trình",
+        "Khách sạn 3 sao tiêu chuẩn 02 khách/phòng",
+        "Vé tham quan theo chương trình",
+        "Quà tặng: nón BenThanh Tourist",
+        "Khăn lạnh, nước uống trên đường (01 khăn, 01 chai/ngày)",
+        "Bảo hiểm mức bồi thường tối đa 100.000.000 VNĐ/người",
+        "Thuế VAT"
+      ],
+      "notIncluded": [
+        "Chi phí ăn uống ngoài chương trình, vui chơi giải trí cá nhân",
+        "Tiền bồi dưỡng cho HDV và tài xế",
+        "Xe lôi đạp tham quan chợ Châu Đốc (chi phí tự túc)",
+        "Các chi phí không có trong mục bao gồm",
+        "Các bữa ăn không bao gồm trong chương trình"
+      ],
+      "notes": "Do tính chất là đoàn ghép khách lẻ, công ty có trách nhiệm thu nhận đủ 10 khách người lớn trở lên thì đoàn sẽ khởi hành đúng lịch trình. Thứ tự các điểm tham quan có thể thay đổi tùy tình hình thực tế nhưng vẫn đảm bảo tham quan đầy đủ.",
+      "schedules": [
+        {
+          "id": "e1dc5c64-7a70-4dd3-9419-0a80f79f6c92",
+          "tourId": "d9d5accb-484b-4f97-a388-be632d19a9db",
+          "dayNumber": 1,
+          "title": "TP.HCM - CAO LÃNH",
+          "morning": "05:30 Quý khách tập trung tại điểm hẹn khởi hành đi Miền Tây theo đường cao tốc Sài Gòn – Trung Lương. Dừng chân dùng điểm tâm sáng đặc sản hủ tíu Mỹ Tho tại Mekong Restop. Tham quan xưởng sản xuất socola 'Ông Già Socola', thưởng thức socola và tìm hiểu về cây cacao. Tiếp tục đến Đồng Tháp tham quan Cánh Đồng Sen Đồng Tháp Mười bằng xuồng Ba Lá (đã bao gồm chi phí), thưởng thức trà sen.",
+          "noon": "Dùng bữa trưa tại khu du lịch với các món địa phương: Cá Lóc đồng nướng lá Sen, Cơm lá Sen. Sau đó về Tp.Cao Lãnh, Tỉnh Đồng Tháp.",
+          "afternoon": "Đến Tp.Cao Lãnh nhận phòng khách sạn, nghỉ ngơi.",
+          "evening": "Dùng bữa tối tại nhà hàng địa phương.",
+          "night": "Nghỉ đêm tại Tp.Cao Lãnh.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "3fe92d2f-3b8d-4c42-97b3-18f38870fdfa",
+          "tourId": "d9d5accb-484b-4f97-a388-be632d19a9db",
+          "dayNumber": 2,
+          "title": "CAO LÃNH - CHÂU ĐỐC",
+          "morning": "Quý khách dùng bữa sáng tại khách sạn, trả phòng. Đoàn khởi hành đi Châu Đốc - An Giang (khoảng 107km, 2h30 phút). Đến Châu Đốc, di chuyển sang tàu tham quan Làng bè Châu Đốc, Làng Chăm Châu Phong, Thánh đường Hồi Giáo và tìm hiểu nghề dệt thổ cẩm của người Chăm Châu Giang.",
+          "noon": "Quý khách dùng bữa trưa tại nhà hàng địa phương. Nhận phòng khách sạn nghỉ ngơi hoặc tự do trải nghiệm xe lôi đạp tham quan mua sắm tại chợ Châu Đốc (chi phí tự túc).",
+          "afternoon": "Tập trung tham quan và ngắm hoàng hôn tại Phước Điền Tự (Chùa Hang) – ngôi chùa đẹp nhất An Giang.",
+          "evening": "Quý khách dùng cơm tại nhà hàng địa phương. Tự do trải nghiệm Châu Đốc về đêm.",
+          "night": "Nghỉ đêm tại Châu Đốc.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "5a9e1fb6-eb99-47e0-b568-2617717aa5fe",
+          "tourId": "d9d5accb-484b-4f97-a388-be632d19a9db",
+          "dayNumber": 3,
+          "title": "CHÂU ĐỐC - CẦN THƠ",
+          "morning": "Quý khách dùng bữa sáng tại khách sạn, trả phòng. Đoàn khởi hành về Trà Sư - An Giang, tham quan Rừng tràm Trà Sư bằng tắc ráng. Ngồi xuồng ba lá dạo quanh cánh đồng bèo, nơi sinh sản của các loài chim: Cò, Vạc, Chàng Nghịch...",
+          "noon": "Quý khách thưởng thức món địa phương tại khu du lịch. Đoàn về bến tàu, lên xe tiếp tục hành trình về Cần Thơ.",
+          "afternoon": "Đến Cần Thơ, nhận phòng khách sạn, nghỉ ngơi.",
+          "evening": "Dùng bữa tối đặc sản địa phương: Lẩu Mắm Cần Thơ hoặc Vịt nấu Chao. Tự do tham quan chợ đêm Cần Thơ hoặc trải nghiệm du thuyền trên sông.",
+          "night": "Nghỉ đêm tại Cần Thơ.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "08fa646a-b119-4e34-802a-d4fb0d02ce35",
+          "tourId": "d9d5accb-484b-4f97-a388-be632d19a9db",
+          "dayNumber": 4,
+          "title": "CẦN THƠ - TPHCM",
+          "morning": "Quý khách dùng bữa sáng tại khách sạn, trả phòng. Đến Bến Ninh Kiều lên tàu tham quan Chợ nổi Cái Răng. Tiếp tục tham quan Cồn Sơn bằng tàu: vườn trái cây, xem màn trình diễn 'cá lóc bay', tham gia làm bánh dân gian.",
+          "noon": "Dùng bữa trưa tại nhà dân trên Cồn Sơn với món ăn địa phương: Ốc hấp hèm, gỏi bưởi, Gà hấp hèm. Khởi hành về TP.Hồ Chí Minh. Ghé mua đặc sản Miền Tây: trái cây, bánh Pía, nem chua.",
+          "afternoon": "Về đến TP.Hồ Chí Minh. Xe đưa Quý khách về điểm đón ban đầu. Kết thúc chương trình.",
+          "evening": "",
+          "night": "",
+          "meals": [
+            "Sáng",
+            "Trưa"
+          ]
+        }
+      ],
+      "departures": [
+        {
+          "id": "ef2a0559-e6bb-41d9-aeac-becae69b6657",
+          "tourCode": "BTTDLMTĐ20260628",
+          "tourId": "d9d5accb-484b-4f97-a388-be632d19a9db",
+          "departureDate": "2026-06-28T00:00:00.000Z",
+          "availableSeats": 30,
+          "price": "6300000",
+          "createdAt": "2026-06-11T02:50:35.864Z",
+          "updatedAt": "2026-06-11T02:50:35.864Z"
+        },
+        {
+          "id": "eb6ff3d3-d327-4989-962b-a738a36e1d94",
+          "tourCode": "BTTDLMTĐ20260710",
+          "tourId": "d9d5accb-484b-4f97-a388-be632d19a9db",
+          "departureDate": "2026-07-10T00:00:00.000Z",
+          "availableSeats": 30,
+          "price": "6300000",
+          "createdAt": "2026-06-11T02:54:04.591Z",
+          "updatedAt": "2026-06-11T02:54:04.591Z"
+        },
+        {
+          "id": "513395bc-fd6a-4659-8353-5db3d66b7e87",
+          "tourCode": "BTTDLMTĐ20260720",
+          "tourId": "d9d5accb-484b-4f97-a388-be632d19a9db",
+          "departureDate": "2026-07-20T00:00:00.000Z",
+          "availableSeats": 20,
+          "price": "6300000",
+          "createdAt": "2026-06-11T02:54:25.264Z",
+          "updatedAt": "2026-06-11T02:54:25.264Z"
+        }
+      ]
+    },
+    {
+      "id": "2002d8b7-28f5-4d13-8792-3ab0d8454533",
+      "name": "Du Lịch Miền Tây: Cần Thơ - Bạc Liêu - Cà Mau",
+      "imageUrl": "https://res.cloudinary.com/dwt4uhpas/image/upload/v1780998603/tours/verwzseodtasrjagpxvz.png",
+      "imagePublicId": "tours/verwzseodtasrjagpxvz",
+      "duration": "4 Ngày 3 Đêm",
+      "rating": 0,
+      "reviewsCount": 0,
+      "hasVat": true,
+      "departureFrom": "TP. Hồ Chí Minh",
+      "transport": "Xe du lịch máy lạnh",
+      "included": [
+        "Xe vận chuyển có máy lạnh, đưa đón theo chương trình tour",
+        "Hướng dẫn viên chuyên nghiệp, nhiệt tình, chu đáo phục vụ đoàn",
+        "04 bữa sáng, 07 bữa chính tại nhà hàng địa phương",
+        "Khách sạn 3 sao tiêu chuẩn 02 khách/phòng",
+        "Vé tham quan theo chương trình",
+        "Quà tặng: nón BenThanh Tourist",
+        "Khăn lạnh, nước uống trên đường (01 khăn, 01 chai/ngày)",
+        "Bảo hiểm mức bồi thường tối đa 100.000.000 VNĐ/người",
+        "Thuế VAT"
+      ],
+      "notIncluded": [
+        "Chi phí ăn uống ngoài chương trình, vui chơi giải trí cá nhân",
+        "Tiền bồi dưỡng cho HDV và tài xế",
+        "Các chi phí không có trong mục bao gồm",
+        "Các bữa ăn không bao gồm trong chương trình"
+      ],
+      "notes": "Do tính chất là đoàn ghép khách lẻ, công ty có trách nhiệm thu nhận đủ 10 khách người lớn trở lên thì đoàn sẽ khởi hành đúng lịch trình. Thứ tự các điểm tham quan có thể thay đổi tùy tình hình thực tế nhưng vẫn đảm bảo tham quan đầy đủ.",
+      "schedules": [
+        {
+          "id": "c0a8e288-ebe6-4ea7-b591-a348f6b430fe",
+          "tourId": "2002d8b7-28f5-4d13-8792-3ab0d8454533",
+          "dayNumber": 1,
+          "title": "TP.HCM - CẦN THƠ",
+          "morning": "06:00 đoàn tập trung tại điểm hẹn, HDV BenThanh Tourist đón đoàn khởi hành đi Miền Tây theo tuyến cao tốc Trung Lương. Dừng chân dùng điểm tâm sáng tại nhà hàng Mekong Restop. Đến bến tàu 30/4 Mỹ Tho, xuống tàu du ngoạn sông Tiền, ngắm làng nuôi cá bè và 04 cù lao tứ linh Long, Lân, Qui, Phụng. Tham quan Cồn Thới Sơn: thưởng thức trà mật ong, tham quan lò kẹo dừa, thưởng thức trái cây theo mùa và nghe đờn ca tài tử Nam bộ. Đi đò chèo trên rạch nhỏ dưới hai hàng dừa nước.",
+          "noon": "Đoàn dùng bữa trưa tại nhà vườn. Xe đón đoàn khởi hành về Cần Thơ, nhận phòng khách sạn.",
+          "afternoon": "Tự do thư giãn nghỉ ngơi tại khách sạn.",
+          "evening": "Đoàn dùng bữa tối tại nhà hàng địa phương.",
+          "night": "Nghỉ đêm tại Cần Thơ.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "6ae1b1ad-2b2d-47c9-9093-981a4b073481",
+          "tourId": "2002d8b7-28f5-4d13-8792-3ab0d8454533",
+          "dayNumber": 2,
+          "title": "CẦN THƠ - CÀ MAU",
+          "morning": "Đoàn làm thủ tục trả phòng sớm, xuống thuyền du ngoạn sông Cần Thơ. Tham quan Chợ Nổi Cái Răng – Di Sản Văn Hóa Phi Vật Thể Quốc Gia. Tiếp tục hành trình về Bạc Liêu tham quan Nhà Công Tử Bạc Liêu – biệt thự do kỹ sư người Pháp thiết kế năm 1919, nghe kể giai thoại về Công tử Bạc Liêu.",
+          "noon": "Quý khách dùng bữa trưa tại nhà hàng địa phương. Sau đó khởi hành về Cà Mau, ghé tham quan Nhà thờ Tắc Sậy – nơi an nghỉ của Linh mục Trương Bửu Diệp.",
+          "afternoon": "Đến Cà Mau, nhận phòng khách sạn, nghỉ ngơi.",
+          "evening": "Dùng bữa tối tại nhà hàng địa phương.",
+          "night": "Nghỉ đêm tại Cà Mau.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "04eb3e51-abee-4c74-ab80-8c81d2f84968",
+          "tourId": "2002d8b7-28f5-4d13-8792-3ab0d8454533",
+          "dayNumber": 3,
+          "title": "CÀ MAU - BẠC LIÊU",
+          "morning": "Dùng điểm tâm sáng, trả phòng. Khởi hành đi Đất Mũi, tham quan Cột cờ Đất Mũi (cao hơn 41m), Mốc tọa độ Quốc gia GPS 0001, Panô biểu tượng Mũi Cà Mau. Tham quan hệ sinh thái rừng ngập mặn tại Vườn Quốc Gia Mũi Cà Mau – Khu Dự trữ Sinh quyển Thế giới. Trải nghiệm tham quan bãi bồi bằng cano đi xuyên rừng.",
+          "noon": "Quý khách dùng bữa tại khu du lịch cộng đồng với đặc sản: Cá thòi lòi nướng muối ớt, hàu, cua Cà Mau.",
+          "afternoon": "Đoàn khởi hành về Bạc Liêu. Nhận phòng khách sạn, nghỉ ngơi.",
+          "evening": "Dùng bữa tối tại nhà hàng địa phương.",
+          "night": "Nghỉ đêm tại Bạc Liêu.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "34f81ee1-7367-48c2-8534-15397251374a",
+          "tourId": "2002d8b7-28f5-4d13-8792-3ab0d8454533",
+          "dayNumber": 4,
+          "title": "BẠC LIÊU - SÓC TRĂNG - TPHCM",
+          "morning": "Dùng bữa sáng, trả phòng. Tham quan Quảng Trường Hùng Vương với hình ảnh cây đàn kìm cách điệu cao 18,6m. Tham quan Khu lưu niệm nghệ thuật Đờn Ca Tài Tử Nam Bộ và cố nhạc sĩ Cao Văn Lầu. Khởi hành đi Sóc Trăng, tham quan Chùa Wat Pătum Wôngsa Som Rông – quần thể kiến trúc Phật giáo với tượng Phật Thích Ca nhập niết bàn dài 63m.",
+          "noon": "Dùng bữa trưa tại nhà hàng địa phương. Dừng chân mua đặc sản: Bánh Pía Sóc Trăng, kẹo dừa.",
+          "afternoon": "Đoàn về lại TP.Hồ Chí Minh. Xe và HDV đưa quý khách về điểm đón ban đầu. Kết thúc chương trình.",
+          "evening": "",
+          "night": "",
+          "meals": [
+            "Sáng",
+            "Trưa"
+          ]
+        }
+      ],
+      "departures": [
+        {
+          "id": "ee66279d-9dce-45b7-8198-a781fbe86206",
+          "tourCode": "BTTDLMTC20260723",
+          "tourId": "2002d8b7-28f5-4d13-8792-3ab0d8454533",
+          "departureDate": "2026-07-23T00:00:00.000Z",
+          "availableSeats": 20,
+          "price": "4990000",
+          "createdAt": "2026-06-11T02:58:34.036Z",
+          "updatedAt": "2026-06-11T02:58:34.036Z"
+        },
+        {
+          "id": "f210aa00-4806-496d-85cb-80ea3b9728b9",
+          "tourCode": "BTTDLMTC20260623",
+          "tourId": "2002d8b7-28f5-4d13-8792-3ab0d8454533",
+          "departureDate": "2026-06-23T00:00:00.000Z",
+          "availableSeats": 20,
+          "price": "4990000",
+          "createdAt": "2026-06-11T02:58:50.523Z",
+          "updatedAt": "2026-06-11T02:58:50.523Z"
+        }
+      ]
+    },
+    {
+      "id": "61af378f-4305-4cb6-9735-698902b1f7c8",
+      "name": "Du Lịch Đà Nẵng: Bán Đảo Sơn Trà - Hội An - Cố Đô Huế",
+      "imageUrl": "https://res.cloudinary.com/dwt4uhpas/image/upload/v1780998600/tours/zkvvvns18i7recx4vm2v.png",
+      "imagePublicId": "tours/zkvvvns18i7recx4vm2v",
+      "duration": "4 Ngày 3 Đêm",
+      "rating": 0,
+      "reviewsCount": 0,
+      "hasVat": true,
+      "departureFrom": "TP. Hồ Chí Minh",
+      "transport": "Máy bay Vietjet & Xe du lịch đời mới",
+      "included": [
+        "Vé máy bay Vietjet khứ hồi TP.HCM - Đà Nẵng và Huế - TP.HCM",
+        "Hành lý: 07kg xách tay + 20kg ký gửi",
+        "Xe vận chuyển có máy lạnh phục vụ theo chương trình",
+        "Khách sạn 4 sao tiêu chuẩn theo chương trình (2 khách/phòng), trường hợp nam/nữ lẻ ngủ ghép 3 khách/phòng",
+        "03 bữa sáng tại khách sạn",
+        "06 bữa chính theo thực đơn Setmenu",
+        "Chi phí tham quan theo chương trình",
+        "HDV BenThanh Tourist nhiệt tình, am hiểu tuyến điểm",
+        "Nước suối, khăn lạnh: 02 đơn vị/khách/ngày",
+        "Bảo hiểm du lịch mức bồi thường tối đa 100.000.000 đồng/người/vụ",
+        "Thuế VAT"
+      ],
+      "notIncluded": [
+        "Chi phí phòng đơn: 2.190.000 VNĐ/khách",
+        "Chi phí giặt ủi, điện thoại và những chi phí cá nhân khác",
+        "Du Thuyền Sông Hương, ca Huế",
+        "Vé cáp treo + Buffet trưa trên Bà Nà",
+        "Xe điện tham quan Đại Nội",
+        "Các chi phí không có trong mục bao gồm"
+      ],
+      "notes": "Thứ tự các điểm tham quan trong chương trình có thể thay đổi tùy tình hình thực tế nhưng vẫn bảo đảm tham quan đầy đủ như trong chương trình.",
+      "schedules": [
+        {
+          "id": "07a47182-ede0-44fe-992f-36a6cfbaad9d",
+          "tourId": "61af378f-4305-4cb6-9735-698902b1f7c8",
+          "dayNumber": 1,
+          "title": "TPHCM - ĐÀ NẴNG - BÁN ĐẢO SƠN TRÀ - HỘI AN",
+          "morning": "HDV BenThanh Tourist đón Quý khách tại ga đi trong nước sân bay Tân Sơn Nhất làm thủ tục chuyến bay Vietjet lúc 07:25 đi Đà Nẵng. 08:45 đến sân bay Đà Nẵng, xe và HDV đón Quý khách tham quan Bán Đảo Sơn Trà – rừng già giữa lòng phố trẻ, viếng Linh Ứng Tự nơi có tượng Phật Bà 67m hướng ra biển Đông.",
+          "noon": "Đến nhà hàng dùng bữa trưa. Sau đó về khách sạn nhận phòng nghỉ ngơi.",
+          "afternoon": "Đoàn tham quan Khu Danh Thắng Non Nước Ngũ Hành Sơn. Tiếp tục khởi hành đi Hội An, tham quan phố cổ với các điểm: Chùa Cầu Nhật Bản, Nhà cổ trăm năm tuổi, Hội Quán Phước Kiến, Xưởng thủ công mỹ nghệ. Tự do thưởng thức ẩm thực đặc sản Phố Hội và khám phá Hội An về đêm dưới ánh đèn lồng.",
+          "evening": "Quý khách ăn tối tại nhà hàng. Xe và HDV đưa Quý khách quay về khách sạn nghỉ ngơi.",
+          "night": "Nghỉ đêm tại Đà Nẵng.",
+          "meals": [
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "f70f2734-a293-4913-91b8-039aa35fac8e",
+          "tourId": "61af378f-4305-4cb6-9735-698902b1f7c8",
+          "dayNumber": 2,
+          "title": "BÀ NÀ HILLS - ĐÀ NẴNG",
+          "morning": "Đoàn dùng điểm tâm sáng tại khách sạn. Khởi hành tham quan KDL Bà Nà Hills – bách bộ chinh phục Đỉnh Núi Chúa cao 1.487m, đỉnh cao nhất của Bà Nà Hills (chi phí cáp treo tự túc).",
+          "noon": "Đoàn tự túc dùng bữa trưa tại Bà Nà. Sau buổi trưa tự do vui chơi tại Bà Nà.",
+          "afternoon": "Đoàn xuống cáp treo, xe đưa về Đà Nẵng. Tự do tắm biển Mỹ Khê.",
+          "evening": "Dùng bữa tối tại nhà hàng.",
+          "night": "Nghỉ đêm tại Đà Nẵng.",
+          "meals": [
+            "Sáng",
+            "Tối"
+          ]
+        },
+        {
+          "id": "2e0f4281-3a53-466e-8ac3-c4dc10fab682",
+          "tourId": "61af378f-4305-4cb6-9735-698902b1f7c8",
+          "dayNumber": 3,
+          "title": "ĐÀ NẴNG - CỐ ĐÔ HUẾ - ĐẠI NỘI - CHÙA THIÊN MỤ",
+          "morning": "Đoàn ăn sáng tại khách sạn, trả phòng, khởi hành đi Cố Đô Huế xuyên hầm đường bộ đèo Hải Vân.",
+          "noon": "Đến Huế, đoàn dùng bữa trưa tại nhà hàng địa phương. Sau đó về khách sạn nhận phòng nghỉ ngơi.",
+          "afternoon": "Đoàn tham quan Đại Nội – Hoàng cung triều Nguyễn với Ngọ Môn, Điện Thái Hòa, Tử Cấm Thành, Thế Miếu, Hiển Lâm Các, Cửu Đỉnh. Tiếp tục viếng Chùa Thiên Mụ cổ kính bên bờ sông Hương.",
+          "evening": "Đoàn dùng tối tại nhà hàng địa phương. Sau đó có thể xuống thuyền Rồng thưởng thức ca Huế trên sông Hương (chi phí tự túc).",
+          "night": "Nghỉ đêm tại thành phố Huế.",
+          "meals": [
+            "Sáng",
+            "Trưa",
+            "Tối"
+          ]
+        },
+        {
+          "id": "55ced6b6-499c-4727-ab29-14c35629c5c1",
+          "tourId": "61af378f-4305-4cb6-9735-698902b1f7c8",
+          "dayNumber": 4,
+          "title": "LĂNG KHẢI ĐỊNH - TPHCM",
+          "morning": "Đoàn dùng bữa sáng tại khách sạn, trả phòng. Tham quan Lăng Khải Định và Làng Hương Thủy Xuân nổi tiếng với nghề làm hương truyền thống lâu đời.",
+          "noon": "Đoàn dùng bữa trưa tại nhà hàng địa phương. Tham quan Cung An Định và mua sắm tại cửa hàng đặc sản địa phương. Xe đưa đoàn ra sân bay Huế đáp chuyến bay Vietjet lúc 18:00 về TP.HCM.",
+          "afternoon": "19:25 đến sân bay Tân Sơn Nhất, kết thúc chương trình tham quan. Hướng dẫn viên chào tạm biệt.",
+          "evening": "",
+          "night": "",
+          "meals": [
+            "Sáng",
+            "Trưa"
+          ]
+        }
+      ],
+      "departures": []
+    },
+    
+    
+    jasdb
+
+
+

@@ -2,12 +2,15 @@ import { Controller, Get, Post, Patch, Delete, Body, Param, UseGuards, Query } f
 import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags, ApiUnauthorizedResponse, ApiInternalServerErrorResponse, ApiNotFoundResponse, ApiBadRequestResponse } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../../common/guard/jwt-auth.guard';
 import { RoleGuard } from '../../common/guard/role.guard';
+import { Roles } from '../../common/decorators/role.decorator';
+import { BookingStatus, Role } from '@prisma/client';
 import { BookingsService } from './bookings.service';
 import { RelaxedThrottler } from '../../common/decorators/custom-throttler.decorator';
 import { GetUser } from '../../common/decorators/get-user.decorator';
 import { BookingResponseDto, DashboardOverviewResponseDto } from './dtos/booking-response.dto';
 import { CreateBookingDTO } from './dtos/create-booking.dto';
 import { UpdateBookingDTO } from './dtos/update-booking.dto';
+import { UpdateBookingStatusDto } from './dtos/update-booking-status.dto';
 import { PaginationQueryDto } from '@/common/dtos/pagination.dto';
 import { PaginatedResponseDto } from '@/common/dtos/pagination-response.dto';
 import { ApiPaginatedResponse } from '../../common/decorators/api-paginated-response.decorator';
@@ -128,5 +131,19 @@ export class BookingsController {
     @GetUser('id') userId: string,
   ): Promise<{ success: boolean; message: string }> {
     return this.bookingsService.deleteBooking(id, userId);
+  }
+
+  @Patch(':id/status')
+  @Roles(Role.ADMIN)
+  @ApiOperation({ summary: 'Update booking status (Admin only)' })
+  @ApiResponse({ status: 200, description: 'Booking status updated.', type: BookingResponseDto })
+  @ApiNotFoundResponse({ description: 'Booking not found.' })
+  @ApiBadRequestResponse({ description: 'Booking already has this status.' })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized.' })
+  async updateStatus(
+    @Param('id') id: string,
+    @Body() dto: UpdateBookingStatusDto,
+  ): Promise<BookingResponseDto> {
+    return this.bookingsService.updateBookingStatus(id, dto.status as unknown as BookingStatus);
   }
 }
