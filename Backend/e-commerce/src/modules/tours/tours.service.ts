@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException, BadRequestException, OnModuleInit } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
 import { CloudinaryService } from '../../common/cloudinary/cloudinary.service';
 import { TourResponseDto } from './dtos/tour-response.dto';
@@ -6,6 +6,7 @@ import { CreateTourDTO } from './dtos/create-tour.dto';
 import { UpdateTourDTO } from './dtos/update-tour.dto';
 import { PaginationQueryDto } from '../../common/dtos/pagination.dto';
 import { PaginatedResponseDto } from '../../common/dtos/pagination-response.dto';
+import { QueryTourTypeDto, QueryTopToursDto } from './dtos/query-tour-type.dto';
 
 @Injectable()
 export class ToursService {
@@ -108,6 +109,9 @@ export class ToursService {
             included: dto.included ?? [],
             notIncluded: dto.notIncluded ?? [],
             notes: dto.notes,
+            tourCountry: dto.tourCountry ?? null,
+            tourRegion: dto.tourRegion ?? null,
+            tourCity: dto.tourCity ?? null,
             schedules: dto.schedules?.length
               ? {
                   createMany: {
@@ -241,6 +245,102 @@ private generateTourCode(tourName: string, departureDate: Date): string {
     };
   }
 
+  async getNewestTours(query: QueryTopToursDto): Promise<PaginatedResponseDto<TourResponseDto>> {
+    const { page = 1, limit = 10 } = query;
+    const skip = (page - 1) * limit;
+
+    const [tours, total] = await this.prisma.$transaction([
+      this.prisma.tour.findMany({
+        orderBy: { createdAt: 'desc' },
+        skip,
+        take: limit,
+        include: {
+          schedules: { orderBy: { dayNumber: 'asc' } },
+          departures: { orderBy: { departureDate: 'asc' } },
+        },
+      }),
+      this.prisma.tour.count(),
+    ]);
+
+    return new PaginatedResponseDto(tours.map(t => this.mapToDto(t)), { total, page, limit });
+  }
+
+  async getHotTours(query: QueryTopToursDto): Promise<PaginatedResponseDto<TourResponseDto>> {
+    const { page = 1, limit = 10 } = query;
+    const skip = (page - 1) * limit;
+
+    const [tours, total] = await this.prisma.$transaction([
+      this.prisma.tour.findMany({
+        orderBy: { rating: 'desc' },
+        skip,
+        take: limit,
+        include: {
+          schedules: { orderBy: { dayNumber: 'asc' } },
+          departures: { orderBy: { departureDate: 'asc' } },
+        },
+      }),
+      this.prisma.tour.count(),
+    ]);
+
+    return new PaginatedResponseDto(tours.map(t => this.mapToDto(t)), { total, page, limit });
+  }
+
+  async getPopularTours(query: QueryTopToursDto): Promise<PaginatedResponseDto<TourResponseDto>> {
+    const { page = 1, limit = 10 } = query;
+    const skip = (page - 1) * limit;
+
+    const [tours, total] = await this.prisma.$transaction([
+      this.prisma.tour.findMany({
+        orderBy: [
+          { bookings: { _count: 'desc' } },
+          { createdAt: 'desc' },
+        ],
+        skip,
+        take: limit,
+        include: {
+          schedules: { orderBy: { dayNumber: 'asc' } },
+          departures: { orderBy: { departureDate: 'asc' } },
+          _count: { select: { bookings: true } },
+        },
+      }),
+      this.prisma.tour.count(),
+    ]);
+
+    return new PaginatedResponseDto(tours.map(t => this.mapToDto(t)), { total, page, limit });
+  }
+
+  async getToursByType(query: QueryTourTypeDto): Promise<PaginatedResponseDto<TourResponseDto>> {
+    const { country, region, city, page = 1, limit = 10 } = query;
+    const skip = (page - 1) * limit;
+
+    // Lọc phân cấp:
+    // - country, region: exact match (giá trị chuẩn hóa như "Trong nước", "Miền Bắc")
+    // - city: contains + insensitive (1 tour có thể gồm nhiều thành phố, VD "Đà Nẵng - Huế - Quảng Bình")
+    const where: any = {};
+    if (country) where.tourCountry = country;
+    if (region) where.tourRegion = region;
+    if (city) where.tourCity = { contains: city, mode: 'insensitive' };
+
+    const [tours, total] = await this.prisma.$transaction([
+      this.prisma.tour.findMany({
+        where,
+        orderBy: { createdAt: 'desc' },
+        skip,
+        take: limit,
+        include: {
+          schedules: { orderBy: { dayNumber: 'asc' } },
+          departures: { orderBy: { departureDate: 'asc' } },
+        },
+      }),
+      this.prisma.tour.count({ where }),
+    ]);
+
+    return new PaginatedResponseDto(
+      tours.map(t => this.mapToDto(t)),
+      { total, page, limit },
+    );
+  }
+
   async rateTour(id: string, userRating: number): Promise<TourResponseDto> {
     const tour = await this.prisma.tour.findUnique({
       where: { id },
@@ -281,9 +381,12 @@ private generateTourCode(tourName: string, departureDate: Date): string {
       included: tour.included,
       notIncluded: tour.notIncluded,
       notes: tour.notes,
+      tourCountry: tour.tourCountry ?? null,
+      tourRegion: tour.tourRegion ?? null,
+      tourCity: tour.tourCity ?? null,
+      bookingCount: tour._count?.bookings,
       schedules: tour.schedules,
       departures: tour.departures,
-
     };
   }
 }

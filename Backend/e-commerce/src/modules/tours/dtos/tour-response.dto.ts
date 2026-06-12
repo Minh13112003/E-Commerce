@@ -1,5 +1,3 @@
-import { ApiProperty } from '@nestjs/swagger';
-
 export class TourResponseDto {
   id: string;
   name: string;
@@ -14,6 +12,10 @@ export class TourResponseDto {
   included: string[];
   notIncluded: string[];
   notes?: string;
+  tourCountry?: string;
+  tourRegion?: string;
+  tourCity?: string;
+  bookingCount?: number;
   schedules?: {
     id: string;
     dayNumber: number;

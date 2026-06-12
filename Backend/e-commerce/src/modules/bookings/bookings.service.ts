@@ -287,6 +287,9 @@ export class BookingsService {
         included: booking.tour.included,
         notIncluded: booking.tour.notIncluded,
         notes: booking.tour.notes,
+        tourCountry: booking.tour.tourCountry,
+        tourRegion: booking.tour.tourRegion,
+        tourCity: booking.tour.tourCity,
         schedules: booking.tour.schedules,
       },
       departure: booking.departure ? {

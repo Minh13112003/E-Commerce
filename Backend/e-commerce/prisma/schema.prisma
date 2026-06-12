@@ -183,6 +183,7 @@ model Booking {
   idUser        String
   departureId   String?
   price         Decimal       @default(0) @db.Decimal(15, 2)
+  originalPrice Decimal       @default(0) @db.Decimal(15, 2)
   quantity      Int           @default(1)
   status        BookingStatus @default(PENDING)
   paymentMethod PaymentMethod @default(AT_OFFICE)
@@ -219,12 +220,23 @@ model Tour {
   transport     String          @default("Máy bay")          // Phương tiện di chuyển
   included      String[]        @default([])                 // Dịch vụ bao gồm (Mạng lưới array text)
   notIncluded   String[]        @default([])                 // Dịch vụ không bao gồm
-  notes         String?                                      // Lưu ý ý khác về tour
+  notes         String?                                      // Lưu ý khác về tour
+
+  // ===== LOẠI TOUR (PHÂN CẤP 3 CẤP) =====
+  // Cấp 1: tourCountry - "Trong nước" | "Quốc tế"
+  // Cấp 2: tourRegion  - "Miền Bắc" | "Miền Trung" | "Châu Âu" | "Đông Nam Á" ...
+  // Cấp 3: tourCity    - "Hà Nội" | "Đà Nẵng" | "Pháp" | "Thái Lan" ...
+  tourCountry   String?
+  tourRegion    String?
+  tourCity      String?
 
   // Quan hệ 1-Nhiều với bảng lịch trình chi tiết theo ngày
   schedules     TourSchedule[]
   departures    Departure[]
 
+  @@index([tourCountry])
+  @@index([tourCountry, tourRegion])
+  @@index([tourCountry, tourRegion, tourCity])
   @@map("tours")
 }
 

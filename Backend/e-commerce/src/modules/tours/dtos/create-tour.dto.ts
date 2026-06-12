@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsArray, IsInt, IsNotEmpty, IsNumber, IsOptional, IsString, ValidateNested } from 'class-validator';
+import { IsArray, IsInt, IsNumber, IsOptional, IsString, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class CreateTourDTO {
@@ -34,6 +34,18 @@ export class CreateTourDTO {
   @IsString()
   @IsOptional()
   notes?: string;
+
+  @IsString()
+  @IsOptional()
+  tourCountry?: string;
+
+  @IsString()
+  @IsOptional()
+  tourRegion?: string;
+
+  @IsString()
+  @IsOptional()
+  tourCity?: string;
 
   @IsArray()
   @ValidateNested({ each: true })

@@ -7,7 +7,6 @@ import { Role } from '@prisma/client';
 import { ToursService } from './tours.service';
 import { RelaxedThrottler } from '../../common/decorators/custom-throttler.decorator';
 import { TourResponseDto } from './dtos/tour-response.dto';
-import { CreateTourDTO } from './dtos/create-tour.dto';
 import { UpdateTourDTO } from './dtos/update-tour.dto';
 import { RateTourDTO } from './dtos/rate-tour.dto';
 import { SwaggerImageUpload, UploadImages } from '../../common/decorators/swagger-file.decorator';
@@ -15,6 +14,7 @@ import { ImageInterceptor } from '../../common/cloudinary/multer-image.intercept
 import { PaginationQueryDto } from '../../common/dtos/pagination.dto';
 import { PaginatedResponseDto } from '../../common/dtos/pagination-response.dto';
 import { ApiPaginatedResponse } from '../../common/decorators/api-paginated-response.decorator';
+import { QueryTourTypeDto, QueryTopToursDto } from './dtos/query-tour-type.dto';
 
 @ApiTags('Tours')
 @Controller('tours')
@@ -31,6 +31,57 @@ export class ToursController {
   @ApiInternalServerErrorResponse({ description: 'Internal Server Error.' })
   async getAllTours(@Query() paginationDTO: PaginationQueryDto): Promise<PaginatedResponseDto<TourResponseDto>> {
     return this.toursService.getAllTours(paginationDTO);
+  }
+
+  @Get('newest')
+  @RelaxedThrottler()
+  @ApiOperation({
+    summary: 'Lấy danh sách tour mới nhất (có phân trang)',
+    description: 'Trả về danh sách tour sắp xếp theo ngày tạo mới nhất trước.',
+  })
+  @ApiPaginatedResponse(TourResponseDto)
+  @ApiInternalServerErrorResponse({ description: 'Internal Server Error.' })
+  async getNewestTours(@Query() query: QueryTopToursDto): Promise<PaginatedResponseDto<TourResponseDto>> {
+    return this.toursService.getNewestTours(query);
+  }
+
+  @Get('hot')
+  @RelaxedThrottler()
+  @ApiOperation({
+    summary: 'Lấy danh sách tour hot nhất theo số sao (có phân trang)',
+    description: 'Trả về danh sách tour sắp xếp theo rating giảm dần, có phân trang.',
+  })
+  @ApiPaginatedResponse(TourResponseDto)
+  @ApiInternalServerErrorResponse({ description: 'Internal Server Error.' })
+  async getHotTours(@Query() query: QueryTopToursDto): Promise<PaginatedResponseDto<TourResponseDto>> {
+    return this.toursService.getHotTours(query);
+  }
+
+  @Get('popular')
+  @RelaxedThrottler()
+  @ApiOperation({
+    summary: 'Lấy danh sách tour nhiều người đặt nhất (có phân trang)',
+    description: 'Sắp xếp theo số lượng booking giảm dần. Nếu cùng số booking thì ưu tiên tour mới nhất.',
+  })
+  @ApiPaginatedResponse(TourResponseDto)
+  @ApiInternalServerErrorResponse({ description: 'Internal Server Error.' })
+  async getPopularTours(@Query() query: QueryTopToursDto): Promise<PaginatedResponseDto<TourResponseDto>> {
+    return this.toursService.getPopularTours(query);
+  }
+
+  @Get('by-type')
+  @RelaxedThrottler()
+  @ApiOperation({
+    summary: 'Lọc tour theo loại hình (phân cấp 3 cấp)',
+    description: `Lọc tour theo cấu trúc phân cấp:
+- Chỉ truyền **country** → lấy toàn bộ theo loại hình đó (VD: "Trong nước" → tất cả tour trong nước)
+- Truyền **country + region** → lấy theo khu vực (VD: "Trong nước" + "Miền Bắc")
+- Truyền **country + region + city** → lấy chính xác theo điểm đến (VD: "Trong nước" + "Miền Bắc" + "Hà Nội")`,
+  })
+  @ApiResponse({ status: 200, description: 'Danh sách tour theo loại hình.', type: [TourResponseDto] })
+  @ApiInternalServerErrorResponse({ description: 'Internal Server Error.' })
+  async getToursByType(@Query() query: QueryTourTypeDto): Promise<PaginatedResponseDto<TourResponseDto>> {
+    return this.toursService.getToursByType(query);
   }
 
   @Get(':id')
