@@ -2,7 +2,7 @@ import { Injectable, NotFoundException, BadRequestException } from '@nestjs/comm
 import { NotificationType } from '@prisma/client';
 import type { BookingStatus } from '@prisma/client';
 import { PrismaService } from '../../prisma/prisma.service';
-import { BookingResponseDto, DashboardOverviewResponseDto } from './dtos/booking-response.dto';
+import { BookingResponseDto, DashboardOverviewResponseDto, PassengerBreakdownDto } from './dtos/booking-response.dto';
 import { CreateBookingDTO } from './dtos/create-booking.dto';
 import { UpdateBookingDTO } from './dtos/update-booking.dto';
 import { PaginationQueryDto } from 'src/common/dtos/pagination.dto';
@@ -86,10 +86,25 @@ export class BookingsService {
         }
       }
 
-      // Price comes from departure if available, otherwise from tour (legacy)
       if (!departure) throw new BadRequestException('A departure must be selected to book a tour');
-      const unitPrice = Number(departure.price);
-      const originalPrice = unitPrice * dto.quantity;
+
+      const adults   = dto.adults;
+      const children = dto.children ?? 0;
+      const infants  = dto.infants  ?? 0;
+      const totalPassengers = adults + children + infants;
+
+      if (departure.availableSeats < totalPassengers) {
+        throw new BadRequestException(
+          `Không đủ chỗ. Còn ${departure.availableSeats} chỗ, bạn cần ${totalPassengers} chỗ.`,
+        );
+      }
+
+      // Tính giá theo loại hành khách
+      const unitPrice    = Number(departure.price);
+      const adultTotal   = adults   * unitPrice;
+      const childTotal   = children * unitPrice * 0.8;
+      const infantTotal  = infants  * unitPrice * 0.4;
+      const originalPrice = adultTotal + childTotal + infantTotal;
       let finalPrice = originalPrice;
       let resolvedVoucherId: string | null = null;
 
@@ -124,7 +139,10 @@ export class BookingsService {
           idUser: userId,
           idTour: dto.idTour,
           departureId: dto.departureId ?? null,
-          quantity: dto.quantity,
+          quantity: totalPassengers,
+          adults,
+          children,
+          infants,
           originalPrice,
           price: finalPrice,
           voucherId: resolvedVoucherId,
@@ -134,13 +152,11 @@ export class BookingsService {
         include: { tour: true, voucher: true, departure: true },
       });
 
-      // Deduct seat from departure
-      if (departure) {
-        await tx.departure.update({
-          where: { id: departure.id },
-          data: { availableSeats: { decrement: 1 } },
-        });
-      }
+      // Trừ ghế theo tổng số hành khách
+      await tx.departure.update({
+        where: { id: departure.id },
+        data: { availableSeats: { decrement: totalPassengers } },
+      });
 
       // Send notification
       await this.notificationsService.createNotification(
@@ -265,6 +281,25 @@ export class BookingsService {
     return { success: true, message: 'Booking deleted successfully' };
   }
 
+  private buildPassengerBreakdown(booking: any): PassengerBreakdownDto {
+    const unitPrice   = booking.departure ? Number(booking.departure.price) : 0;
+    const adults      = booking.adults   ?? 1;
+    const children    = booking.children ?? 0;
+    const infants     = booking.infants  ?? 0;
+
+    return {
+      adults,
+      adultUnitPrice:  unitPrice,
+      adultTotal:      adults   * unitPrice,
+      children,
+      childUnitPrice:  Math.round(unitPrice * 0.8),
+      childTotal:      Math.round(children * unitPrice * 0.8),
+      infants,
+      infantUnitPrice: Math.round(unitPrice * 0.4),
+      infantTotal:     Math.round(infants  * unitPrice * 0.4),
+    };
+  }
+
   private mapToDto(booking: any): BookingResponseDto {
     const originalPrice = Number(booking.originalPrice ?? booking.price);
     const price = Number(booking.price);
@@ -300,6 +335,7 @@ export class BookingsService {
         price: Number(booking.departure.price),
       } : null,
       quantity: booking.quantity,
+      passengers: this.buildPassengerBreakdown(booking),
       originalPrice,
       discountAmount,
       price,

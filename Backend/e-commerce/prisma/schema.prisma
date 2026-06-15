@@ -185,6 +185,9 @@ model Booking {
   price         Decimal       @default(0) @db.Decimal(15, 2)
   originalPrice Decimal       @default(0) @db.Decimal(15, 2)
   quantity      Int           @default(1)
+  adults        Int           @default(1)
+  children      Int           @default(0)
+  infants       Int           @default(0)
   status        BookingStatus @default(PENDING)
   paymentMethod PaymentMethod @default(AT_OFFICE)
   notice        String?

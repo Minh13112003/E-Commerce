@@ -30,6 +30,9 @@ export class UsersService {
         lastName: true,
         createdAt: true,
         updatedAt: true,
+        earnedPoints : true,
+        rewardPoints : true,
+        successReferrals : true,
         password: false,
 
       },
@@ -59,6 +62,9 @@ export class UsersService {
           updatedAt: true,
           age: true,
           phonenumber : true,
+          earnedPoints : true,
+          rewardPoints : true,
+          successReferrals : true,
           // password: false,   // không cần vì đã select explicit
         },
       }),
@@ -100,7 +106,10 @@ export class UsersService {
         updatedAt: true,
         password: false,
         age: true,
-        phonenumber : true
+        phonenumber : true,
+        earnedPoints : true,
+        rewardPoints : true,
+        successReferrals : true,
       },
     });
     return updatedUser;

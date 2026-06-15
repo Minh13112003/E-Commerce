@@ -1,6 +1,6 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { Transform, Type } from 'class-transformer';
-import { IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
+import { IsEnum, IsInt, IsNotEmpty, IsOptional, IsString, Min } from 'class-validator';
 
 export enum PaymentMethodDto {
   AT_OFFICE = 'AT_OFFICE',
@@ -8,64 +8,75 @@ export enum PaymentMethodDto {
 }
 
 export class CreateBookingDTO {
-  @ApiProperty({
-    type: String,
-    description: 'ID of the tour being booked',
-    example: 't1',
-  })
+  @ApiProperty({ type: String, description: 'ID của tour', example: 'uuid' })
   @IsString()
   @IsNotEmpty()
   idTour!: string;
 
-  @ApiProperty({
-    type: String,
-    description: 'ID of the departure (optional)',
-    example: 'uuid',
-    required: false,
-    nullable: true,
-  })
+  @ApiProperty({ type: String, description: 'ID của chuyến khởi hành', example: 'uuid' })
   @IsString()
-  @IsOptional()
-  departureId?: string;
+  @IsNotEmpty()
+  departureId: string;
 
   @ApiProperty({
     type: Number,
-    description: 'Quantity of the tour being booked',
-    example: 1,
+    description: 'Số người lớn (≥ 16 tuổi) — giá 100%',
+    example: 2,
+    minimum: 1,
   })
-  @IsNumber()
-  @IsOptional()
   @Type(() => Number)
-  @Transform(({ value }) => value ?? 1)
-  quantity: number;
+  @IsInt()
+  @Min(1)
+  adults: number;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
+    type: Number,
+    description: 'Số trẻ em (2–15 tuổi) — giá 80%. Mặc định: 0',
+    example: 1,
+    minimum: 0,
+    default: 0,
+  })
+  @Type(() => Number)
+  @IsInt()
+  @Min(0)
+  @IsOptional()
+  children?: number = 0;
+
+  @ApiPropertyOptional({
+    type: Number,
+    description: 'Số em bé (dưới 2 tuổi) — giá 40%. Mặc định: 0',
+    example: 0,
+    minimum: 0,
+    default: 0,
+  })
+  @Type(() => Number)
+  @IsInt()
+  @Min(0)
+  @IsOptional()
+  infants?: number = 0;
+
+  @ApiPropertyOptional({
     enum: PaymentMethodDto,
-    description: 'Payment method',
+    description: 'Phương thức thanh toán',
     example: PaymentMethodDto.AT_OFFICE,
-    required: false,
   })
   @IsEnum(PaymentMethodDto)
   @IsOptional()
   paymentMethod?: PaymentMethodDto;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     type: String,
-    description: 'Code of the voucher to apply for discount',
+    description: 'Mã voucher giảm giá',
     example: 'BTT300K',
-    required: false,
-    nullable: true,
   })
   @IsString()
   @IsOptional()
   voucherCode?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     type: String,
-    description: 'Additional notice/note for the booking',
+    description: 'Ghi chú thêm cho booking',
     example: 'Chúng tôi cần hỗ trợ xe lăn',
-    required: false,
-    nullable: true,
   })
   @IsString()
   @IsOptional()

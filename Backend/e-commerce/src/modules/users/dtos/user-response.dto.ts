@@ -20,5 +20,11 @@ export class UserResponseDto {
     phonenumber!: string
     @ApiProperty({description : "Age of user", nullable: true})
     age!: number | null
+    @ApiProperty({description : "Reward points of user"})
+    rewardPoints!: number
+    @ApiProperty({description : "Success referrals of user"})
+    successReferrals!: number
+    @ApiProperty({description : "Earned points of user"})
+    earnedPoints!: number
 
 }
