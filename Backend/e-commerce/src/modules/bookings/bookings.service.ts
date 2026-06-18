@@ -10,13 +10,13 @@ import { PaginatedResponseDto } from 'src/common/dtos/pagination-response.dto';
 import { NotificationsService } from '../notifications/notifications.service';
 
 const STATUS_MESSAGES: Record<BookingStatus, string> = {
-  CONFIRMED: 'Your booking has been confirmed.',
-  PAID: 'Payment received. Thank you!',
-  ONGOING: 'Your tour is now in progress. Enjoy!',
-  COMPLETED: 'Your tour has ended. Thank you for traveling with us!',
-  CANCELLED: 'Your booking has been cancelled.',
-  REFUNDED: 'Your refund has been processed.',
-  PENDING: 'Your booking is awaiting confirmation.',
+  CONFIRMED: 'Booking của bạn đã được xác nhận.',
+  PAID: 'Thanh toán thành công. Cảm ơn bạn!',
+  ONGOING: 'Tour của bạn đang trong hành trình. Chúc bạn có chuyến đi vui vẻ!',
+  COMPLETED: 'Tour của bạn đã hoàn thành. Cảm ơn bạn đã đồng hành cùng chúng tôi!',
+  CANCELLED: 'Booking của bạn đã bị hủy.',
+  REFUNDED: 'Hoàn tiền của bạn đã được xử lý.',
+  PENDING: 'Booking của bạn đang chờ xác nhận.',
 };
 
 @Injectable()
@@ -158,25 +158,34 @@ export class BookingsService {
         data: { availableSeats: { decrement: totalPassengers } },
       });
 
-      // Send notification
+      const tourCode = booking.departure?.tourCode ?? booking.id;
       await this.notificationsService.createNotification(
         userId,
         NotificationType.BOOKING_CREATED,
-        'Booking Confirmed',
-        `Your booking #${booking.id} has been placed successfully. Status: PENDING.`,
+        'Đặt tour thành công',
+        `Booking tour mã ${tourCode} đã được tạo thành công. Trạng thái: Chờ xác nhận.`,
+        booking.idTour,
+        'TOUR',
       );
 
       return this.mapToDto(booking);
     });
   }
 
-  async getBookingById(id: string, userId: string): Promise<BookingResponseDto> {
+  async getBookingById(id: string, userId: string, isAdmin = false): Promise<BookingResponseDto> {
     const booking = await this.prisma.booking.findFirst({
-      where: { id, idUser: userId },
+      where: isAdmin ? { id } : { id, idUser: userId },
       include: {
         tour: { include: { schedules: true } },
         voucher: true,
         departure: true,
+        user: {
+          select: {
+            id: true, firstName: true, lastName: true, email: true,
+            phonenumber: true, age: true, rewardPoints: true,
+            earnedPoints: true, successReferrals: true, createdAt: true,
+          },
+        },
       },
     });
 
@@ -204,11 +213,44 @@ export class BookingsService {
     return new PaginatedResponseDto(bookings.map(b => this.mapToDto(b)), { total, page, limit });
   }
 
+  async getAllBookings(paginationDTO: PaginationQueryDto, status?: BookingStatus): Promise<PaginatedResponseDto<BookingResponseDto>> {
+    const { page, limit } = paginationDTO;
+    const skip = (page - 1) * limit;
+
+    const where: any = {};
+    if (status) {
+      where.status = status;
+    }
+
+    const [bookings, total] = await this.prisma.$transaction([
+      this.prisma.booking.findMany({
+        where,
+        orderBy: { createdAt: 'desc' },
+        include: {
+          tour: { include: { schedules: true } },
+          voucher: true,
+          departure: true,
+          user: {
+            select: {
+              id: true, firstName: true, lastName: true, email: true,
+              phonenumber: true, age: true, rewardPoints: true,
+              earnedPoints: true, successReferrals: true, createdAt: true,
+            },
+          },
+        },
+        skip,
+        take: limit,
+      }),
+      this.prisma.booking.count({ where }),
+    ]);
+    return new PaginatedResponseDto(bookings.map(b => this.mapToDto(b)), { total, page, limit });
+  }
+
   async updateBookingStatus(id: string, status: BookingStatus): Promise<BookingResponseDto> {
     return this.prisma.$transaction(async (tx) => {
       const booking = await tx.booking.findUnique({
         where: { id },
-        include: { departure: true },
+        include: { departure: true, tour: { select: { id: true, name: true } } },
       });
 
       if (!booking) throw new NotFoundException('Booking not found');
@@ -243,12 +285,15 @@ export class BookingsService {
         include: { tour: true, voucher: true, departure: true },
       });
 
-      // Send notification
+      const tourCode = booking.departure?.tourCode ?? booking.id;
+      const tourName = booking.tour?.name ?? '';
       await this.notificationsService.createNotification(
         booking.idUser,
         NotificationType.BOOKING_STATUS_UPDATED,
-        'Booking Status Updated',
-        STATUS_MESSAGES[status],
+        'Cập nhật trạng thái booking',
+        `${STATUS_MESSAGES[status]} Tour: ${tourName} (${tourCode}).`,
+        booking.idTour,
+        'TOUR',
       );
 
       return this.mapToDto(updated);
@@ -359,6 +404,20 @@ export class BookingsService {
       createdAt: booking.createdAt,
       updatedAt: booking.updatedAt,
       status: booking.status,
+      ...(booking.user && {
+        user: {
+          id: booking.user.id,
+          firstName: booking.user.firstName,
+          lastName: booking.user.lastName,
+          email: booking.user.email,
+          phonenumber: booking.user.phonenumber,
+          age: booking.user.age,
+          rewardPoints: booking.user.rewardPoints,
+          earnedPoints: booking.user.earnedPoints,
+          successReferrals: booking.user.successReferrals,
+          createdAt: booking.user.createdAt,
+        },
+      }),
     };
   }
 }

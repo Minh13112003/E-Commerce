@@ -1,6 +1,8 @@
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+import { NotificationType } from '@prisma/client';
 import { PrismaService } from '../../prisma/prisma.service';
 import { CloudinaryService } from '../../common/cloudinary/cloudinary.service';
+import { NotificationsService } from '../notifications/notifications.service';
 import { TourResponseDto } from './dtos/tour-response.dto';
 import { CreateTourDTO } from './dtos/create-tour.dto';
 import { UpdateTourDTO } from './dtos/update-tour.dto';
@@ -13,6 +15,7 @@ export class ToursService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly cloudinaryService: CloudinaryService,
+    private readonly notificationsService: NotificationsService,
   ) {}
 
 
@@ -213,6 +216,13 @@ private generateTourCode(tourName: string, departureDate: Date): string {
         imageUrl: imageUrl,
         imagePublicId: imagePublicId,
         duration: dto.duration ?? existing.duration,
+        included: dto.included !== undefined
+          ? (dto.included.length === 1 && dto.included[0] === '__EMPTY_ARRAY__' ? [] : dto.included)
+          : existing.included,
+        notIncluded: dto.notIncluded !== undefined
+          ? (dto.notIncluded.length === 1 && dto.notIncluded[0] === '__EMPTY_ARRAY__' ? [] : dto.notIncluded)
+          : existing.notIncluded,
+        notes: dto.notes !== undefined ? dto.notes : existing.notes,
       },
     });
 
@@ -363,6 +373,85 @@ private generateTourCode(tourName: string, departureDate: Date): string {
       },
     });
 
+    return this.mapToDto(updated);
+  }
+
+  // Cập nhật lịch trình theo ngày → thông báo toàn bộ user đang đặt tour này
+  async updateSchedules(
+    tourId: string,
+    schedules: Array<{
+      dayNumber: number;
+      title?: string;
+      morning?: string;
+      noon?: string;
+      afternoon?: string;
+      evening?: string;
+      night?: string;
+      meals?: string[];
+    }>,
+  ): Promise<TourResponseDto> {
+    const tour = await this.prisma.tour.findUnique({
+      where: { id: tourId },
+      include: { schedules: { orderBy: { dayNumber: 'asc' } }, departures: true },
+    });
+    if (!tour) throw new NotFoundException(`Tour with ID ${tourId} not found`);
+
+    // Upsert từng ngày trong lịch trình
+    await Promise.all(
+      schedules.map(s =>
+        this.prisma.tourSchedule.upsert({
+          where: { tourId_dayNumber: { tourId, dayNumber: s.dayNumber } },
+          update: {
+            ...(s.title !== undefined && { title: s.title }),
+            ...(s.morning !== undefined && { morning: s.morning }),
+            ...(s.noon !== undefined && { noon: s.noon }),
+            ...(s.afternoon !== undefined && { afternoon: s.afternoon }),
+            ...(s.evening !== undefined && { evening: s.evening }),
+            ...(s.night !== undefined && { night: s.night }),
+            ...(s.meals !== undefined && { meals: s.meals }),
+          },
+          create: {
+            tourId,
+            dayNumber: s.dayNumber,
+            title: s.title ?? `Ngày ${s.dayNumber}`,
+            morning: s.morning,
+            noon: s.noon,
+            afternoon: s.afternoon,
+            evening: s.evening,
+            night: s.night,
+            meals: s.meals ?? [],
+          },
+        }),
+      ),
+    );
+
+    // Thông báo user có booking PENDING/CONFIRMED/PAID cho bất kỳ departure nào của tour
+    const bookedUsers = await this.prisma.booking.findMany({
+      where: {
+        idTour: tourId,
+        status: { in: ['PENDING', 'CONFIRMED', 'PAID'] },
+      },
+      select: { idUser: true },
+      distinct: ['idUser'],
+    });
+
+    await Promise.all(
+      bookedUsers.map(b =>
+        this.notificationsService.createNotification(
+          b.idUser,
+          NotificationType.SCHEDULE_UPDATED,
+          'Lịch trình tour thay đổi',
+          `Lịch trình tour ${tour.name} vừa được cập nhật. Vui lòng kiểm tra chi tiết chuyến đi của bạn.`,
+          tourId,
+          'TOUR',
+        ),
+      ),
+    );
+
+    const updated = await this.prisma.tour.findUnique({
+      where: { id: tourId },
+      include: { schedules: { orderBy: { dayNumber: 'asc' } }, departures: true },
+    });
     return this.mapToDto(updated);
   }
 

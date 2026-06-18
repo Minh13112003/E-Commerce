@@ -14,6 +14,13 @@ import { UpdateBookingStatusDto } from './dtos/update-booking-status.dto';
 import { PaginationQueryDto } from '@/common/dtos/pagination.dto';
 import { PaginatedResponseDto } from '@/common/dtos/pagination-response.dto';
 import { ApiPaginatedResponse } from '../../common/decorators/api-paginated-response.decorator';
+import { IsOptional, IsString } from 'class-validator';
+
+export class QueryBookingsDto extends PaginationQueryDto {
+  @IsOptional()
+  @IsString()
+  status?: BookingStatus;
+}
 
 @ApiTags('Bookings')
 @Controller('bookings')
@@ -21,6 +28,21 @@ import { ApiPaginatedResponse } from '../../common/decorators/api-paginated-resp
 @ApiBearerAuth('JWT-Auth')
 export class BookingsController {
   constructor(private readonly bookingsService: BookingsService) {}
+
+  @Get()
+  @Roles(Role.ADMIN)
+  @RelaxedThrottler()
+  @ApiOperation({
+    summary: 'Get all bookings in the system (Admin only)',
+    description: 'Retrieve a paginated list of all bookings, optionally filtered by status.',
+  })
+  @ApiPaginatedResponse(BookingResponseDto)
+  @ApiUnauthorizedResponse({ description: 'Unauthorized.' })
+  async getAllBookings(
+    @Query() query: QueryBookingsDto
+  ): Promise<PaginatedResponseDto<BookingResponseDto>> {
+    return this.bookingsService.getAllBookings(query, query.status);
+  }
 
   @Get('dashboard')
   @RelaxedThrottler()
@@ -85,7 +107,7 @@ export class BookingsController {
   @RelaxedThrottler()
   @ApiOperation({
     summary: 'Get booking details by ID',
-    description: 'Retrieve details of a specific booking owned by the current user.',
+    description: 'Retrieve details of a specific booking owned by the current user (admin can view any booking).',
   })
   @ApiResponse({ status: 200, description: 'Booking data retrieved successfully.', type: BookingResponseDto })
   @ApiNotFoundResponse({ description: 'Booking not found.' })
@@ -94,8 +116,9 @@ export class BookingsController {
   async getBookingById(
     @Param('id') id: string,
     @GetUser('id') userId: string,
+    @GetUser('role') role: Role,
   ): Promise<BookingResponseDto> {
-    return this.bookingsService.getBookingById(id, userId);
+    return this.bookingsService.getBookingById(id, userId, role === Role.ADMIN);
   }
 
   @Patch(':id')

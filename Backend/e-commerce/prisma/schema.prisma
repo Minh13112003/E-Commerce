@@ -24,6 +24,7 @@ model User {
   earnedPoints     Int            @default(0)
   referralCode     String?        @unique
   successReferrals Int            @default(0)
+  fcmToken         String?
   bookings         Booking[]
   carts            Cart[]
   feedbacks        Feedback[]
@@ -224,7 +225,10 @@ model Tour {
   included      String[]        @default([])                 // Dịch vụ bao gồm (Mạng lưới array text)
   notIncluded   String[]        @default([])                 // Dịch vụ không bao gồm
   notes         String?                                      // Lưu ý khác về tour
+  bookingCount  Int             @default(0)
 
+
+  
   // ===== LOẠI TOUR (PHÂN CẤP 3 CẤP) =====
   // Cấp 1: tourCountry - "Trong nước" | "Quốc tế"
   // Cấp 2: tourRegion  - "Miền Bắc" | "Miền Trung" | "Châu Âu" | "Đông Nam Á" ...
@@ -324,6 +328,8 @@ model Notification {
   title     String
   message   String
   isRead    Boolean          @default(false)
+  refId     String?
+  refType   String?
   createdAt DateTime         @default(now())
 
   user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -372,4 +378,6 @@ enum NotificationType {
   PASSWORD_CHANGED
   BOOKING_CREATED
   BOOKING_STATUS_UPDATED
+  DEPARTURE_RESCHEDULED
+  SCHEDULE_UPDATED
 }

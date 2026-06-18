@@ -20,6 +20,12 @@ export class NotificationResponseDto {
   @ApiProperty({ type: Boolean })
   isRead: boolean;
 
+  @ApiProperty({ type: String, required: false, nullable: true })
+  refId: string | null;
+
+  @ApiProperty({ type: String, required: false, nullable: true })
+  refType: string | null;
+
   @ApiProperty({ type: Date })
   createdAt: Date;
 }

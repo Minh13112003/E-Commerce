@@ -1,5 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { NotificationType } from '@prisma/client';
 import { PrismaService } from '../../prisma/prisma.service';
+import { NotificationsService } from '../notifications/notifications.service';
 import { CreateDepartureDto } from './dtos/create-departure.dto';
 import { UpdateDepartureDto } from './dtos/update-departure.dto';
 import { DepartureResponseDto } from './dtos/departure-response.dto';
@@ -8,7 +10,10 @@ import { PaginatedResponseDto } from '../../common/dtos/pagination-response.dto'
 
 @Injectable()
 export class DeparturesService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly notificationsService: NotificationsService,
+  ) {}
 
   private generateTourCode(tourName: string, departureDate: Date): string {
     const abbreviation = tourName
@@ -32,6 +37,8 @@ export class DeparturesService {
       price: Number(departure.price),
       createdAt: departure.createdAt,
       updatedAt: departure.updatedAt,
+      tourName: departure.tour?.name ?? '',
+      tourImageUrl: departure.tour?.imageUrl ?? '',
     };
   }
 
@@ -61,7 +68,13 @@ export class DeparturesService {
 
     const [departures, total] = await this.prisma.$transaction([
       this.prisma.departure.findMany({
-        orderBy: { departureDate: 'asc' },
+        orderBy: [
+          { tourId: 'asc' },
+          { departureDate: 'asc' },
+        ],
+        include: {
+          tour: { select: { name: true, imageUrl: true } }
+        },
         skip,
         take: limit,
       }),
@@ -72,7 +85,10 @@ export class DeparturesService {
   }
 
   async findOne(id: string): Promise<DepartureResponseDto> {
-    const departure = await this.prisma.departure.findUnique({ where: { id } });
+    const departure = await this.prisma.departure.findUnique({
+      where: { id },
+      include: { tour: { select: { name: true, imageUrl: true } } },
+    });
     if (!departure) throw new NotFoundException('Departure not found');
     return this.mapToDto(departure);
   }
@@ -81,6 +97,7 @@ export class DeparturesService {
     const departures = await this.prisma.departure.findMany({
       where: { tourId },
       orderBy: { departureDate: 'asc' },
+      include: { tour: { select: { name: true, imageUrl: true } } },
     });
     return departures.map(d => this.mapToDto(d));
   }
@@ -89,10 +106,16 @@ export class DeparturesService {
     const existing = await this.prisma.departure.findUnique({ where: { id } });
     if (!existing) throw new NotFoundException('Departure not found');
 
+    const isDateChanging =
+      !!dto.departureDate &&
+      new Date(dto.departureDate).toDateString() !== existing.departureDate.toDateString();
+
     let tourCode = existing.tourCode;
+    let tour: { id: string; name: string } | null = null;
+
     if (dto.departureDate || dto.tourId) {
       const tourId = dto.tourId ?? existing.tourId;
-      const tour = await this.prisma.tour.findUnique({ where: { id: tourId } });
+      tour = await this.prisma.tour.findUnique({ where: { id: tourId }, select: { id: true, name: true } });
       if (!tour) throw new NotFoundException('Tour not found');
       const date = dto.departureDate ? new Date(dto.departureDate) : existing.departureDate;
       tourCode = this.generateTourCode(tour.name, date);
@@ -107,7 +130,37 @@ export class DeparturesService {
         ...(dto.price !== undefined && { price: dto.price }),
         tourCode,
       },
+      include: { tour: { select: { name: true, imageUrl: true } } },
     });
+
+    // Khi ngày khởi hành thay đổi → thông báo tất cả user đã đặt chuyến này
+    if (isDateChanging) {
+      const oldDate = existing.departureDate.toLocaleDateString('vi-VN');
+      const newDate = new Date(dto.departureDate!).toLocaleDateString('vi-VN');
+      const tourName = tour?.name ?? '';
+
+      const bookedUsers = await this.prisma.booking.findMany({
+        where: {
+          departureId: id,
+          status: { in: ['PENDING', 'CONFIRMED', 'PAID'] },
+        },
+        select: { idUser: true },
+      });
+
+      const reasonSuffix = dto.reason ? ` Lý do: ${dto.reason}.` : ' Vui lòng kiểm tra lại lịch trình của bạn.';
+      await Promise.all(
+        bookedUsers.map(b =>
+          this.notificationsService.createNotification(
+            b.idUser,
+            NotificationType.DEPARTURE_RESCHEDULED,
+            'Lịch khởi hành thay đổi',
+            `Tour ${tourName} (${tourCode}) đã được dời ngày từ ${oldDate} sang ${newDate}.${reasonSuffix}`,
+            updated.tourId,
+            'TOUR',
+          ),
+        ),
+      );
+    }
 
     return this.mapToDto(updated);
   }

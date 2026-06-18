@@ -1,6 +1,38 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { TourResponseDto } from '../../tours/dtos/tour-response.dto';
 import { VoucherResponseDto } from '../../vouchers/dtos/voucher-response.dto';
+
+export class BookingUserInfoDto {
+  @ApiProperty({ type: String })
+  id: string;
+
+  @ApiProperty({ type: String })
+  firstName: string;
+
+  @ApiProperty({ type: String })
+  lastName: string;
+
+  @ApiProperty({ type: String })
+  email: string;
+
+  @ApiPropertyOptional({ type: String })
+  phonenumber?: string;
+
+  @ApiPropertyOptional({ type: Number })
+  age?: number;
+
+  @ApiProperty({ type: Number })
+  rewardPoints: number;
+
+  @ApiProperty({ type: Number })
+  earnedPoints: number;
+
+  @ApiProperty({ type: Number })
+  successReferrals: number;
+
+  @ApiProperty({ type: Date })
+  createdAt: Date;
+}
 
 export class DepartureInfoDto {
   @ApiProperty({ type: String })
@@ -93,6 +125,9 @@ export class BookingResponseDto {
 
   @ApiProperty({ type: Date })
   updatedAt!: Date;
+
+  @ApiPropertyOptional({ type: BookingUserInfoDto })
+  user?: BookingUserInfoDto;
 }
 
 export class DashboardOverviewResponseDto {

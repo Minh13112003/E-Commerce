@@ -7,6 +7,7 @@ import {
   HttpStatus,
   Param,
   Patch,
+  Post,
   Query,
   Req,
   UseGuards,
@@ -162,6 +163,17 @@ export class UsersController {
     @Body() changePasswordData: ChangePasswordDto
   ): Promise<{ message: string }> {
     return await this.userService.changePassword(userId, changePasswordData);
+  }
+
+  @Post('me/fcm-token')
+  @ApiOperation({ summary: 'Register or update FCM push token for the current user' })
+  @ApiResponse({ status: 200, description: 'FCM token registered.' })
+  @ApiBody({ schema: { properties: { fcmToken: { type: 'string' } }, required: ['fcmToken'] } })
+  async registerFcmToken(
+    @GetUser('id') userId: string,
+    @Body('fcmToken') fcmToken: string,
+  ): Promise<{ success: boolean }> {
+    return this.userService.registerFcmToken(userId, fcmToken);
   }
 
   @Delete(':id')

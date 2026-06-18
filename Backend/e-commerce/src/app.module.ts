@@ -11,12 +11,15 @@ import { CloudinaryService } from './common/cloudinary/cloudinary.service';
 import { CloudinaryModule } from './common/cloudinary/cloudinary.module';
 import { OrdersModule } from './modules/orders/orders.module';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { ScheduleModule } from '@nestjs/schedule';
 import { BookingsModule } from './modules/bookings/bookings.module';
 import { VouchersModule } from './modules/vouchers/vouchers.module';
 import { FeedbacksModule } from './modules/feedbacks/feedbacks.module';
 import { ToursModule } from './modules/tours/tours.module';
 import { DeparturesModule } from './modules/departures/departures.module';
 import { NotificationsModule } from './modules/notifications/notifications.module';
+import { FirebaseModule } from './modules/firebase/firebase.module';
+import { StatsModule } from './modules/stats/stats.module';
 
 @Module({
   imports: [
@@ -37,6 +40,9 @@ import { NotificationsModule } from './modules/notifications/notifications.modul
     ToursModule,
     DeparturesModule,
     NotificationsModule,
+    FirebaseModule,
+    StatsModule,
+    ScheduleModule.forRoot(),
     ThrottlerModule.forRoot([
       { ttl: 60, // Thời gian (tính bằng giây) mà mỗi IP có thể thực hiện tối đa 100 yêu cầu
         limit: 10, // Số lượng yêu cầu tối đa mà mỗi IP có thể thực hiện trong khoảng thời gian ttl

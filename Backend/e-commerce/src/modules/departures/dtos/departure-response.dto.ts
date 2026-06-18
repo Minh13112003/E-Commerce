@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class DepartureResponseDto {
   @ApiProperty({ type: String })
@@ -24,4 +24,10 @@ export class DepartureResponseDto {
 
   @ApiProperty({ type: Date })
   updatedAt: Date;
+
+  @ApiPropertyOptional({ type: String })
+  tourName?: string;
+
+  @ApiPropertyOptional({ type: String })
+  tourImageUrl?: string;
 }

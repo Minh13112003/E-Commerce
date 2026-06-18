@@ -172,6 +172,59 @@ export class ToursController {
     return this.toursService.createBulkTours(toursDataString, images);
   }
 
+  @Patch(':id/schedules')
+  @RelaxedThrottler()
+  @UseGuards(JwtAuthGuard, RoleGuard)
+  @Roles(Role.ADMIN)
+  @ApiBearerAuth('JWT-Auth')
+  @ApiOperation({
+    summary: '[Admin] Cập nhật lịch trình tour theo ngày',
+    description: 'Upsert từng ngày trong lịch trình. Tự động thông báo cho tất cả user đang có booking PENDING/CONFIRMED/PAID của tour này.',
+  })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      required: ['schedules'],
+      properties: {
+        schedules: {
+          type: 'array',
+          items: {
+            type: 'object',
+            required: ['dayNumber'],
+            properties: {
+              dayNumber: { type: 'number', example: 1 },
+              title: { type: 'string', example: 'TP.HCM - HÀ NỘI' },
+              morning: { type: 'string' },
+              noon: { type: 'string' },
+              afternoon: { type: 'string' },
+              evening: { type: 'string' },
+              night: { type: 'string' },
+              meals: { type: 'array', items: { type: 'string' }, example: ['Sáng', 'Trưa'] },
+            },
+          },
+        },
+      },
+    },
+  })
+  @ApiResponse({ status: 200, description: 'Lịch trình cập nhật thành công.', type: TourResponseDto })
+  @ApiNotFoundResponse({ description: 'Tour not found.' })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized.' })
+  async updateSchedules(
+    @Param('id') id: string,
+    @Body('schedules') schedules: Array<{
+      dayNumber: number;
+      title?: string;
+      morning?: string;
+      noon?: string;
+      afternoon?: string;
+      evening?: string;
+      night?: string;
+      meals?: string[];
+    }>,
+  ): Promise<TourResponseDto> {
+    return this.toursService.updateSchedules(id, schedules);
+  }
+
   @Patch(':id')
   @RelaxedThrottler()
   @UseGuards(JwtAuthGuard, RoleGuard)

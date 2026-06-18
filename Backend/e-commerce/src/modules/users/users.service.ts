@@ -124,7 +124,7 @@ export class UsersService {
     });
 
     if (!user || !(await bcrypt.compare(changePasswordData.currentPassword, user.password))) {
-      throw new NotFoundException('Invalid user or current password');
+      throw new BadRequestException('Sai mật khẩu cũ, xin vui lòng nhập đúng mật khẩu cũ của bạn.');
     }
 
     const hashedPassword = await bcrypt.hash(changePasswordData.newPassword, this.SALT_ROUNDS);
@@ -137,11 +137,11 @@ export class UsersService {
     await this.notificationsService.createNotification(
       userId,
       NotificationType.PASSWORD_CHANGED,
-      'Password Updated',
-      'Your password has been successfully updated.',
+      'Đổi mật khẩu thành công',
+      'Mật khẩu của bạn đã được cập nhật thành công.',
     );
 
-    return { message: 'Password changed successfully' };
+    return { message: 'Đổi mật khẩu thành công' };
   }
 
   async delete(userId: string): Promise<{ message: string }> {
@@ -158,6 +158,14 @@ export class UsersService {
     });
 
     return { message: 'User deleted successfully' };
+  }
+
+  async registerFcmToken(userId: string, fcmToken: string): Promise<{ success: boolean }> {
+    await this.prisma.user.update({
+      where: { id: userId },
+      data: { fcmToken },
+    });
+    return { success: true };
   }
 
   async getReferralStats(userId: string): Promise<{ referralCode: string; successReferrals: number; earnedPoints: number }> {

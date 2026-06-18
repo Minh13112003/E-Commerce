@@ -1,22 +1,43 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { NotificationType } from '@prisma/client';
 import { PrismaService } from '../../prisma/prisma.service';
+import { FirebaseService } from '../firebase/firebase.service';
 import { PaginatedResponseDto } from '../../common/dtos/pagination-response.dto';
 import { NotificationResponseDto } from './dtos/notification-response.dto';
 
 @Injectable()
 export class NotificationsService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly firebase: FirebaseService,
+  ) {}
 
   async createNotification(
     userId: string,
     type: NotificationType,
     title: string,
     message: string,
+    refId?: string,
+    refType?: string,
   ): Promise<NotificationResponseDto> {
-    return this.prisma.notification.create({
-      data: { userId, type, title, message },
+    const notification = await this.prisma.notification.create({
+      data: { userId, type, title, message, refId: refId ?? null, refType: refType ?? null },
     });
+
+    // Send FCM push if user has a registered token
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { fcmToken: true },
+    });
+    if (user?.fcmToken) {
+      await this.firebase.sendPush(user.fcmToken, title, message, {
+        type,
+        ...(refId && { refId }),
+        ...(refType && { refType }),
+      });
+    }
+
+    return notification;
   }
 
   async getMyNotifications(
