@@ -381,3 +381,54 @@ enum NotificationType {
   DEPARTURE_RESCHEDULED
   SCHEDULE_UPDATED
 }
+
+// ─── TIN TỨC ───────────────────────────────────────────────────────────────
+
+model News {
+  id            String       @id @default(uuid())
+  slug          String       @unique
+  title         String
+  excerpt       String
+  content       String       @db.Text
+  imageUrl      String
+  imagePublicId String
+  category      NewsCategory @default(COMPANY)
+  isPublished   Boolean      @default(true)
+  publishedAt   DateTime     @default(now())
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  @@index([category])
+  @@index([isPublished])
+  @@index([slug])
+  @@map("news")
+}
+
+enum NewsCategory {
+  COMPANY
+  PROMOTION
+  DESTINATION
+  OTHER
+}
+
+// ─── MẸO DU LỊCH ───────────────────────────────────────────────────────────
+
+model TravelTip {
+  id                 String   @id @default(uuid())
+  title              String
+  excerpt            String
+  content            String   @db.Text
+  imageUrl           String
+  imagePublicId      String
+  destination        String
+  tags               String[] @default([])
+  relatedSearchQuery String?
+  isPublished        Boolean  @default(true)
+  publishedAt        DateTime @default(now())
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@index([destination])
+  @@index([isPublished])
+  @@map("travel_tips")
+}

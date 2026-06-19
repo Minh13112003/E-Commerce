@@ -20,6 +20,8 @@ import { DeparturesModule } from './modules/departures/departures.module';
 import { NotificationsModule } from './modules/notifications/notifications.module';
 import { FirebaseModule } from './modules/firebase/firebase.module';
 import { StatsModule } from './modules/stats/stats.module';
+import { NewsModule } from './modules/news/news.module';
+import { TravelTipsModule } from './modules/travel-tips/travel-tips.module';
 
 @Module({
   imports: [
@@ -42,6 +44,8 @@ import { StatsModule } from './modules/stats/stats.module';
     NotificationsModule,
     FirebaseModule,
     StatsModule,
+    NewsModule,
+    TravelTipsModule,
     ScheduleModule.forRoot(),
     ThrottlerModule.forRoot([
       { ttl: 60, // Thời gian (tính bằng giây) mà mỗi IP có thể thực hiện tối đa 100 yêu cầu
