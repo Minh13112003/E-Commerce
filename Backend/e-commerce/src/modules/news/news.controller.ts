@@ -114,4 +114,17 @@ export class NewsController {
   ): Promise<{ success: boolean; message: string }> {
     return this.newsService.remove(id);
   }
+
+  @Post('upload-image')
+  @UseGuards(JwtAuthGuard, RoleGuard)
+  @Roles(Role.ADMIN)
+  @ApiBearerAuth('JWT-Auth')
+  @UseInterceptors(ImageInterceptor('image'))
+  @ApiOperation({ summary: '[Admin] Upload an image for news body/content' })
+  @ApiResponse({ status: 201, description: 'Upload success' })
+  async uploadContentImage(
+    @UploadedFile() file: Express.Multer.File,
+  ): Promise<{ url: string }> {
+    return this.newsService.uploadNewsImage(file);
+  }
 }

@@ -117,6 +117,9 @@ export class BookingResponseDto {
   @ApiProperty({ type: String, example: 'Cần hỗ trợ xe lăn', nullable: true })
   notice!: string | null;
 
+  @ApiPropertyOptional({ type: String, example: 'Khách hàng đổi lịch trình', nullable: true })
+  cancelReason?: string | null;
+
   @ApiProperty({ type: String, example: 'PENDING' })
   status!: string;
 

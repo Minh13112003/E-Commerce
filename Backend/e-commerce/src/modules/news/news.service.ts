@@ -168,4 +168,13 @@ export class NewsService {
 
     return { success: true, message: 'Xóa bài viết thành công' };
   }
+
+  async uploadNewsImage(file: Express.Multer.File): Promise<{ url: string }> {
+    const { imageURL } = await this.cloudinaryService
+      .uploadImage(file, 'news/content')
+      .catch(() => {
+        throw new BadRequestException('Lỗi upload ảnh lên Cloudinary');
+      });
+    return { url: imageURL };
+  }
 }

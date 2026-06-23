@@ -1,6 +1,5 @@
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
-import { NotificationType } from '@prisma/client';
-import type { BookingStatus } from '@prisma/client';
+import { NotificationType, BookingStatus } from '@prisma/client';
 import { PrismaService } from '../../prisma/prisma.service';
 import { BookingResponseDto, DashboardOverviewResponseDto, PassengerBreakdownDto } from './dtos/booking-response.dto';
 import { CreateBookingDTO } from './dtos/create-booking.dto';
@@ -88,6 +87,32 @@ export class BookingsService {
 
       if (!departure) throw new BadRequestException('A departure must be selected to book a tour');
 
+      // Check if user already booked this tour with the same departure date
+      const existingBooking = await tx.booking.findFirst({
+        where: {
+          idUser: userId,
+          idTour: dto.idTour,
+          status: {
+            notIn: [BookingStatus.CANCELLED, BookingStatus.REFUNDED],
+          },
+          departure: {
+            departureDate: departure.departureDate,
+          },
+        },
+      });
+
+      if (existingBooking) {
+        const d = new Date(departure.departureDate);
+        const day = String(d.getUTCDate()).padStart(2, '0');
+        const month = String(d.getUTCMonth() + 1).padStart(2, '0');
+        const year = d.getUTCFullYear();
+        const formattedDate = `${day}/${month}/${year}`;
+
+        throw new BadRequestException(
+          `Quý khách đã đặt Tour "${tour.name}" khởi hành vào ngày ${formattedDate}. Xin vui lòng lựa chọn ngày khởi hành khác hoặc Tour khác.`,
+        );
+      }
+
       const adults   = dto.adults;
       const children = dto.children ?? 0;
       const infants  = dto.infants  ?? 0;
@@ -163,7 +188,7 @@ export class BookingsService {
         userId,
         NotificationType.BOOKING_CREATED,
         'Đặt tour thành công',
-        `Booking tour mã ${tourCode} đã được tạo thành công. Trạng thái: Chờ xác nhận.`,
+        `Kính gửi Quý khách, yêu cầu đăng ký tour (Mã: ${tourCode}) của Quý khách đã được ghi nhận thành công và đang chờ xác nhận. Bộ phận chăm sóc khách hàng sẽ liên hệ với Quý khách trong thời gian sớm nhất để hỗ trợ hoàn tất dịch vụ. Trân trọng cảm ơn!`,
         booking.idTour,
         'TOUR',
       );
@@ -246,7 +271,7 @@ export class BookingsService {
     return new PaginatedResponseDto(bookings.map(b => this.mapToDto(b)), { total, page, limit });
   }
 
-  async updateBookingStatus(id: string, status: BookingStatus): Promise<BookingResponseDto> {
+  async updateBookingStatus(id: string, status: BookingStatus, cancelReason?: string): Promise<BookingResponseDto> {
     return this.prisma.$transaction(async (tx) => {
       const booking = await tx.booking.findUnique({
         where: { id },
@@ -281,17 +306,25 @@ export class BookingsService {
 
       const updated = await tx.booking.update({
         where: { id },
-        data: { status },
+        data: {
+          status,
+          cancelReason: status === ('CANCELLED' as BookingStatus) ? (cancelReason || null) : null,
+        },
         include: { tour: true, voucher: true, departure: true },
       });
 
       const tourCode = booking.departure?.tourCode ?? booking.id;
       const tourName = booking.tour?.name ?? '';
+      let message = `${STATUS_MESSAGES[status]} Tour: ${tourName} (${tourCode}).`;
+      if (status === ('CANCELLED' as BookingStatus) && cancelReason) {
+        message += ` Lý do hủy: ${cancelReason}`;
+      }
+
       await this.notificationsService.createNotification(
         booking.idUser,
         NotificationType.BOOKING_STATUS_UPDATED,
         'Cập nhật trạng thái booking',
-        `${STATUS_MESSAGES[status]} Tour: ${tourName} (${tourCode}).`,
+        message,
         booking.idTour,
         'TOUR',
       );
@@ -401,6 +434,7 @@ export class BookingsService {
         reuse: booking.voucher.reuse,
       } : null,
       notice: booking.notice ?? null,
+      cancelReason: booking.cancelReason ?? null,
       createdAt: booking.createdAt,
       updatedAt: booking.updatedAt,
       status: booking.status,

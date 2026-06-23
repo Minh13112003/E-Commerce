@@ -192,6 +192,7 @@ model Booking {
   status        BookingStatus @default(PENDING)
   paymentMethod PaymentMethod @default(AT_OFFICE)
   notice        String?
+  cancelReason  String?
   voucherId     String?
   tour          Tour          @relation(fields: [idTour], references: [id], onDelete: Cascade)
   user          User          @relation(fields: [idUser], references: [id], onDelete: Cascade)

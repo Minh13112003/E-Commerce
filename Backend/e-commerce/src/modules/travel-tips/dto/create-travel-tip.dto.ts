@@ -1,4 +1,5 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Transform } from 'class-transformer';
 import {
   IsArray,
   IsBoolean,
@@ -28,6 +29,17 @@ export class CreateTravelTipDto {
   destination: string;
 
   @ApiPropertyOptional({ type: [String], example: ['visa', 'giao thông', 'tiết kiệm'] })
+  @Transform(({ value }) => {
+    if (typeof value === 'string') {
+      try {
+        const parsed = JSON.parse(value);
+        if (Array.isArray(parsed)) return parsed;
+      } catch {}
+      return value.split(',').map((t) => t.trim()).filter(Boolean);
+    }
+    if (Array.isArray(value)) return value;
+    return [];
+  })
   @IsArray()
   @IsString({ each: true })
   @IsOptional()
@@ -43,3 +55,4 @@ export class CreateTravelTipDto {
   @IsOptional()
   isPublished?: boolean;
 }
+

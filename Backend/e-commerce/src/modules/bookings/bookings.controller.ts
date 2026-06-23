@@ -167,6 +167,6 @@ export class BookingsController {
     @Param('id') id: string,
     @Body() dto: UpdateBookingStatusDto,
   ): Promise<BookingResponseDto> {
-    return this.bookingsService.updateBookingStatus(id, dto.status as unknown as BookingStatus);
+    return this.bookingsService.updateBookingStatus(id, dto.status as unknown as BookingStatus, dto.cancelReason);
   }
 }

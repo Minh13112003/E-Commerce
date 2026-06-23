@@ -75,12 +75,13 @@ export class AuthService {
     }
 
     private async updateRefreshToken(userId: string, refreshToken: string) : Promise<void>{
+        const hashedRefreshToken = await bcrypt.hash(refreshToken, this.SALT_ROUNDS);
         await this.prismaService.user.update({
             where : {
                 id : userId
             },
             data : {
-                refreshToken
+                refreshToken: hashedRefreshToken
             }
         });
     }

@@ -138,7 +138,7 @@ export class UsersService {
       userId,
       NotificationType.PASSWORD_CHANGED,
       'Đổi mật khẩu thành công',
-      'Mật khẩu của bạn đã được cập nhật thành công.',
+      'Kính gửi Quý khách, mật khẩu tài khoản của Quý khách đã được cập nhật thành công. Nhằm bảo mật thông tin, nếu Quý khách không thực hiện thao tác này, vui lòng liên hệ ngay với bộ phận CSKH để được hỗ trợ kịp thời. Trân trọng!',
     );
 
     return { message: 'Đổi mật khẩu thành công' };
