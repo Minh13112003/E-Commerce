@@ -104,6 +104,7 @@ export class ToursService {
         const createdTour = await this.prisma.tour.create({
           data: {
             name: dto.name,
+            slug: this.generateTourSlug(dto.name),
             duration: dto.duration,
             imageUrl: uploaded.imageURL,
             imagePublicId: uploaded.imagePublicId,
@@ -213,6 +214,7 @@ private generateTourCode(tourName: string, departureDate: Date): string {
       where: { id },
       data: {
         name: dto.name ?? existing.name,
+        slug: dto.name ? this.generateTourSlug(dto.name) : existing.slug,
         imageUrl: imageUrl,
         imagePublicId: imagePublicId,
         duration: dto.duration ?? existing.duration,
@@ -329,7 +331,13 @@ private generateTourCode(tourName: string, departureDate: Date): string {
     const where: any = {};
     if (country) where.tourCountry = country;
     if (region) where.tourRegion = region;
-    if (city) where.tourCity = { contains: city, mode: 'insensitive' };
+    if (city) {
+      const searchSlug = this.generateTourSlug(city);
+      where.OR = [
+        { slug: { contains: searchSlug } },
+        { tourCity: { contains: city, mode: 'insensitive' } },
+      ];
+    }
 
     const [tours, total] = await this.prisma.$transaction([
       this.prisma.tour.findMany({
@@ -455,10 +463,25 @@ private generateTourCode(tourName: string, departureDate: Date): string {
     return this.mapToDto(updated);
   }
 
+  private generateTourSlug(name: string): string {
+    const nameWithoutParentheses = name.replace(/\([^)]*\)/g, '');
+    return nameWithoutParentheses
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[đĐ]/g, 'd')
+      .replace(/[^a-z0-9\s-]/g, '')
+      .trim()
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  }
+
   private mapToDto(tour: any): TourResponseDto {
     return {
       id: tour.id,
       name: tour.name,
+      slug: tour.slug,
       imageUrl: tour.imageUrl,
       imagePublicId: tour.imagePublicId,
       duration: tour.duration,

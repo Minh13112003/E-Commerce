@@ -25,6 +25,8 @@ model User {
   referralCode     String?        @unique
   successReferrals Int            @default(0)
   fcmToken         String?
+  avatarUrl        String?
+  avatarPublicId   String?
   bookings         Booking[]
   carts            Cart[]
   feedbacks        Feedback[]
@@ -209,6 +211,7 @@ model Booking {
 model Tour {
   id            String          @id @default(uuid())
   name          String
+  slug          String?
   imageUrl      String
   imagePublicId String
   duration      String
@@ -421,7 +424,7 @@ model TravelTip {
   content            String   @db.Text
   imageUrl           String
   imagePublicId      String
-  destination        String
+  destination        String?
   tags               String[] @default([])
   relatedSearchQuery String?
   isPublished        Boolean  @default(true)

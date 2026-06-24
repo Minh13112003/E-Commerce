@@ -10,16 +10,20 @@ import {
   Post,
   Query,
   Req,
+  UploadedFile,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
   ApiBody,
+  ApiConsumes,
   ApiOperation,
   ApiQuery,
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import { ImageInterceptor } from '../../common/cloudinary/multer-image.interceptor';
 import { JwtAuthGuard } from '../../common/guard/jwt-auth.guard';
 import { RoleGuard } from '../../common/guard/role.guard';
 import { UsersService } from './users.service';
@@ -143,8 +147,28 @@ export class UsersController {
     description: 'Internal Server Error. Failed to update user profile.',
   })
   @ApiBody({ type: UserUpdateDto })
-  async updateProfile(userId: string, @Body() updateData: UserUpdateDto): Promise<UserResponseDto> {
+  async updateProfile(@GetUser('id') userId: string, @Body() updateData: UserUpdateDto): Promise<UserResponseDto> {
     return await this.userService.update(userId, updateData);
+  }
+
+  @Patch('me/avatar')
+  @UseInterceptors(ImageInterceptor('avatar'))
+  @ApiOperation({ summary: 'Upload or replace avatar for current user' })
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: { avatar: { type: 'string', format: 'binary' } },
+      required: ['avatar'],
+    },
+  })
+  @ApiResponse({ status: 200, description: 'Avatar updated successfully.', type: UserResponseDto })
+  @ApiResponse({ status: 400, description: 'Invalid file type or no file provided.' })
+  async updateAvatar(
+    @GetUser('id') userId: string,
+    @UploadedFile() file: Express.Multer.File,
+  ): Promise<UserResponseDto> {
+    return await this.userService.updateAvatar(userId, file);
   }
 
   @Patch('me/password')

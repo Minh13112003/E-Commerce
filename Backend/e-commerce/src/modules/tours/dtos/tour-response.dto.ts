@@ -1,6 +1,7 @@
 export class TourResponseDto {
   id: string;
   name: string;
+  slug?: string;
   imageUrl: string;
   imagePublicId: string;
   duration: string;

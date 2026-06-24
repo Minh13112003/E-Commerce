@@ -8,6 +8,7 @@ import * as bcrypt from 'bcrypt';
 import { PaginatedResponseDto } from '../../common/dtos/pagination-response.dto';
 import { PaginationQueryDto } from '../../common/dtos/pagination.dto';
 import { NotificationsService } from '../notifications/notifications.service';
+import { CloudinaryService } from '../../common/cloudinary/cloudinary.service';
 
 @Injectable()
 export class UsersService {
@@ -15,6 +16,7 @@ export class UsersService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly notificationsService: NotificationsService,
+    private readonly cloudinaryService: CloudinaryService,
   ) {}
 
   async findOne(userId: string): Promise<UserResponseDto> {
@@ -24,17 +26,16 @@ export class UsersService {
         id: true,
         email: true,
         role: true,
-        age : true,
-        phonenumber : true,
+        age: true,
+        phonenumber: true,
         firstName: true,
         lastName: true,
         createdAt: true,
         updatedAt: true,
-        earnedPoints : true,
-        rewardPoints : true,
-        successReferrals : true,
-        password: false,
-
+        earnedPoints: true,
+        rewardPoints: true,
+        successReferrals: true,
+        avatarUrl: true,
       },
     });
     if (!user) {
@@ -61,11 +62,11 @@ export class UsersService {
           createdAt: true,
           updatedAt: true,
           age: true,
-          phonenumber : true,
-          earnedPoints : true,
-          rewardPoints : true,
-          successReferrals : true,
-          // password: false,   // không cần vì đã select explicit
+          phonenumber: true,
+          earnedPoints: true,
+          rewardPoints: true,
+          successReferrals: true,
+          avatarUrl: true,
         },
       }),
 
@@ -104,12 +105,12 @@ export class UsersService {
         lastName: true,
         createdAt: true,
         updatedAt: true,
-        password: false,
         age: true,
-        phonenumber : true,
-        earnedPoints : true,
-        rewardPoints : true,
-        successReferrals : true,
+        phonenumber: true,
+        earnedPoints: true,
+        rewardPoints: true,
+        successReferrals: true,
+        avatarUrl: true,
       },
     });
     return updatedUser;
@@ -166,6 +167,38 @@ export class UsersService {
       data: { fcmToken },
     });
     return { success: true };
+  }
+
+  async updateAvatar(userId: string, file: Express.Multer.File): Promise<UserResponseDto> {
+    const user = await this.prisma.user.findUnique({ where: { id: userId } });
+    if (!user) throw new NotFoundException('User not found');
+
+    if (user.avatarPublicId) {
+      await this.cloudinaryService.deleteImage(user.avatarPublicId);
+    }
+
+    const { imageURL, imagePublicId } = await this.cloudinaryService.uploadImage(file, 'avatars');
+
+    const updatedUser = await this.prisma.user.update({
+      where: { id: userId },
+      data: { avatarUrl: imageURL, avatarPublicId: imagePublicId },
+      select: {
+        id: true,
+        email: true,
+        role: true,
+        firstName: true,
+        lastName: true,
+        createdAt: true,
+        updatedAt: true,
+        age: true,
+        phonenumber: true,
+        earnedPoints: true,
+        rewardPoints: true,
+        successReferrals: true,
+        avatarUrl: true,
+      },
+    });
+    return updatedUser;
   }
 
   async getReferralStats(userId: string): Promise<{ referralCode: string; successReferrals: number; earnedPoints: number }> {

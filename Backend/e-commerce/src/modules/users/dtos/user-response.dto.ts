@@ -27,4 +27,6 @@ export class UserResponseDto {
     @ApiProperty({description : "Earned points of user"})
     earnedPoints!: number
 
+    @ApiProperty({ description: 'Avatar URL from Cloudinary', nullable: true, required: false })
+    avatarUrl!: string | null
 }

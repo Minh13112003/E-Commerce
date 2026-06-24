@@ -28,7 +28,7 @@ export class TravelTipsService {
       content: tip.content,
       imageUrl: tip.imageUrl,
       imagePublicId: tip.imagePublicId,
-      destination: tip.destination,
+      destination: tip.destination ?? null,
       tags: tip.tags,
       relatedSearchQuery: tip.relatedSearchQuery ?? null,
       isPublished: tip.isPublished,
@@ -77,12 +77,12 @@ export class TravelTipsService {
   /** Lấy danh sách điểm đến có ít nhất 1 tip đã publish */
   async getDestinations(): Promise<string[]> {
     const rows = await this.prisma.travelTip.findMany({
-      where: { isPublished: true },
+      where: { isPublished: true, NOT: { destination: null } },
       select: { destination: true },
       distinct: ['destination'],
       orderBy: { destination: 'asc' },
     });
-    return rows.map((r) => r.destination);
+    return rows.map((r) => r.destination).filter((d): d is string => d !== null);
   }
 
   // ── Admin mutations ────────────────────────────────────────────────────────
@@ -106,7 +106,7 @@ export class TravelTipsService {
         content: dto.content,
         imageUrl: imageURL,
         imagePublicId,
-        destination: dto.destination,
+        destination: dto.destination ?? null,
         tags: dto.tags ?? [],
         relatedSearchQuery: dto.relatedSearchQuery ?? null,
         isPublished: dto.isPublished ?? true,
@@ -145,8 +145,8 @@ export class TravelTipsService {
         ...(dto.title && { title: dto.title }),
         ...(dto.excerpt && { excerpt: dto.excerpt }),
         ...(dto.content && { content: dto.content }),
-        ...(dto.destination && { destination: dto.destination }),
-        ...(dto.tags && { tags: dto.tags }),
+        ...(dto.destination !== undefined && { destination: dto.destination }),
+        ...(dto.tags !== undefined && { tags: dto.tags }),
         ...(dto.relatedSearchQuery !== undefined && {
           relatedSearchQuery: dto.relatedSearchQuery,
         }),

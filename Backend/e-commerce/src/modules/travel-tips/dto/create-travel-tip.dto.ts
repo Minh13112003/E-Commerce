@@ -24,9 +24,10 @@ export class CreateTravelTipDto {
   @MinLength(20)
   content: string;
 
-  @ApiProperty({ example: 'Nhật Bản', description: 'Điểm đến (phải khớp với tourCity để liên kết tour)' })
+  @ApiPropertyOptional({ example: 'Nhật Bản', description: 'Điểm đến (phải khớp với tourCity để liên kết tour)', nullable: true })
   @IsString()
-  destination: string;
+  @IsOptional()
+  destination?: string | null;
 
   @ApiPropertyOptional({ type: [String], example: ['visa', 'giao thông', 'tiết kiệm'] })
   @Transform(({ value }) => {
