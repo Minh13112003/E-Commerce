@@ -240,6 +240,7 @@ model Tour {
   tourCountry   String?
   tourRegion    String?
   tourCity      String?
+  tourType      String?
 
   // Quan hệ 1-Nhiều với bảng lịch trình chi tiết theo ngày
   schedules     TourSchedule[]
@@ -248,6 +249,7 @@ model Tour {
   @@index([tourCountry])
   @@index([tourCountry, tourRegion])
   @@index([tourCountry, tourRegion, tourCity])
+  @@index([tourType])
   @@map("tours")
 }
 

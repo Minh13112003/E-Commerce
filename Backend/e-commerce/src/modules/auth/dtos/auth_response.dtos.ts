@@ -11,5 +11,7 @@ export class AuthResponseDTOs {
         role: string;
         createdAt : Date;
         updatedAt : Date;
+        avatarUrl : string | null;
+        avatarPublicId : string | null;
     }
 }

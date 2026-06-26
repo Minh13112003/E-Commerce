@@ -27,6 +27,14 @@ export class QueryTourTypeDto {
   @IsOptional()
   city?: string;
 
+  @ApiPropertyOptional({
+    description: 'Lọc theo loại tour cụ thể. Ví dụ: "TOUR HÈ", "TOUR CAO CẤP"',
+    example: 'TOUR HÈ',
+  })
+  @IsString()
+  @IsOptional()
+  tourType?: string;
+
   @ApiPropertyOptional({ default: 1, minimum: 1 })
   @Type(() => Number)
   @IsInt()

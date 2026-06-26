@@ -9,6 +9,8 @@ import { UpdateTourDTO } from './dtos/update-tour.dto';
 import { PaginationQueryDto } from '../../common/dtos/pagination.dto';
 import { PaginatedResponseDto } from '../../common/dtos/pagination-response.dto';
 import { QueryTourTypeDto, QueryTopToursDto } from './dtos/query-tour-type.dto';
+import { SlugifyHelper } from '../../common/helpers/slugify.helper';
+
 
 @Injectable()
 export class ToursService {
@@ -104,7 +106,7 @@ export class ToursService {
         const createdTour = await this.prisma.tour.create({
           data: {
             name: dto.name,
-            slug: this.generateTourSlug(dto.name),
+            slug: await this.generateTourSlug(dto.name),
             duration: dto.duration,
             imageUrl: uploaded.imageURL,
             imagePublicId: uploaded.imagePublicId,
@@ -116,6 +118,7 @@ export class ToursService {
             tourCountry: dto.tourCountry ?? null,
             tourRegion: dto.tourRegion ?? null,
             tourCity: dto.tourCity ?? null,
+            tourType: dto.tourType ?? null,
             schedules: dto.schedules?.length
               ? {
                   createMany: {
@@ -214,7 +217,7 @@ private generateTourCode(tourName: string, departureDate: Date): string {
       where: { id },
       data: {
         name: dto.name ?? existing.name,
-        slug: dto.name ? this.generateTourSlug(dto.name) : existing.slug,
+        slug: dto.name ? await this.generateTourSlug(dto.name) : existing.slug,
         imageUrl: imageUrl,
         imagePublicId: imagePublicId,
         duration: dto.duration ?? existing.duration,
@@ -225,6 +228,7 @@ private generateTourCode(tourName: string, departureDate: Date): string {
           ? (dto.notIncluded.length === 1 && dto.notIncluded[0] === '__EMPTY_ARRAY__' ? [] : dto.notIncluded)
           : existing.notIncluded,
         notes: dto.notes !== undefined ? dto.notes : existing.notes,
+        tourType: dto.tourType !== undefined ? dto.tourType : existing.tourType,
       },
     });
 
@@ -322,7 +326,7 @@ private generateTourCode(tourName: string, departureDate: Date): string {
   }
 
   async getToursByType(query: QueryTourTypeDto): Promise<PaginatedResponseDto<TourResponseDto>> {
-    const { country, region, city, page = 1, limit = 10 } = query;
+    const { country, region, city, tourType, page = 1, limit = 10 } = query;
     const skip = (page - 1) * limit;
 
     // Lọc phân cấp:
@@ -331,8 +335,9 @@ private generateTourCode(tourName: string, departureDate: Date): string {
     const where: any = {};
     if (country) where.tourCountry = country;
     if (region) where.tourRegion = region;
+    if (tourType) where.tourType = tourType;
     if (city) {
-      const searchSlug = this.generateTourSlug(city);
+      const searchSlug = await SlugifyHelper.slugify(city);
       where.OR = [
         { slug: { contains: searchSlug } },
         { tourCity: { contains: city, mode: 'insensitive' } },
@@ -463,18 +468,9 @@ private generateTourCode(tourName: string, departureDate: Date): string {
     return this.mapToDto(updated);
   }
 
-  private generateTourSlug(name: string): string {
+  private async generateTourSlug(name: string): Promise<string> {
     const nameWithoutParentheses = name.replace(/\([^)]*\)/g, '');
-    return nameWithoutParentheses
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/[đĐ]/g, 'd')
-      .replace(/[^a-z0-9\s-]/g, '')
-      .trim()
-      .replace(/\s+/g, '-')
-      .replace(/-+/g, '-')
-      .replace(/^-+|-+$/g, '');
+    return SlugifyHelper.slugify(nameWithoutParentheses);
   }
 
   private mapToDto(tour: any): TourResponseDto {
@@ -496,6 +492,7 @@ private generateTourCode(tourName: string, departureDate: Date): string {
       tourCountry: tour.tourCountry ?? null,
       tourRegion: tour.tourRegion ?? null,
       tourCity: tour.tourCity ?? null,
+      tourType: tour.tourType ?? null,
       bookingCount: tour._count?.bookings,
       schedules: tour.schedules,
       departures: tour.departures,

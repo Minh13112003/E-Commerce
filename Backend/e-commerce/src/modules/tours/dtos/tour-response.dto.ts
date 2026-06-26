@@ -16,6 +16,7 @@ export class TourResponseDto {
   tourCountry?: string;
   tourRegion?: string;
   tourCity?: string;
+  tourType?: string;
   bookingCount?: number;
   schedules?: {
     id: string;

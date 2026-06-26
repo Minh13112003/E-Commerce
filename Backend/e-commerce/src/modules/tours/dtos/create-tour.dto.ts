@@ -47,6 +47,10 @@ export class CreateTourDTO {
   @IsOptional()
   tourCity?: string;
 
+  @IsString()
+  @IsOptional()
+  tourType?: string;
+
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => CreateTourScheduleDto)

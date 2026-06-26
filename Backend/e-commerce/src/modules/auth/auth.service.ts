@@ -48,8 +48,9 @@ export class AuthService {
                     updatedAt : true,
                     createdAt : true,
                     phonenumber : true,
-                    age : true
-
+                    age : true,
+                    avatarUrl : true,
+                    avatarPublicId : true,
                 }
             });
             return {
@@ -100,6 +101,8 @@ export class AuthService {
                 updatedAt : true,
                 phonenumber : true,
                 age : true,
+                avatarUrl : true,
+                avatarPublicId : true,
             }
         });
         if(!user) {
@@ -149,8 +152,9 @@ export class AuthService {
                 createdAt : user.createdAt,
                 updatedAt : user.updatedAt,
                 phonenumber : user.phonenumber,
-                age : user.age
-
+                age : user.age,
+                avatarUrl : user.avatarUrl,
+                avatarPublicId : user.avatarPublicId,
             }
         }
     }
